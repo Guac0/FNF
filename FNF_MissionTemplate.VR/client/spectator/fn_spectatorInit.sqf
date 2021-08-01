@@ -1,15 +1,23 @@
 /*
 Sets player as ACE spectator if not already.
-Draws 3D icons on alive objectives.
+Draws 3D icons on alive objectives for spectator slots and for everyone else if respawn is disabled.
 */
 
-if (!(typeOf player == "ace_spectator_virtual") && !ace_spectator_isset) then {
+if (!ace_spectator_isset && !(typeOf player == "ace_spectator_virtual")) then {
   [true, true, true] call ace_spectator_fnc_setSpectator;
+
+  if (phx_respawn) then {
+    [[playerSide], [west,east,independent,civilian] select {_x != playerSide}] call ace_spectator_fnc_updateSides;
+  };
 };
+
+if (phx_respawn && !(typeOf player == "ace_spectator_virtual")) exitWith {};
 
 //Set camera focus to killer if they exist
 private _lastDamage = player getVariable ["ace_medical_lastDamageSource",objNull];
 if (!isNull _lastDamage) then {[2, _lastDamage] call ace_spectator_fnc_setCameraAttributes;};
+
+call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 
 //Set up objectives for 3d icon draws
 phx_specObjectives = [];
@@ -23,8 +31,6 @@ if (!isNil "destroy_obj_2") then {phx_specObjectives pushBack destroy_obj_2};
 if (!isNil "destroy_obj_3") then {phx_specObjectives pushBack destroy_obj_3};
 
 if (!isNil "ctf_flag") then {phx_specObjectives pushBack ctf_flag};
-
-call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 
 //Returns true if obj can be drawn
 _showObj = {

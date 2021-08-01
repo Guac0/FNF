@@ -18,6 +18,8 @@ connection
 neutralSector
 */
 
+phx_respawn = true;
+
 /************************* DON'T FORGET TO FILL THIS OUT IF YOUR GAME MODE IS NOT NEUTRAL *************************/
 phx_defendingSide = sideEmpty; //west/east/independent
 phx_attackingSide = sideEmpty; //west/east/independent

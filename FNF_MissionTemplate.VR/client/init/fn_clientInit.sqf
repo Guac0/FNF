@@ -23,7 +23,20 @@ call phx_fnc_drawSLIcons; //Draw labels over squad leaders
 //Start kill counter when game ends or player is dead
 [{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
 //Start spectator fnc when player is killed
-player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cba_fnc_waitAndExecute;}];
+player addEventHandler ["Killed", {
+  [{
+    if (!alive player) then {call phx_fnc_spectatorInit};
+  }, [], 3] call cba_fnc_waitAndExecute;
+}];
+
+
+phx_playerSpawnPos = getPosASL player;
+player addMPEventHandler ["MPRespawn", {
+	params ["_unit", "_corpse"];
+
+  [false] call ace_spectator_fnc_setSpectator;
+  phx_playerSpawnPos findEmptyPosition [0,100,typeOf player];
+}];
 
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
