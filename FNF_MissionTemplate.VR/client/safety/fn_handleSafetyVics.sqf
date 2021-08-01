@@ -7,7 +7,7 @@ if (count _safetyVics == 0) exitWith {};
 
 {_x allowDamage false} forEach _safetyVics;
 
-[{!phx_safetyEnabled}, {
+[{!phx_safetyEnabled && !(missionNamespace getVariable ["phx_clientSafety",false])}, {
   params ["_safetyVics"];
 
   {_x allowDamage true} forEach _safetyVics;

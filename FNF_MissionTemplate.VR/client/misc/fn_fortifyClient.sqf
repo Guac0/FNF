@@ -27,12 +27,6 @@ if (!(typeOf player == "B_soldier_exp_F") && !(typeOf player == "O_soldier_exp_F
 
 player addItem "ACE_Fortify";
 
-switch (playerSide) do {
-  case east: {phx_fortifyMarker = "opforSafeMarker";};
-  case west: {phx_fortifyMarker = "bluforSafeMarker";};
-  case independent: {phx_fortifyMarker = "indforSafeMarker";};
-};
-
 {
   if (isNull _x) then {phx_fortify_objArr = phx_fortify_objArr - [_x]};
 } forEach phx_fortify_objArr;
@@ -69,7 +63,7 @@ switch (playerSide) do {
       _errorStr = "Cannot place object. Object cannot be near a road";
     };
 
-    if !(_pos inArea phx_fortifyMarker) then {
+    if !(_pos inArea phx_clientStartZone) then {
       _canPlace = false;
       _errorStr = "Cannot place object. Object needs to be within start zone boundary."
     };
