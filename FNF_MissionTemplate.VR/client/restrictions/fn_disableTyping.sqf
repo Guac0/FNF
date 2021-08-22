@@ -6,23 +6,37 @@ Disables typing in global, side and spectator chat if player is not staff
   if ((getPlayerUID player) in fnf_staffInfo) then {
     0 enableChannel true; //Make sure global is enabled if admin
   } else {
-    0 enableChannel false;
 
-    //Disable chat typing if channel is side
-    [{
-      params ["_display","_handle"];
-      if (!isNull (findDisplay _display)) exitWith {
-        _handle call CBA_fnc_removePerFrameHandler;
-        phx_sideChatRestrict = (findDisplay _display) displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat' && currentChannel == 1) then { true } else { false };"];
-      };
-    }, 1, 46] call CBA_fnc_addPerFrameHandler; //Mission display
+    _disableChannels = [
+      0, // global
+      1, // side
+      2 // command
+    ];
 
-    [{
-      params ["_display","_handle"];
-      if (!isNull (findDisplay _display)) exitWith {
-        _handle call CBA_fnc_removePerFrameHandler;
-        phx_spectatorChatRestrict = (findDisplay _display) displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat') then { true } else { false };"];
-      };
-    }, 1, 60000] call CBA_fnc_addPerFrameHandler; //ACE spectator display
+    {
+      private _channelId = _x;
+      _x enableChannel false;
+    } forEach _disableChannels;
+
+    _textOnlyChannels = [
+      3, // group
+      4, // vehicle
+      5 // direct
+    ];
+
+    {
+      private _channelId = _x;
+      _x enableChannel [true, false];
+    } forEach _textOnlyChannels;
   };
 }] call CBA_fnc_waitUntilAndExecute;
+
+
+[] spawn {
+  while (true) {
+    waitUntil {!isNil "ace_spectator_isSet"};
+    waitUntil {ace_spectator_isSet};
+      // TODO: Find what channel ID number ACE Spectator uses for spectator chat, to disable
+      // # enableChannel false;
+  };
+};
