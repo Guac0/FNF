@@ -47,15 +47,34 @@ phx_343Chan = ((phx_152Chan - 1) * 16) + 1 + _offset343;
 
 
 
-
-
 // Init arr for multi push to talk assignment of existent radios
 _radioArr = [];
 
 
 
-[{!(isNull findDisplay 46) && !(isNull player) && ([] call acre_api_fnc_isInitialized) && (missionNamespace getVariable ["phx_acreSetup",false])}, {}] call CBA_fnc_waitUntilAndExecute;
+waitUntil {
+	!(isNull player) &&
+	(missionNamespace getVariable ["phx_acreSetup",false])
+};
 
+switch (playerSide) do {
+	case east: {
+		["ru"] call acre_api_fnc_babelSetSpokenLanguages;
+		["ru"] call acre_api_fnc_babelSetSpeakingLanguage;
+	};
+	case west: {
+		["en"] call acre_api_fnc_babelSetSpokenLanguages;
+		["en"] call acre_api_fnc_babelSetSpeakingLanguage;
+	};
+	case independent: {
+		["guer"] call acre_api_fnc_babelSetSpokenLanguages;
+		["guer"] call acre_api_fnc_babelSetSpeakingLanguage;
+	};
+	case civilian: {
+		["en", "ru", "guer", "civ"] call acre_api_fnc_babelSetSpokenLanguages;
+		["en", "ru", "guer", "civ"] call acre_api_fnc_babelSetSpeakingLanguage;
+	};
+};
 
 
 // radio types
@@ -80,24 +99,23 @@ _radioArr = [];
 
 // assign 343
 if (phx_loadout_unitLevel >= 0)  then {
-    "ACRE_PRC343:1" call phx_fnc_addGear;
+	"ACRE_PRC343" call phx_fnc_addGear;
+	waitUntil {[player, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio};
 };
-
 
 // assign 152
 if (phx_loadout_unitLevel >= 1) then {
-    "ACRE_PRC152:1" call phx_fnc_addGear;
+	"ACRE_PRC152:1" call phx_fnc_addGear;
+	waitUntil {[player, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio};
 };
-
 
 // assign 117F
 if (phx_loadout_unitLevel >= 2) then {
-    "ACRE_PRC117F:1" call phx_fnc_addGear;	
+	"ACRE_PRC117F:1" call phx_fnc_addGear;
+	waitUntil {[player, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio};
 };
 
-
-
-waitUntil {([] call acre_api_fnc_isInitialized)};
+waitUntil {call acre_api_fnc_isInitialized};
 
 
 if (phx_loadout_unitLevel >= 0)  then {

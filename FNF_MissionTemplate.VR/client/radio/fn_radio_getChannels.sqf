@@ -13,8 +13,9 @@ if (isNil "phx_playerBaseChannel") exitWith {titleText ["Error! Default radio ch
 phx_ch1 = phx_playerBaseChannel; //All players will be able to switch to channel 1 to get on platoon net.
 */
 
-[{!(isNull findDisplay 46) && !(isNull player) && ([] call acre_api_fnc_isInitialized) && (getClientState == "BRIEFING READ")}, {}] call CBA_fnc_waitUntilAndExecute;
-call phx_fnc_radio_ACREsetup;
+waitUntil {
+	missionNamespace getVariable ["phx_acreSetup",false]
+};
 
 //Generate Mission Notes
 _radioSettings = (group player) getVariable ["phx_radioSettings",[1,1]];
@@ -30,7 +31,7 @@ if (_radioSettings # 0 isEqualTo 0) then {
 };
 phx_343Chan = ((phx_152Chan - 1) * 16) + 1 + _offset343;
 
-
+private _thisSideFriendlyName = format["%1 ", toUpper (((playerSide call BIS_fnc_sideID) call BIS_fnc_sideName) select [0,3])];
 phx_radioNoteString = [];
 
 phx_radioNoteString pushBack "<br/><font size='20'>PRC-343 Personal Radio</font>";
@@ -50,13 +51,13 @@ phx_radioNoteString pushBack "<br/><font size='20'>PRC-343 Personal Radio</font>
 if (phx_loadout_unitLevel >= 1) then {
 	phx_radioNoteString pushBack "<br/><font size='20'>PRC-152 Radio</font><br/>";
 	{
-		phx_radioNoteString pushBack (format["Channel %1: <font color='#90ee90'>%2</font><br/>", _forEachIndex + 1, _x # 0]);
+		phx_radioNoteString pushBack (format["Channel %1: <font color='#90ee90'>%2</font><br/>", _forEachIndex + 1, _thisSideFriendlyName + (_x # 0)]);
 	} forEach channelsArr_152;
 };
 if (phx_loadout_unitLevel >= 2) then {
 	phx_radioNoteString pushBack "<br/><font size='20'>PRC-117F Manpack Radio</font><br/>";
 	{
-		phx_radioNoteString pushBack (format["Channel %1: <font color='#90ee90'>%2</font><br/>", _forEachIndex + 1, _x # 0]);
+		phx_radioNoteString pushBack (format["Channel %1: <font color='#90ee90'>%2</font><br/>", _forEachIndex + 1, _thisSideFriendlyName + (_x # 0)]);
 	} forEach channelsArr_117;
 };
 
@@ -70,10 +71,10 @@ if (phx_loadout_unitLevel >= 0) then {
 	phx_radioNoteString pushBack format["<br/>PRC-343 Rifleman Radio (center): <font color='#90ee90'>BLOCK %1 CH %2 (Your Group)</font>", phx_152Chan, _offset343 + 1];
 };
 if (phx_loadout_unitLevel >= 1) then {
-	phx_radioNoteString pushBack format["<br/>PRC-152 Standard Radio (left ear): <font color='#90ee90'>CH %1 (%2)</font>", (_cur152 # 0 # 1), _cur152 # 0 # 0];
+	phx_radioNoteString pushBack format["<br/>PRC-152 Standard Radio (left ear): <font color='#90ee90'>CH %1 (%2)</font>", (_cur152 # 0 # 1), _thisSideFriendlyName + (_cur152 # 0 # 0)];
 };
 if (phx_loadout_unitLevel >= 2) then {
-	phx_radioNoteString pushBack format["<br/>PRC-117F Manpack Radio (right ear): <font color='#90ee90'>CH %1 (%2)</font>", (_cur117 # 0 # 1), _cur117 # 0 # 0];
+	phx_radioNoteString pushBack format["<br/>PRC-117F Manpack Radio (right ear): <font color='#90ee90'>CH %1 (%2)</font>", (_cur117 # 0 # 1), _thisSideFriendlyName + (_cur117 # 0 # 0)];
 };
 
 

@@ -51,16 +51,18 @@ if (isNil "pRole") exitWith {
   endMission "END1"
 };
 player linkItem "ItemMap";
+if ("ItemRadio" in assignedItems player) then {player unassignItem "ItemRadio"};
 
 if (pRole in [ROLE_PL,ROLE_SL,ROLE_TL,ROLE_MGTL,ROLE_GR,ROLE_GRIR]) then {phx_loadout_hasUGL = true} else {phx_loadout_hasUGL = false};
 if (pRole in [ROLE_AR,ROLE_MG,ROLE_SNP,ROLE_P,ROLE_RS]) then {phx_loadout_hasSpecial = true} else {phx_loadout_hasSpecial = false};
 
 if (pRole == ROLE_CIV) exitWith {};
 
-phx_loadout_unitLevel = 0;
-if (pRole == ROLE_PL) then {phx_loadout_unitLevel = 3};
-if (pRole == ROLE_SL) then {phx_loadout_unitLevel = 2};
-if (pRole in [ROLE_TL,ROLE_MGTL]) then {phx_loadout_unitLevel = 1};
+// phx_loadout_unitLevel = 0;
+phx_loadout_unitLevel = (group player) getVariable "phx_gps_groupSize";
+// if (pRole == ROLE_PL) then {phx_loadout_unitLevel = 3};
+// if (pRole == ROLE_SL) then {phx_loadout_unitLevel = 2};
+// if (pRole in [ROLE_TL,ROLE_MGTL]) then {phx_loadout_unitLevel = 1};
 //Shared
 phx_loadout_aid = "FirstAidKit:4";
 phx_loadout_smoke = "SmokeShell:2";

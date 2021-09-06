@@ -3,4 +3,4 @@
   !isNil "phx_opforBaseChannel" &&
   !isNil "phx_indforBaseChannel" &&
   !isNil "phx_groupIDset"
-}, {call phx_fnc_radio_getChannels}] call CBA_fnc_waitUntilAndExecute;
+}, {[] spawn phx_fnc_radio_getChannels}] call CBA_fnc_waitUntilAndExecute;

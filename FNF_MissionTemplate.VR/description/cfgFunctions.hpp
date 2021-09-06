@@ -36,6 +36,7 @@ class CfgFunctions {
     };
     class radio {
       file = "client\radio";
+      class radio_ACREsetup{};
       class radio_waitGear{};
       class radio_getChannels{};
       class radio_setRadios{};
@@ -122,7 +123,6 @@ class CfgFunctions {
       class fortifyServer{};
       class server_setupGame{};
       class radio_genFreqs{};
-      class radio_ACREsetup{};
       class populateORBATS{};
     };
     class end {
