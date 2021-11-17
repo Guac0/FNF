@@ -1,8 +1,9 @@
+#include "BIS_AddonInfo.hpp"
 class CfgPatches
 {
 	class fnf_eden
 	{
-		units[] = {};
+		units[] = {"fnf_ModuleAddEmplacements","fnf_ModuleArtilleryBarrage"};
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"cba_main", "ace_arsenal"}; //This is just to get the FNF section to the bottom of the attributes list
@@ -48,3 +49,7 @@ class Cfg3DEN
 		};
 	};
 };
+
+#include "CfgFactionClasses.hpp"
+#include "CfgFunctions.hpp"
+#include "CfgVehicles.hpp"
