@@ -5,10 +5,8 @@ _units = param [1,[],[[]]];
 // True when the module was activated, false when it is deactivated (i.e., synced triggers are no longer active)
 _activated = param [2,true,[true]];
 // Module specific behavior. Function can extract arguments from logic and use them.
-"debug_console" callExtension str(_this);
 
 _targets = synchronizedObjects _logic;
-"debug_console" callExtension str(_targets);
 if (_activated) then {
 	// Attribute values are saved in module's object space under their class names
 	if (count _targets isEqualTo 0) exitWith {false};
