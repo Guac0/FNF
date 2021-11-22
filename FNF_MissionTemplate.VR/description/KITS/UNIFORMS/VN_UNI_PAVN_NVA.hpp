@@ -29,8 +29,8 @@
 #define BACKPACK_CE "vn_o_pack_05"
 #define BACKPACK_DM BACKPACK
 #define BACKPACK_MEDIC BACKPACK
-#define BACKPACK_CREWMAN BACKPACK_RADIO
-#define BACKPACK_PILOT BACKPACK_RADIO
+#define BACKPACK_CREWMAN BACKPACK
+#define BACKPACK_PILOT BACKPACK
 
 
 class VN_UNI_PAVN_NVA {
@@ -108,6 +108,7 @@ class VN_UNI_PAVN_NVA {
     uniform[] = {UNIFORM};
     vest[] = {VEST_CREWMAN};
     headgear[] = {HELMET_CREWMAN};
+    backpack[] = {BACKPACK_CREWMAN};
   };
 
   class CRL : CR {
@@ -118,7 +119,7 @@ class VN_UNI_PAVN_NVA {
     uniform[] = {UNIFORM_PILOT};
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
-    backpack[] = {BACKPACK_RADIO};
+    backpack[] = {BACKPACK_PILOT};
   };
 
   class MED : BASE {

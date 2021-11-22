@@ -1,6 +1,6 @@
 // Disable AI contact reports
 player setspeaker "NoVoice";
-showSubtitles false;
-enableSentences false;
+showSubtitles true;
+enableSentences true;
 enableRadio true;
-player disableConversation true;
+player disableConversation false;

@@ -10,16 +10,16 @@ phx_briefingBackground = "";
 // "WorldInfo" should include any notable details about the AO.
 phx_briefingWorldInfo = "";
 // "Notes" can include anything else.
-phx_briefingNotes = "";
+phx_briefingNotes = "Each side is granted a set number of respawn tickets. Your objective is to capture and hold Fort Marveilleux. If one side captures the sector, the other will passively bleed respawn tickets. If either side reaches 0, the mission will end. If the countdown timer reaches 0, the side with the highest score will win.<br/><br/>This mission will allow you to test the different loadouts and systems present in our newest framework while having a bit of competitive fun doing so.<br/><br/><br/><br/><br/>1. Rearm vehicles are provided at the Howitzers on each side. Use ACE Interact > Rearm to reload nearby vehicles.<br/><br/>2. Respawns are available for jeeps (30 seconds), armed trucks (4 minutes), base AA (5 minutes), helos (10 minutes), howitzers (15 minutes), and planes (15 minutes). Players will respawn in waves every 25 seconds.<br/><br/>3. Sides will be tuned to matching frequencies.";
 // "Rules" should include any mission-specific rules that you want to spell out for players.
-phx_briefingRules = "";
+phx_briefingRules = "Rule 1. All FNF rules still apply. You can call an admin using the built-in Contact Staff button in your pause menu, just like in the main event.<br/><br/>Rule 2: No firing into enemy's main base.<br/><br/>Rule 3: No movement into the side markers (hashed and colored).";
 
 ////////////////////////////////////////////////////////////
 
 // SCENARIO SETTINGS //
 
-phx_gameMode = destroy;
-/* 
+phx_gameMode = "";
+/*
   MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF
   DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS
   they will be deleted automatically if not in use
@@ -33,7 +33,7 @@ phx_vnArtillerySide = sideEmpty; // west/east/independent
 // use sideEmpty to not give anyone access
 
 phx_enemyStartVisible = true; // Set to false to hide enemy start zone markers
-phx_maxViewDistance = 1500;
+phx_maxViewDistance = 10000;
 /*
   Maximum client view distance (meters)
     LOW: 500 (for urban combat)
@@ -59,7 +59,7 @@ phx_fortifyStyle = "MACV";
     "MACV" will give Vietnam-era US Army emplacements (requires Prairie Fire)
 */
 
-phx_magnifiedOptics = 0;
+phx_magnifiedOptics = 1;
 /*
   Allow players to grab magnified optics from the gear selector
   0 will restrict 4x+ optics to designated marksmen and snipers.
@@ -118,16 +118,16 @@ phx_grnAT_Delta = GEARDEFAULT;
 // Adjusts what loadout the two extra Squad HQ members will receive
 // Set to 0 to make default crewman, set to one of the options to enable equipment for it.
 // OPFOR
-  phx_eastAlphaAuxRole = 0;
-  phx_eastBravoAuxRole = 0;
-  phx_eastCharlieAuxRole = 0;
-  phx_eastDeltaAuxRole = 0;
+  phx_eastAlphaAuxRole = VN_MORTAR_TYPE53(15,10,10);
+  phx_eastBravoAuxRole = VN_MORTAR_TYPE53(15,10,10);
+  phx_eastCharlieAuxRole = VN_MORTAR_TYPE53(15,10,10);
+  phx_eastDeltaAuxRole = VN_MORTAR_TYPE53(15,10,10);
 
 // BLUFOR
-  phx_westAlphaAuxRole = 0;
-  phx_westBravoAuxRole = 0;
-  phx_westCharlieAuxRole = 0;
-  phx_westDeltaAuxRole = 0;
+  phx_westAlphaAuxRole = VN_MORTAR_M2_60mm(15,10,10);
+  phx_westBravoAuxRole = VN_MORTAR_M2_60mm(15,10,10);
+  phx_westCharlieAuxRole = VN_MORTAR_M2_60mm(15,10,10);
+  phx_westDeltaAuxRole = VN_MORTAR_M2_60mm(15,10,10);
 
 // INDFOR
   phx_guerAlphaAuxRole = 0;
@@ -142,6 +142,6 @@ phx_grnAT_Delta = GEARDEFAULT;
 
 // Show/Hide unit / group icons on map, GPS for players
 // Used in limited-intel scenarios like WWII and Vietnam
-phx_showUnitIcons = false;
-phx_showGroupIcons = true;
+phx_showUnitIcons = true;
+phx_showGroupIcons = false;
 phx_showAlliedFactions = true;

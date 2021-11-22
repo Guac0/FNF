@@ -112,7 +112,7 @@ fnc_handleSHQAUX = {
           (_this select 2) call phx_selector_fnc_csw;
         },
         { // condition
-          phx_safetyEnabled &&
+          // phx_safetyEnabled &&
           (player getVariable "phxLoadout") isEqualTo "SHQAUX"
         },
         {},
@@ -807,8 +807,8 @@ if (isNil {
 if (isNil {
   [
     player,
-    _cfgGiveSRRadio,
-    _cfgGiveLRRadio
+    true,
+    false
   ] call fnc_giveRadios
 }) then {
   [{time > 2}, {
@@ -909,12 +909,12 @@ if (isNil {[player, PLAYERLOADOUTVAR] call fnc_setAttributes}) then {
 };
 
 
-if (isNil {[player, _cfgGiveSideKey] call fnc_giveSideKey}) then {
-  [{time > 2}, {
-    ["<t align='center'>Error:<br/>Failed to process ACE vehicle key settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process ACE vehicle key settings."];
-  }] call CBA_fnc_waitUntilAndExecute;
-};
+// if (isNil {[player, _cfgGiveSideKey] call fnc_giveSideKey}) then {
+//   [{time > 2}, {
+//     ["<t align='center'>Error:<br/>Failed to process ACE vehicle key settings.</t>", "error", 20] call phx_ui_fnc_notify;
+//     diag_log text format["[FNF] (loadout) ERROR: Failed to process ACE vehicle key settings."];
+//   }] call CBA_fnc_waitUntilAndExecute;
+// };
 
 if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveBinoculars}) then {
   [{time > 2}, {

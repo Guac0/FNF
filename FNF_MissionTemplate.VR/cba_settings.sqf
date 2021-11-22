@@ -15,7 +15,7 @@ force force ace_advanced_fatigue_enabled = true;
 force force ace_advanced_fatigue_enableStaminaBar = true;
 ace_advanced_fatigue_fadeStaminaBar = true;
 force force ace_advanced_fatigue_loadFactor = 0.4;
-force force ace_advanced_fatigue_performanceFactor = 1;
+force force ace_advanced_fatigue_performanceFactor = 4;
 force force ace_advanced_fatigue_recoveryFactor = 5;
 force force ace_advanced_fatigue_swayFactor = 0.25;
 force force ace_advanced_fatigue_terrainGradientFactor = 0.7;
@@ -359,7 +359,7 @@ force force ace_vehicles_keepEngineRunning = false;
 
 // ACE View Distance Limiter
 force force ace_viewdistance_enabled = true;
-force force ace_viewdistance_limitViewDistance = 12000;
+force force ace_viewdistance_limitViewDistance = 2000;
 ace_viewdistance_objectViewDistanceCoeff = 0;
 ace_viewdistance_viewDistanceAirVehicle = 0;
 ace_viewdistance_viewDistanceLandVehicle = 0;
@@ -373,7 +373,7 @@ ace_reload_showCheckAmmoSelf = false;
 ace_weaponselect_displayText = true;
 
 // ACE Weather
-force force ace_weather_enabled = false;
+force force ace_weather_enabled = true;
 ace_weather_showCheckAirTemperature = true;
 force force ace_weather_updateInterval = 60;
 force force ace_weather_windSimulation = false;
@@ -383,10 +383,13 @@ force force ace_winddeflection_enabled = false;
 force force ace_winddeflection_simulationInterval = 0.05;
 force force ace_winddeflection_vehicleEnabled = false;
 
+// ACE Zeus
+ace_zeus_autoAddObjects = true;
+
 // TFAR - Global settings
 force force TFAR_AICanHearPlayer = false;
 force force TFAR_AICanHearSpeaker = false;
-force force TFAR_allowDebugging = true;
+force force TFAR_allowDebugging = false;
 TFAR_curatorCamEars = false;
 force force TFAR_defaultIntercomSlot = 0;
 force force TFAR_enableIntercom = true;
@@ -397,15 +400,15 @@ force force TFAR_giveMicroDagrToSoldier = true;
 force force TFAR_givePersonalRadioToRegularSoldier = true;
 force force TFAR_globalRadioRangeCoef = 1;
 force force TFAR_instantiate_instantiateAtBriefing = false;
-TFAR_noAutomoveSpectator = false;
-force force TFAR_objectInterceptionEnabled = false;
+TFAR_noAutomoveSpectator = true;
+force force TFAR_objectInterceptionEnabled = true;
 force force TFAR_objectInterceptionStrength = 400;
 force force tfar_radiocode_east = "_opfor";
 force force tfar_radiocode_independent = "_independent";
 force force tfar_radiocode_west = "_bluefor";
 force force tfar_radioCodesDisabled = false;
-force force TFAR_SameLRFrequenciesForSide = false;
-force force TFAR_SameSRFrequenciesForSide = false;
+force force TFAR_SameLRFrequenciesForSide = true;
+force force TFAR_SameSRFrequenciesForSide = true;
 force force TFAR_setting_defaultFrequencies_lr_east = "";
 force force TFAR_setting_defaultFrequencies_lr_independent = "";
 force force TFAR_setting_defaultFrequencies_lr_west = "";
@@ -426,10 +429,10 @@ force force TFAR_setting_DefaultRadio_Rifleman_Independent = "TFAR_anprc148jem";
 force force TFAR_setting_DefaultRadio_Rifleman_West = "TFAR_anprc152";
 force force TFAR_spectatorCanHearEnemyUnits = true;
 force force TFAR_spectatorCanHearFriendlies = true;
-force force TFAR_takingRadio = 2;
+force force TFAR_takingRadio = 0;
 force force TFAR_Teamspeak_Channel_Name = "TaskForceRadio";
 force force TFAR_Teamspeak_Channel_Password = "123";
-force force tfar_terrain_interception_coefficient = 4;
+force force tfar_terrain_interception_coefficient = 7;
 force force TFAR_voiceCone = false;
 
 // Enhanced Movement Rework

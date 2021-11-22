@@ -56,6 +56,8 @@ class CfgFunctions {
       class addGear{};
       class checkLoadout{};
       class setMAT{};
+      class setRoleVar{};
+      class getBISRespawnLoadout{};
     };
     class restrictions {
       file = "client\restrictions";
@@ -142,6 +144,10 @@ class CfgFunctions {
     class notifications {
       file = "client\ui\notifications";
       class notify{};
+    };
+    class ui {
+      file = "client\ui";
+      class drawHelpers{};
     };
   };
   class phx_admin {

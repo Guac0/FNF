@@ -445,23 +445,23 @@ _getVehicleData = {
 		"76561198049218642" // Bae
 	];
 
-	if (count _invLines > 0 && (((getPlayerUID player) in (missionNamespace getVariable "fnf_staffInfo")) || ((getPlayerUID player) in _vetterIds))) then {
-		player createDiarySubject ["VicHasInv", "VicsWithInventory", "\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa"];
-		_marker = createMarkerLocal [format["VicWithInvMark_%1", round (random 2000)], getPos _x];
-		_invOutArr = +_outArr;
-		_invOutArr pushBack format["<marker name='%1'>Go to vehicle</marker>", _marker];
+	// if (count _invLines > 0 && (((getPlayerUID player) in (missionNamespace getVariable "fnf_staffInfo")) || ((getPlayerUID player) in _vetterIds))) then {
+	// 	player createDiarySubject ["VicHasInv", "VicsWithInventory", "\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa"];
+	// 	_marker = createMarkerLocal [format["VicWithInvMark_%1", round (random 2000)], getPos _x];
+	// 	_invOutArr = +_outArr;
+	// 	_invOutArr pushBack format["<marker name='%1'>Go to vehicle</marker>", _marker];
 
-		player createDiaryRecord [
-			"VicHasInv",
-			[
-				format["%1", _dispName],
-				_invOutArr joinString "<br/>"
-			],
-			taskNull,
-			"?",
-			false
-		];
-	};
+	// 	player createDiaryRecord [
+	// 		"VicHasInv",
+	// 		[
+	// 			format["%1", _dispName],
+	// 			_invOutArr joinString "<br/>"
+	// 		],
+	// 		taskNull,
+	// 		"?",
+	// 		false
+	// 	];
+	// };
 
 	// "debug_console" callExtension (str _invLines + "~0000");
 
@@ -470,7 +470,7 @@ _getVehicleData = {
 
 
 
-	if (_x inArea "bluforSafeMarker") then {
+	if (_x inArea safeZone_BLUFOR) then {
 		player createDiaryRecord [
 			"BLUAssets",
 			[
@@ -482,7 +482,7 @@ _getVehicleData = {
 			false
 		];
 	};
-	if (_x inArea "opforSafeMarker") then {
+	if (_x inArea safeZone_OPFOR) then {
 		player createDiaryRecord [
 			"OPFAssets",
 			[
@@ -494,18 +494,18 @@ _getVehicleData = {
 			false
 		];
 	};
-	if (_x inArea "indforSafeMarker") then {
-		player createDiaryRecord [
-			"INDAssets",
-			[
-				format["%1x %2",_typeCount, _dispName],
-				_outArr joinString "<br/>"
-			],
-			taskNull,
-			"?",
-			false
-		];
-	};
+	// if (_x inArea "indforSafeMarker") then {
+	// 	player createDiaryRecord [
+	// 		"INDAssets",
+	// 		[
+	// 			format["%1x %2",_typeCount, _dispName],
+	// 			_outArr joinString "<br/>"
+	// 		],
+	// 		taskNull,
+	// 		"?",
+	// 		false
+	// 	];
+	// };
 };
 
 
@@ -514,7 +514,7 @@ _getVehicleData = {
 
 phx_assetDiaryBLU = player createDiarySubject ["BLUAssets", "BLU Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
 phx_assetDiaryOPF = player createDiarySubject ["OPFAssets", "OPF Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
-phx_assetDiaryIND = player createDiarySubject ["INDAssets", "IND Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+// phx_assetDiaryIND = player createDiarySubject ["INDAssets", "IND Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
 
 
 _vehiclesToProcess = createHashMap;
