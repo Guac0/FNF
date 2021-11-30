@@ -1,0 +1,22 @@
+author = "IndigoFox";
+onLoadName = "FNF King of the Fort";
+onLoadMission = "Battle of Fort Marveilleux";
+
+// class Header
+// {
+// 	gameType = SC;
+// 	minPlayers = 1;
+// 	maxPlayers = 200;
+// };
+
+#include "description\definitions.hpp"
+#include "description\cfgEventHandlers.hpp"
+#include "description\cfgNotifications.hpp"
+#include "description\cfgSounds.hpp"
+#include "description\cfgFunctions.hpp"
+#include "description\cfgORBAT.hpp"
+#include "description\cfgLoadouts.hpp"
+#include "description\cfgVNArtillery.hpp"
+#include "client\ui\defines.hpp"
+#include "client\ui\RscTitlesDisplay.hpp"
+#include "client\ui\PauseMenuDisplays.hpp"
