@@ -1,6 +1,6 @@
 author = "IndigoFox";
-onLoadName = "FNF King of the Fort";
-onLoadMission = "Battle of Fort Marveilleux";
+onLoadName = "FNF Sustained Assault";
+onLoadMission = "";
 
 // class Header
 // {

@@ -1,5 +1,5 @@
 //Determine if client can play the round, if not, spectate
-[0,objNull,-2,[10819.9,1759.42,181.082],77.3389] call ace_spectator_fnc_setCameraAttributes;
+[0,objNull,-2,[3787.28,7016.75,168.617],44.822] call ace_spectator_fnc_setCameraAttributes;
 [[west,east], [civilian, sideLogic]] call ace_spectator_fnc_updateSides;
 
 if !(call phx_fnc_clientCanPlay) exitWith {
@@ -53,6 +53,7 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
 // player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cba_fnc_waitAndExecute;}];
 
 
+
 player addEventHandler ["Respawn", {
   params [
   ["_newUnit", objNull, [objNull], 1],
@@ -64,7 +65,7 @@ player addEventHandler ["Respawn", {
 
   (player getVariable ["phxLoadout", "BASE"]) call phx_fnc_applyCfgLoadout;
   _newUnit setVariable ["ACE_canMoveRallypoint", false, true];
-  [0,objNull,-2,[10819.9,1759.42,181.082],77.3389] call ace_spectator_fnc_setCameraAttributes;
+  [0,objNull,-2,[3787.28,7016.75,168.617],44.822] call ace_spectator_fnc_setCameraAttributes;
   [[west,east], [civilian, sideLogic]] call ace_spectator_fnc_updateSides;
 
   if (isNil {fnf_ui getVariable ["fnf_drawHelpersHandle",nil]}) then {
@@ -92,6 +93,16 @@ player addEventHandler ["Respawn", {
         };
         sleep 1;
       };
+    };
+  }];
+
+  player addEventHandler ["Killed", {
+    params ["_unit", "_killer", "_instigator", "_useEffects"];
+    if (!isNull _instigator && (side (group _instigator) == playerSide)) exitWith {
+      ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
+    };
+    if (side (group _killer) == playerSide) exitWith {
+      ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
     };
   }];
 

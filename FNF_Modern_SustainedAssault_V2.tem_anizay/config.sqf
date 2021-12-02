@@ -10,7 +10,7 @@ phx_briefingBackground = "";
 // "WorldInfo" should include any notable details about the AO.
 phx_briefingWorldInfo = "";
 // "Notes" can include anything else.
-phx_briefingNotes = "Each side is granted a set number of respawn tickets. Your objective is to capture and hold the mosque If one side captures the sector, the other will passively bleed respawn tickets. If either side reaches 0, the mission will end. If the countdown timer reaches 0, the side with the highest score will win.<br/><br/>This mission will allow you to test the different loadouts and systems present in our newest framework while having a bit of competitive fun doing so.<br/><br/><br/><br/><br/>1. Rearm vehicles are provided at the Howitzers on each side. Use ACE Interact > Rearm to reload nearby vehicles.<br/><br/>2. Respawns are available for jeeps (30 seconds), armed trucks (4 minutes), base AA (5 minutes), helos (10 minutes), howitzers (15 minutes), and planes (15 minutes). Players will respawn in waves every 25 seconds.<br/><br/>3. Sides will be tuned to matching frequencies.";
+phx_briefingNotes = "Each side is granted a set number of respawn tickets. Your objective is to capture and hold the mosque. If one side captures the sector, the other will passively bleed respawn tickets. If either side reaches 0, the mission will end. If the countdown timer reaches 0, the side with the highest score will win.<br/><br/>This mission will allow you to test the different loadouts and systems present in our newest framework while having a bit of competitive fun doing so.<br/><br/><br/><br/><br/>1. Rearm vehicles are provided at the Howitzers on each side. Use ACE Interact > Rearm to reload nearby vehicles.<br/><br/>2. Respawns are available for jeeps (30 seconds), armed trucks (4 minutes), base AA (5 minutes), helos (10 minutes), howitzers (15 minutes), and planes (15 minutes). Players will respawn in waves every 25 seconds.<br/><br/>3. Sides will be tuned to matching frequencies.";
 // "Rules" should include any mission-specific rules that you want to spell out for players.
 phx_briefingRules = "Rule 1. All FNF rules still apply. You can call an admin using the built-in Contact Staff button in your pause menu, just like in the main event.<br/><br/>Rule 2: No firing into enemy's main base.<br/><br/>Rule 3: No movement into the side markers (hashed and colored).";
 
@@ -59,7 +59,7 @@ phx_fortifyStyle = "Modern";
     "MACV" will give Vietnam-era US Army emplacements (requires Prairie Fire)
 */
 
-phx_magnifiedOptics = 0;
+phx_magnifiedOptics = 1;
 /*
   Allow players to grab magnified optics from the gear selector
   0 will restrict 4x+ optics to designated marksmen and snipers.
@@ -82,7 +82,7 @@ phx_addNVG = 1;
 // UNIFORM AND GEAR CHOICES //
 
 //BLUFOR
-phx_bluforUniform = "RHS_UNI_US_MARINES_WOODLAND_2010";
+phx_bluforUniform = "RHS_UNI_US_MARINES_DESERT_2010";
 phx_bluforGear = "RHS_GEAR_US_ARMY_2010_M16A4";
 
 //OPFOR
