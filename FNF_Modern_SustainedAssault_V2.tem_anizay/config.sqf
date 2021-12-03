@@ -144,4 +144,4 @@ phx_grnAT_Delta = GEARDEFAULT;
 // Used in limited-intel scenarios like WWII and Vietnam
 phx_showUnitIcons = true;
 phx_showGroupIcons = true;
-phx_showAlliedFactions = true;
+phx_showAlliedFactions = false;

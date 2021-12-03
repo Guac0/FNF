@@ -2,10 +2,10 @@
 
 #define UNIFORM "rhs_uniform_FROG01_d"
 
-#define VEST "rhsusf_mbav_rifleman"
-#define VEST_LEADER "rhsusf_mbav_grenadier"
-#define VEST_AR "rhsusf_mbav_mg"
-#define VEST_MEDIC "rhsusf_mbav_medic"
+#define VEST "rhsusf_spc_corpsman"
+#define VEST_LEADER "rhsusf_spc_teamleader"
+#define VEST_AR "rhsusf_spc_iar"
+#define VEST_MEDIC "rhsusf_spc_rifleman"
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
@@ -20,6 +20,8 @@
 #define BACKPACK_AR "B_Carryall_khk"
 #define BACKPACK_AT "B_Carryall_khk"
 #define BACKPACK_MEDIC "B_Kitbag_cbr"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
 class RHS_UNI_US_MARINES_DESERT_2010 {
@@ -101,6 +103,7 @@ class RHS_UNI_US_MARINES_DESERT_2010 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {
