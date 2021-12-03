@@ -96,16 +96,6 @@ player addEventHandler ["Respawn", {
     };
   }];
 
-  player addEventHandler ["Killed", {
-    params ["_unit", "_killer", "_instigator", "_useEffects"];
-    if (!isNull _instigator && (side (group _instigator) == playerSide)) exitWith {
-      ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
-    };
-    if (side (group _killer) == playerSide) exitWith {
-      ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
-    };
-  }];
-
   // remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool
   // remove ETool-less trench from all
   // remove spiderholes from non-NVA loadouts
