@@ -140,8 +140,8 @@ force force ace_repair_addSpareParts = true;
 force force ace_repair_autoShutOffEngineWhenStartingRepair = false;
 force force ace_repair_consumeItem_toolKit = 0;
 ace_repair_displayTextOnRepair = true;
-force force ace_repair_engineerSetting_fullRepair = 1;
-force force ace_repair_engineerSetting_repair = 1;
+force force ace_repair_engineerSetting_fullRepair = 2;
+force force ace_repair_engineerSetting_repair = 2;
 force force ace_repair_engineerSetting_wheel = 0;
 force force ace_repair_fullRepairLocation = 2;
 force force ace_repair_fullRepairRequiredItems = [];
@@ -322,7 +322,7 @@ force force ace_scopes_zeroReferenceHumidity = 0;
 force force ace_scopes_zeroReferenceTemperature = 15;
 
 // ACE Spectator
-force force ace_spectator_enableAI = true;
+force force ace_spectator_enableAI = false;
 ace_spectator_maxFollowDistance = 5;
 force force ace_spectator_restrictModes = 0;
 force force ace_spectator_restrictVisions = 0;
@@ -385,6 +385,7 @@ force force ace_winddeflection_vehicleEnabled = false;
 
 // ACE Zeus
 ace_zeus_autoAddObjects = true;
+ace_zeus_canCreateZeus = 1;
 
 // TFAR - Global settings
 force force TFAR_AICanHearPlayer = false;

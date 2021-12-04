@@ -1,6 +1,6 @@
 //Determine if client can play the round, if not, spectate
 [0,objNull,-2,[3787.28,7016.75,168.617],44.822] call ace_spectator_fnc_setCameraAttributes;
-[[west,east], [civilian, sideLogic]] call ace_spectator_fnc_updateSides;
+[[west,east], [independent, civilian, sideLogic]] call ace_spectator_fnc_updateSides;
 
 if !(call phx_fnc_clientCanPlay) exitWith {
   // call phx_fnc_spectatorInit;
@@ -66,12 +66,12 @@ player addEventHandler ["Respawn", {
   (player getVariable ["phxLoadout", "BASE"]) call phx_fnc_applyCfgLoadout;
   _newUnit setVariable ["ACE_canMoveRallypoint", false, true];
   [0,objNull,-2,[3787.28,7016.75,168.617],44.822] call ace_spectator_fnc_setCameraAttributes;
-  [[west,east], [civilian, sideLogic]] call ace_spectator_fnc_updateSides;
+  [[west,east], [independent, civilian, sideLogic]] call ace_spectator_fnc_updateSides;
 
   if (isNil {fnf_ui getVariable ["fnf_drawHelpersHandle",nil]}) then {
     call phx_ui_fnc_drawHelpers;
   };
-  call phx_selector_fnc_init;
+  // call phx_selector_fnc_init;
 
   player addEventHandler ["FiredMan",{
     private _vehicle = param [7,objNull];
@@ -82,7 +82,7 @@ player addEventHandler ["Respawn", {
       private _projectile = param [6,objNull];
       private _vehicle = param [7,objNull];
       while {alive _projectile} do {
-        if (_projectile inArea safeZone_BLUFOR) then {
+        if (_projectile inArea safeZone_BLUFOR || _projectile inArea safeZone_OPFOR) then {
           deleteVehicle _projectile;
           [format[
             "<t align='center'>Deleted a round from a<br/>%1<br/> fired by<br/>%2 (%3)<br/><br/>Please do NOT fire at the enemy base!</t>",
@@ -93,6 +93,16 @@ player addEventHandler ["Respawn", {
         };
         sleep 1;
       };
+    };
+  }];
+
+  player addEventHandler ["Killed", {
+    params ["_unit", "_killer", "_instigator", "_useEffects"];
+    if (!isNull _instigator && (side (group _instigator) == playerSide) && (_unit != _instigator)) exitWith {
+      ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
+    };
+    if (side (group _killer) == playerSide && (_unit != _killer)) exitWith {
+      ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
     };
   }];
 
@@ -111,8 +121,7 @@ player addEventHandler ["Respawn", {
   }, [], 10] call CBA_fnc_waitUntilAndExecute;
 }];
 
-phx_showMissionStatusHandleZeus = ["featureCamera", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
-phx_showMissionStatusHandleMap = ["featureCamera", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
+phx_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
 
 
 //   "howitzerBlu",
@@ -171,7 +180,7 @@ private _action = [
 	"Fix ""No Uniform"" Bug",
 	"",
 	{[player] call phx_fnc_fixUniformBug},
-	{phx_safetyEnabled}
+	{true}
 ] call ace_interact_menu_fnc_createAction;
 [
 	player,
