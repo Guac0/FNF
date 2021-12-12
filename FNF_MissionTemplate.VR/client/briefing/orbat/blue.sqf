@@ -1,11 +1,4 @@
-#define CMD 0
-#define Platoon 1
-#define Alpha 2
-#define Bravo 3
-#define Charlie 4
-#define Delta 5
-#define Golf 9
-#define Hotel 10
+#include "radioOffsets.hpp"
 
 phx_groups = [
   //Platoon
@@ -155,3 +148,14 @@ phx_groups = [
   [blu_h3_2,"Pilot"],
   [blu_h3_3,"Pilot"]]
 ];
+
+playerGroup = grpNull;
+playerGroupStr = "";
+playerGroupArray = [];
+
+_groupIndex = ([phx_groups, player] call BIS_fnc_findNestedElement);
+if (count _groupIndex > 0) then {
+  playerGroupArray = [phx_groups, [_groupIndex select 0, 0]] call BIS_fnc_returnNestedElement;
+  playerGroupStr = playerGroupArray select 0;
+  playerGroup = missionNamespace getVariable [playerGroupStr,grpNull];
+};
