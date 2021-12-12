@@ -2,6 +2,7 @@
 if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
 player enableSimulation false;
 call phx_fnc_hideMarkers; //Hide markers player shouldn't see
+call compile preprocessFileLineNumbers "client\briefing\orbat\init.sqf";
 call phx_fnc_briefInit; //Briefing
 call phx_fnc_clientSetupGame; //Client portion of game modes
 call phx_fnc_safety; //Enable safety

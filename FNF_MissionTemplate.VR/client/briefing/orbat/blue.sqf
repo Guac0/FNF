@@ -1,6 +1,37 @@
 #include "radioOffsets.hpp"
 
 phx_groups = [
+  ["Blue_PHQ","PLTHQ","Platoon HQ", 2, [Platoon, Platoon.1, Alpha, Bravo, Charlie, Delta, Golf, Hotel]],
+  ["Blue_X","XRAY","X-Ray (Recon)", 1, [Platoon.2, Platoon]],
+
+  ["Blue_A","A HQ","Alpha Squad", 1, [Alpha, Platoon]],
+  ["Blue_A1","A1","Alpha One", 0, [Alpha.1, Alpha]],
+  ["Blue_A2","A2","Alpha Two", 0, [Alpha.2, Alpha]],
+
+  ["Blue_B","B HQ","Bravo Squad", 1, [Bravo, Platoon]],
+  ["Blue_B1","B1","Bravo One", 0, [Bravo.1, Bravo]],
+  ["Blue_B2","B2","Bravo Two", 0, [Bravo.2, Bravo]],
+
+  ["Blue_C","C HQ","Charlie Squad", 1, [Charlie, Platoon]],
+  ["Blue_C1","C1","Charlie One", 0, [Charlie.1, Charlie]],
+  ["Blue_C2","C2","Charlie Two", 0, [Charlie.2, Charlie]],
+
+  ["Blue_D","D HQ","Delta Squad", 1, [Delta, Platoon]],
+  ["Blue_D1","D1","Delta One", 0, [Delta.1, Delta]],
+  ["Blue_D2","D2","Delta Two", 0, [Delta.2, Delta]],
+
+  ["Blue_G1","G1","Golf One (Vic)", 0, [Golf.1, Platoon]],
+  ["Blue_G2","G2","Golf Two (Vic)", 0, [Golf.2, Platoon]],
+  ["Blue_G3","G3","Golf Three (Vic)", 0, [Golf.3, Platoon]],
+  ["Blue_G4","G4","Golf Four (Vic)", 0, [Golf.4, Platoon]],
+
+  ["Blue_H1","H1","Hotel One (Air)", 0, [Hotel.1, Platoon]],
+  ["Blue_H2","H2","Hotel Two (Air)", 0, [Hotel.2, Platoon]],
+  ["Blue_H2","H2","Hotel Two (Air)", 0, [Hotel.2, Platoon]],
+  ["Blue_H3","H3","Hotel Three (Air)", 0, [Hotel.3, Platoon]]
+];
+/*
+phx_groups = [
   //Platoon
   [["Blue_PHQ","PLTHQ","Platoon HQ", 2, [Platoon, Platoon.1, Alpha, Bravo, Charlie, Delta, Golf, Hotel]],
   [blu_pl_1,"Platoon Leader"],
@@ -148,7 +179,7 @@ phx_groups = [
   [blu_h3_2,"Pilot"],
   [blu_h3_3,"Pilot"]]
 ];
-
+*/
 playerGroup = grpNull;
 playerGroupStr = "";
 playerGroupArray = [];
