@@ -1,5 +1,5 @@
 Saving = 0;
-disabledAI = 1;
+disabledAI = 0; //ai test
 enableDebugConsole = 1;
 
 respawn = 3;
