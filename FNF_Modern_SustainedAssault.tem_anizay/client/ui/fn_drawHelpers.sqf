@@ -25,13 +25,13 @@ fnf_ui = call CBA_fnc_createNamespace;
 fnf_ui setVariable ["eastHelperTargets",[
   [OPF_supplyBox,MSG_SUPPLY,ICON_SUPPLY],
   [OPF_armedTrucks,MSG_ARMEDTRUCKS,ICON_APC,true],
-  [OPF_baseAA_1,MSG_BASEAA,ICON_AA,true],
-  [OPF_baseAA_2,MSG_BASEAA,ICON_AA,true],
-  [OPF_helicopters,MSG_HELICOPTERS,ICON_HELICOPTER,true],
+  // [OPF_baseAA_1,MSG_BASEAA,ICON_AA,true],
+  // [OPF_baseAA_2,MSG_BASEAA,ICON_AA,true],
+  // [OPF_helicopters,MSG_HELICOPTERS,ICON_HELICOPTER,true],
   [OPF_howitzer,MSG_HOWITZER,ICON_ARTILLERY,true],
   [OPF_jeeps,MSG_JEEPS,ICON_CAR,true],
-  [OPF_planes,MSG_PLANES,ICON_PLANE,true],
-  [OPF_IFV,MSG_IFV,ICON_APC,true],
+  // [OPF_planes,MSG_PLANES,ICON_PLANE,true],
+  // [OPF_IFV,MSG_IFV,ICON_APC,true],
   [OPF_rallyBase,MSG_RALLY,ICON_RALLY],
   [OPF_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR]
 ]];
@@ -39,13 +39,13 @@ fnf_ui setVariable ["eastHelperTargets",[
 fnf_ui setVariable ["westHelperTargets",[
   [BLU_supplyBox,MSG_SUPPLY,ICON_SUPPLY],
   [BLU_armedTrucks,MSG_ARMEDTRUCKS,ICON_APC,true],
-  [BLU_baseAA_1,MSG_BASEAA,ICON_AA,true],
-  [BLU_baseAA_2,MSG_BASEAA,ICON_AA,true],
-  [BLU_helicopters,MSG_HELICOPTERS,ICON_HELICOPTER,true],
+  // [BLU_baseAA_1,MSG_BASEAA,ICON_AA,true],
+  // [BLU_baseAA_2,MSG_BASEAA,ICON_AA,true],
+  // [BLU_helicopters,MSG_HELICOPTERS,ICON_HELICOPTER,true],
   [BLU_howitzer,MSG_HOWITZER,ICON_ARTILLERY,true],
   [BLU_jeeps,MSG_JEEPS,ICON_CAR,true],
-  [BLU_planes,MSG_PLANES,ICON_PLANE,true],
-  [BLU_IFV,MSG_IFV,ICON_APC,true],
+  // [BLU_planes,MSG_PLANES,ICON_PLANE,true],
+  // [BLU_IFV,MSG_IFV,ICON_APC,true],
   [BLU_rallyBase,MSG_RALLY,ICON_RALLY],
   [BLU_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR]
 ]];
@@ -95,7 +95,7 @@ fnf_ui setVariable ["fnf_drawHelpersHandle", (
             //   // drawIcon3D["", [1, 1, 1, 1], _targetPositionAGLTop, 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
             //   drawIcon3D["", [1, 1, 1, 1], _targetPositionAGLTopRef, 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
             // };
-            case (player distance _target <= 250): {
+            case (player distance _target <= 100): {
               // drawIcon3D["", [1, 1, 1, 0.3], _targetPositionAGLTop, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, "", true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
               drawIcon3D[_icon, [1, 1, 1, 0.8], _targetPositionAGLTopRef, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
             };

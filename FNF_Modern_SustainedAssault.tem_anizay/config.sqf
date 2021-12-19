@@ -33,7 +33,7 @@ phx_vnArtillerySide = sideEmpty; // west/east/independent
 // use sideEmpty to not give anyone access
 
 phx_enemyStartVisible = true; // Set to false to hide enemy start zone markers
-phx_maxViewDistance = 5000;
+phx_maxViewDistance = 800;
 /*
   Maximum client view distance (meters)
     LOW: 500 (for urban combat)

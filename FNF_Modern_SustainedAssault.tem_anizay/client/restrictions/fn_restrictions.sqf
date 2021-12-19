@@ -15,19 +15,19 @@ call phx_fnc_restrictGamma;
 // TF_speak_volume_meters = 5;
 // call TFAR_fnc_updateSpeakVolumeUI;
 
-//View distance and terrain grid force & disable commanding menu
-// phx_viewDistanceHandler = [{
-//   if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {}; //Disable if obj preview is active
+// View distance and terrain grid force & disable commanding menu
+phx_viewDistanceHandler = [{
+  if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {}; //Disable if obj preview is active
 
-//   if (viewDistance > phx_maxViewDistance) then {
-//     setViewDistance phx_maxViewDistance;
-//   };
-//   if (getTerrainGrid > 25) then {
-//     setTerrainGrid 25;
-//   };
+  if (viewDistance > phx_maxViewDistance) then {
+    setViewDistance phx_maxViewDistance;
+  };
+  if (getTerrainGrid > 25) then {
+    setTerrainGrid 25;
+  };
 
-//   if !(commandingMenu isEqualTo "") then {showCommandingMenu ""};
-// } , 0.5] call CBA_fnc_addPerFrameHandler;
+  if !(commandingMenu isEqualTo "") then {showCommandingMenu ""};
+} , 0.5] call CBA_fnc_addPerFrameHandler;
 
 //Disable zeus ping
 missionnamespace setvariable ["bis_fnc_curatorPinged_time", 9999, false];
@@ -73,7 +73,7 @@ phx_safeZone_fnc_moveOutside = {
             [_vic] call phx_safeZone_fnc_moveOutside;
           };
         };
-      }, 2, [[rally_east_marker,safeZone_OPFOR],2]] call CBA_fnc_addPerFrameHandler;
+      }, 2, [["rally_east_marker",safeZone_OPFOR],2]] call CBA_fnc_addPerFrameHandler;
     };
     case east: {
       [{
@@ -90,7 +90,7 @@ phx_safeZone_fnc_moveOutside = {
             [_vic] call phx_safeZone_fnc_moveOutside;
           };
         };
-      }, 2, [[rally_west_marker,safeZone_BLUFOR],2]] call CBA_fnc_addPerFrameHandler;
+      }, 2, [["rally_west_marker",safeZone_BLUFOR],2]] call CBA_fnc_addPerFrameHandler;
     };
   };
 }] call CBA_fnc_waitUntilAndExecute;

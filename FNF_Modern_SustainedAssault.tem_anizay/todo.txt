@@ -1,0 +1,3 @@
+- lock all armed vehicles and aircraft until > 30 players
+- increase stamina perf factor
+- decrease safe zone area at TP destination, move them closer to objective area

@@ -14,7 +14,7 @@ force force ace_advanced_ballistics_simulationInterval = 0.05;
 force force ace_advanced_fatigue_enabled = true;
 force force ace_advanced_fatigue_enableStaminaBar = true;
 ace_advanced_fatigue_fadeStaminaBar = true;
-force force ace_advanced_fatigue_loadFactor = 0.4;
+force force ace_advanced_fatigue_loadFactor = 0.2;
 force force ace_advanced_fatigue_performanceFactor = 4;
 force force ace_advanced_fatigue_recoveryFactor = 5;
 force force ace_advanced_fatigue_swayFactor = 0.25;
@@ -359,7 +359,7 @@ force force ace_vehicles_keepEngineRunning = false;
 
 // ACE View Distance Limiter
 force force ace_viewdistance_enabled = true;
-force force ace_viewdistance_limitViewDistance = 2000;
+force force ace_viewdistance_limitViewDistance = 800;
 ace_viewdistance_objectViewDistanceCoeff = 0;
 ace_viewdistance_viewDistanceAirVehicle = 0;
 ace_viewdistance_viewDistanceLandVehicle = 0;

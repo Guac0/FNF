@@ -75,15 +75,29 @@ player addEventHandler ["Respawn", {
 
   player addEventHandler ["FiredMan",{
     private _vehicle = param [7,objNull];
-    if !(_vehicle in [west_howitzer,east_howitzer]) exitWith {};
     _this spawn {
       private _unit = param [0,objNull];
       private _weapon = param [1,objNull];
       private _projectile = param [6,objNull];
       private _vehicle = param [7,objNull];
+      private _badPos = false;
       while {alive _projectile} do {
-        if (_projectile inArea safeZone_BLUFOR || _projectile inArea safeZone_OPFOR) then {
-          deleteVehicle _projectile;
+        if (side _unit == east) then {
+          if (_projectile inArea safeZone_BLUFOR || _projectile inArea "rally_west_marker") exitWith {
+            _badPos = true;
+          };
+        };
+        if (side _unit == west) then {
+          if (_projectile inArea safeZone_OPFOR || _projectile inArea "rally_east_marker") exitWith {
+            _badPos = true;
+          };
+        };
+        sleep random(1);
+      };
+
+      if (_badPos) then {
+        deleteVehicle _projectile;
+        if (_vehicle in [west_howitzer,east_howitzer]) then {
           [format[
             "<t align='center'>Deleted a round from a<br/>%1<br/> fired by<br/>%2 (%3)<br/><br/>Please do NOT fire at the enemy base!</t>",
             getText(configFile >> "CfgWeapons" >> _weapon >> "displayName"),
@@ -91,20 +105,19 @@ player addEventHandler ["Respawn", {
             (side (group _unit)) call BIS_fnc_sideName
           ], "warning", 7] remoteExecCall ["phx_ui_fnc_notify",0];
         };
-        sleep 1;
       };
     };
   }];
 
-  player addEventHandler ["Killed", {
-    params ["_unit", "_killer", "_instigator", "_useEffects"];
-    if (!isNull _instigator && (side (group _instigator) == playerSide) && (_unit != _instigator)) exitWith {
-      ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
-    };
-    if (side (group _killer) == playerSide && (_unit != _killer)) exitWith {
-      ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
-    };
-  }];
+  // player addEventHandler ["Killed", {
+  //   params ["_unit", "_killer", "_instigator", "_useEffects"];
+  //   if (!isNull _instigator && (side (group _instigator) == playerSide) && (_unit != _instigator)) exitWith {
+  //     ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
+  //   };
+  //   if (side (group _killer) == playerSide && (_unit != _killer)) exitWith {
+  //     ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
+  //   };
+  // }];
 
   // remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool
   // remove ETool-less trench from all

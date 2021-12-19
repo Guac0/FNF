@@ -32,6 +32,7 @@ respawn = 3;
 respawnDialog = 1;
 respawnDelay = 15;
 respawnOnStart = 1;
+respawnButton = 1;
 joinUnassigned = 0;
 
 allowProfileGlasses = 0;
