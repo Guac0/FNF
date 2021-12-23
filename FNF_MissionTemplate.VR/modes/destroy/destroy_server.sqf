@@ -1,6 +1,7 @@
 //Only run server-side
 if (!isServer) exitWith {};
 
+#include "script_component.hpp"
 #include "..\..\mode_config\destroy.sqf"
 
 //Init vars
@@ -8,8 +9,9 @@ _taskCount = 1;
 phx_aliveObjectives = 0;
 
 //Create array of objectives and global var for use in other scripts
-_objArr = [_obj1,_obj2,_obj3];
-phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
+GVAR(objectivesMeta) = [_obj1,_obj2,_obj3];
+_objArr = GVAR(objectivesMeta);
+GVAR(objectives) = _objArr apply {_x select 0};
 
 //Delete pre-made objectives if not using
 {
@@ -64,8 +66,11 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
     _defendTaskID = "defendTask" + str _taskCount;
     _attackTaskID = "attackTask" + str _taskCount;
 
-    [phx_defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
-    [phx_attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
+    private _itemConfig = [_x # 0] call CBA_fnc_getObjectConfig;
+    private _itemPic = [_itemConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+
+    [phx_defendingSide,_defendTaskID,[format["<img image='%1' width='300'>", _itemPic],format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
+    [phx_attackingSide,_attackTaskID,[format["<img image='%1' width='300'>", _itemPic],format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
 
     [(_x select 0), -1] call ace_cargo_fnc_setSize;
 
