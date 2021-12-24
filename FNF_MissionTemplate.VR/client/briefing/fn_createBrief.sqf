@@ -1,4 +1,5 @@
 // ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT", "\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa"];
+#include "script_component.hpp"
 
 // colors: https://imgur.com/a/AfimbU2
 #define COLOR1 "#944509"
@@ -344,7 +345,7 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
 
     private _meta = +phx_briefing_ind_uniformMeta;
 
-    player createDiaryRecord [
+    GVAR(diary_INDFORLoadout) = player createDiaryRecord [
       "Diary",
       [
         "INDFOR Loadout",
@@ -355,7 +356,7 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
         ]
       ]
     ];
-    player createDiaryRecord [
+    GVAR(diary_INDFORUniform) = player createDiaryRecord [
       "Diary",
       [
         "INDFOR Uniform",
@@ -484,8 +485,9 @@ phx_briefing_MMNotes = {
   switch (phx_gameMode) do {
     case "destroy": {
       #include "..\..\mode_config\destroy.sqf";
-      _objArr = [_obj1,_obj2,_obj3];
-      _objects = [_obj1 select 0, _obj2 select 0, _obj3 select 0] select {!isNull _x};
+      private _objArr = [_obj1,_obj2,_obj3];
+      private _objects = (_objArr apply {_x select 0}) select {!isNull _x};
+
       _mmNotes pushBack format ["Destroy objectives: %1", count _objects];
       _mmNotes pushBack "<br/>";
       {
@@ -587,7 +589,7 @@ phx_briefing_MMNotes = {
     };
   };
 
-  player createDiaryRecord ["Diary",
+  GVAR(diary_Briefing) = player createDiaryRecord ["Diary",
     [
       // getText(missionConfigFile >> "Author"),
       "Briefing",
@@ -608,7 +610,7 @@ if (!isNil "phx_briefing_loadoutBLU") then {
   call phx_briefing_loadoutBLU;
 };
 
-MAT_Diary = player createDiaryRecord ["Diary",["MAT Selection",_MATDataString]];
+GVAR(diary_MATSettings) = player createDiaryRecord ["Diary",["MAT Selection",_MATDataString]];
 
 player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
@@ -621,7 +623,7 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
 }, {
   params ["_varStr"];
   call phx_briefing_startingRadios;
-  player createDiaryRecord ["Diary",["Mission Variables",_varStr]];
+  GVAR(diary_MissionVars) = player createDiaryRecord ["Diary",["Mission Variables",_varStr]];
   call phx_briefing_MMNotes;
   call phx_fnc_createOrbat;
   [{

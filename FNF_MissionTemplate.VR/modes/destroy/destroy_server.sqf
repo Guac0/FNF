@@ -6,7 +6,7 @@ if (!isServer) exitWith {};
 
 //Init vars
 _taskCount = 1;
-phx_aliveObjectives = 0;
+GVAR(aliveObjectives) = 0;
 
 //Create array of objectives and global var for use in other scripts
 GVAR(objectivesMeta) = [_obj1,_obj2,_obj3];
@@ -34,10 +34,10 @@ GVAR(objectives) = _objArr apply {_x select 0};
   };
 } forEach _objArr;
 
-//Increase phx_aliveObjectives for each active objective
+//Increase FNF_gamemode_destroy_aliveObjectives for each active objective
 {
   if !(isNull (_x select 0)) then {
-    phx_aliveObjectives = phx_aliveObjectives + 1;
+    INC(GVAR(aliveObjectives));
 
     //Reduce damage if obj is default cache
     if (typeOf (_x select 0) isEqualTo "Box_FIA_Ammo_F") then {
@@ -83,7 +83,7 @@ GVAR(objectives) = _objArr apply {_x select 0};
       [_defendTaskID, "FAILED", true] call BIS_fnc_taskSetState;
       [_attackTaskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-      phx_aliveObjectives = phx_aliveObjectives - 1;
+      DEC(GVAR(aliveObjectives));
       [_markerName] remoteExec ["deleteMarkerLocal",0,true];
     };
 
@@ -121,7 +121,7 @@ GVAR(objectives) = _objArr apply {_x select 0};
 } forEach _objArr;
 
 //Check for win condition and end game if all objectives are destroyed
-waitUntil {uiSleep 1; phx_aliveObjectives < 1 && !phx_gameEnd};
+waitUntil {uiSleep 1; GVAR(aliveObjectives) < 1 && !phx_gameEnd};
 
 //Send var to other scripts and clients to signal that the game has ended
 phx_gameEnd = true;

@@ -6,7 +6,7 @@ if (!hasInterface) exitWith {};
 
 GVAR(objectivesMeta) = [_obj1,_obj2,_obj3];
 _objArr = GVAR(objectivesMeta);
-GVAR(objectives) = _objArr apply {_x select 0};
+GVAR(objectives) = (_objArr apply {_x select 0}) select {!isNull _x};
 
 if (playerSide != phx_defendingSide) exitWith {};
 

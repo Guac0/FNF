@@ -1,4 +1,7 @@
 if (!hasInterface || isDedicated) exitWith {};
+
+#include "script_component.hpp"
+
 waitUntil {!isNull player};
 
 if (playerSide isEqualTo civilian) exitWith {
@@ -27,16 +30,19 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
+
 params ["_LOADOUTROLE"];
 if (!isNil {(player getVariable "phxLoadout")}) then {
-  diag_log text format["[FNF] (loadout) INFO: Player role is %1.", (player getVariable "phxLoadout")];
+  INFO("Player native role is " + (player getVariable "phxLoadout"));
+} else {
+  WARNING("Player native role is undefined");
 };
 if (isNil {_LOADOUTROLE}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Invalid role assignment. Please notify staff and select another slot.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Slot has no role assigned."];
+    ERROR("fn_applyCfgLoadout ""_LOADOUTROLE"" param is nil");
     [] spawn {
-      sleep 10;
+      sleep 20;
       endMission "END1";
     };
   }] call CBA_fnc_waitUntilAndExecute;
@@ -85,7 +91,7 @@ fnc_handleSHQAUX = {
   if (isNil "_setting") exitWith {
     [{time > 2}, {
       ["<t align='center'>Error:<br/>Failed to load AuxRole setting. Please notify the Missions team.</t>", "error", 20] call phx_ui_fnc_notify;
-      diag_log text format["[FNF] (loadout) ERROR: Failed to load AuxRole setting. Please notify the Missions team."];
+      ERROR("Failed to load AuxRole setting. Please notify the Missions team.");
     }] call CBA_fnc_waitUntilAndExecute;
     true
   };
@@ -93,7 +99,7 @@ fnc_handleSHQAUX = {
   if (_setting isEqualTo 0) exitWith {
     player setVariable ["phxLoadout", "CR"];
     ["CR"] call phx_fnc_applyCfgLoadout;
-    diag_log text format["[FNF] (loadout) INFO: SHQAux setting is ""0"". Loading default crewman kit."];
+    INFO("SHQAux setting is ""0"". Loading default crewman kit.");
     true
   };
 
@@ -133,7 +139,7 @@ fnc_handleSHQAUX = {
     // add hint to remind players to take their CSW gear
     [{time > 10}, {
       ["<t align='center'>Make sure you use ACE Self-interact to get your crew-served weapons gear!</t>", "info", 10] call phx_ui_fnc_notify;
-      diag_log text format["[FNF] (loadout) DEBUG: Player notified about using ACE Self-interact to retrieve CSW gear."];
+      INFO("Player notified about using ACE Self-interact to retrieve CSW gear.");
     }] call CBA_fnc_waitUntilAndExecute;
   };
 
@@ -180,13 +186,13 @@ fnc_addUniform = {
     ["_headgear", ""]
   ];
   _unit forceAddUniform _uniform;
-  diag_log text format["[FNF] (loadout) INFO: Equipped uniform ""%1""", _uniform];
+  INFO("Equipped uniform """ + _uniform + """");
   _unit addVest _vest;
-  diag_log text format["[FNF] (loadout) INFO: Equipped vest ""%1""", _vest];
+  INFO("Equipped vest """ + _vest + """");
   _unit addBackpack _backpack;
-  diag_log text format["[FNF] (loadout) INFO: Equipped backpack ""%1""", _backpack];
+  INFO("Equipped backpack """ + _backpack + """");
   _unit addHeadgear _headgear;
-  diag_log text format["[FNF] (loadout) INFO: Equipped headgear ""%1""", _headgear];
+  INFO("Equipped headgear """ + _headgear + """");
   true
 };
 
@@ -197,13 +203,15 @@ fnc_giveRadios = {
 
   if (_srRadio) then {
     if (!(call TFAR_fnc_haveSWRadio)) then {
-      _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
-      diag_log text format["[FNF] (loadout) INFO: Equipped SW radio ""%1""", [side (group _unit), 1] call TFAR_fnc_getSideRadio];
+      private _radio = ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
+      _unit linkItem _radio;
+      INFO("Equipped SW radio """ + _radio + """");
     };
     missionNamespace setVariable ["phx_hasSW", true];
   } else {
     if (call TFAR_fnc_haveSWRadio) then {
       player unlinkItem (call TFAR_fnc_activeSwRadio);
+      INFO("Removed SW radio (shouldn't have one)");
     };
     missionNamespace setVariable ["phx_hasSW", false];
   };
@@ -212,13 +220,14 @@ fnc_giveRadios = {
   if (_lrRadio) then {
     // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
     if (!(call TFAR_fnc_haveLRRadio)) then {
+      private _radio = [side (group _unit), 0] call TFAR_fnc_getSideRadio;
       private _items = backpackItems _unit;
       removeBackpack _unit;
-      _unit addBackpack ([side (group _unit), 0] call TFAR_fnc_getSideRadio);
+      _unit addBackpack _radio;
       {
         _unit addItemToBackpack _x;
       } forEach _items;
-      diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1""", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
+      INFO("Equipped LR radio """ + _radio + """");
     };
     missionNamespace setVariable ["phx_hasLR", true];
   } else {
@@ -229,6 +238,7 @@ fnc_giveRadios = {
       {
         _unit addItemToBackpack _x;
       } forEach _items;
+      INFO("Replaced radio backpack -- unit shouldn't have one");
     };
     missionNamespace setVariable ["phx_hasLR", false];
   };
@@ -246,15 +256,13 @@ fnc_giveGear = {
     ["_linkedItems", []]
   ];
   {[_x, "vest", _unit] call phx_fnc_addGear} forEach _mags;
-  diag_log text format["[FNF] (loadout) INFO: Equipped gear (magazines)."];
-  diag_log text format["[FNF] (loadout) DEBUG: %1", _mags];
+  INFO("Equipped gear (magazines) > " + str(_mags));
   {[_x, "uniform", _unit] call phx_fnc_addGear} forEach _items;
-  diag_log text format["[FNF] (loadout) INFO: Equipped gear (items)."];
-  diag_log text format["[FNF] (loadout) DEBUG: %1", _items];
+  INFO("Equipped gear (items) > " + str(_items));
   {[_x, "backpack", _unit] call phx_fnc_addGear} forEach _backpackItems;
-  diag_log text format["[FNF] (loadout) INFO: Equipped gear (backpackitems)."];
-  diag_log text format["[FNF] (loadout) DEBUG: %1", _backpackItems];
+  INFO("Equipped gear (backpackItems) > " + str(_backpackItems));
   {_unit linkItem _x} forEach _linkedItems;
+  INFO("Equipped gear (linkedItems) > " + str(_linkedItems));
   true
 };
 
@@ -270,8 +278,8 @@ fnc_givePrimaryWeapon = {
   if (isNil "_category") exitWith {
     [{time > 2}, {
       ["<t align='center'>Error:<br/>Failed to process primary weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
-      diag_log text "[FNF] (loadout) ERROR: Failed to process primary weapon settings.";
-      diag_log text format["[FNF] (loadout) DEBUG: Choices: %1", _cfgChoices];
+      ERROR("Failed to process primary weapon settings.");
+      ERROR("Choices: " + str(_cfgChoices));
     }] call CBA_fnc_waitUntilAndExecute;
     nil
   };
@@ -282,9 +290,8 @@ fnc_givePrimaryWeapon = {
   if !(phx_loadout_weapon isEqualTo "" || (count phx_loadout_weaponMagazines) isEqualTo 0) then {
     _unit addWeapon phx_loadout_weapon;
     {[_x, "vest", _unit] call phx_fnc_addGear} forEach phx_loadout_weaponMagazines;
-    diag_log text format["[FNF] (loadout) INFO: Equipped primary weapon ""%1""", phx_loadout_weapon];
-    diag_log text format["[FNF] (loadout) INFO: Equipped primary weapon magazines"];
-    diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_weaponMagazines];
+    INFO("Equipped primary weapon """ + phx_loadout_weapon + """");
+    INFO("Equipped primary weapon magazines > " + str(phx_loadout_weaponMagazines));
     true
   } else {
     nil
@@ -307,7 +314,7 @@ fnc_prepWeaponsSelector = {
     } forEach _weapons;
   } forEach _cfgChoices;
 
-  // "debug_console" callExtension str(_weaponChoices);
+  INFO("Weapon choices: " + str(_weaponChoices apply {_x # 0}));
   missionNamespace setVariable ["phx_selector_weapons", _weaponChoices];
   true
 };
@@ -324,8 +331,8 @@ fnc_giveSidearmWeapon = {
   if (isNil "_category") exitWith {
     [{time > 2}, {
       ["<t align='center'>Error:<br/>Failed to process sidearm weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
-      diag_log text "[FNF] (loadout) ERROR: Failed to process sidearm weapon settings.";
-      diag_log text format["[FNF] (loadout) DEBUG: Choices %1", _cfgChoices];
+      ERROR("Failed to process sidearm weapon settings.");
+      ERROR("CfgChoices = " + str(_cfgChoices));
     }] call CBA_fnc_waitUntilAndExecute;
   };
   _category params ["_sidearms","_mags"];
@@ -335,9 +342,8 @@ fnc_giveSidearmWeapon = {
   if !(phx_loadout_sidearm isEqualTo "" || (count phx_loadout_sidearmMagazines) isEqualTo 0) then {
     _unit addWeapon phx_loadout_sidearm;
     {[_x, "uniform", _unit] call phx_fnc_addGear} forEach phx_loadout_sidearmMagazines;
-    diag_log text format["[FNF] (loadout) INFO: Equipped secondary weapon ""%1""", phx_loadout_sidearm];
-    diag_log text format["[FNF] (loadout) INFO: Equipped secondary weapon magazines"];
-    diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_sidearmMagazines];
+    INFO("Equipped secondary weapon """ + phx_loadout_sidearm + """");
+    INFO("Equipped secondary weapon magazines > " + str(phx_loadout_sidearmMagazines));
   };
   true
 };
@@ -354,9 +360,9 @@ fnc_giveSilencer = {
     _silencers = _muzzleAcc select {getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "soundTypeIndex") > 0};
     if (count _silencers > 0) then {
       _unit addPrimaryWeaponItem (_silencers select 0);
-      diag_log text format["[FNF] (loadout) INFO: Equipped silencer ""%1""", _silencers # 0];
+      INFO("Equipped silencer """ + (_silencers # 0) + """");
     } else {
-      diag_log text format["[FNF] (loadout) WARNING: Tried to equip silencer, but none compatible with ""%1""", phx_loadout_weapon];
+      WARNING("Tried to equip silencer, but none compatible with """ + phx_loadout_weapon + """");
     };
   };
   true
@@ -376,14 +382,14 @@ fnc_giveNVG = {
       if (phx_addNVG == 1) then {
         _unit linkItem _NVGType;
         {_unit addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];
-        diag_log text format["[FNF] (loadout) INFO: Gave NVGs ""%1""", _NVGType];
+        INFO("Gave NVGs """ + _NVGType + """");
       };
     };
     case "ARRAY": {
       if (side (group _unit) in phx_addNVG) then {
         _unit linkItem _NVGType;
         {_unit addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];
-        diag_log text format["[FNF] (loadout) INFO: Gave NVGs ""%1""", _NVGType];
+        INFO("Gave NVGs """ + _NVGType + """");
       };
     };
   };
@@ -404,7 +410,7 @@ fnc_giveAT = {
     if (isNil "phx_loadout_mediumantitank_weapon") exitWith {
       [{time > 2}, {
         ["<t align='center'>Error:<br/>Failed to process MAT settings.</t>", "error", 20] call phx_ui_fnc_notify;
-        diag_log text "[FNF] (loadout) ERROR: Failed to process MAT settings.";
+        ERROR("Failed to process MAT settings.");
       }] call CBA_fnc_waitUntilAndExecute;
       nil
     };
@@ -418,8 +424,7 @@ fnc_giveAT = {
           // "debug_console" callExtension ("Adding " + _x + " to inventory");
           [_x, "backpack", _unit] call phx_fnc_addGear;
         } forEach phx_loadout_mediumantitank_mag;
-        diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon magazines"];
-        diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_mediumantitank_mag];
+        INFO("Equipped AT weapon magazines > " + phx_loadout_mediumantitank_mag);
       };
 
       _compatMag = (phx_loadout_mediumantitank_mag # 0) splitString ':';
@@ -428,11 +433,11 @@ fnc_giveAT = {
     if (_role in _matGunnerVarArr) then {
       // for gunner, add MAT weapon, then optic to it
       _unit addWeapon phx_loadout_mediumantitank_weapon;
-      diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon ""%1""", phx_loadout_mediumantitank_weapon];
+      INFO("Equipped AT weapon """ + phx_loadout_mediumantitank_weapon + """");
       if (!isNil "phx_loadout_mediumantitank_optic") then {
         private _thisOptic = selectRandom(phx_loadout_mediumantitank_optic);
         _unit addSecondaryWeaponItem _thisOptic;
-        diag_log text format["[FNF] (loadout) INFO: Equipped AT optic ""%1""", _thisOptic];
+        INFO("Equipped AT optic """ + _thisOptic + """");
       };
       if (!isNil "_compatMag") then {
         // if we found a mag, try pre-loading the launcher
@@ -462,14 +467,13 @@ fnc_giveAT = {
     if (phx_loadout_launcher isEqualType []) then {
       phx_loadout_launcher params ["_launcher", "_mags", "_optics"];
       _unit addWeapon _launcher;
-      diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon ""%1""", _launcher];
+      INFO("Equipped AT weapon """ + _launcher + """");
 
       if (count _mags > 0) then {
         {
           [_x, "backpack", _unit] call phx_fnc_addGear;
         } forEach _mags;
-        diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon magazines"];
-        diag_log text format["[FNF] (loadout) DEBUG: %1", _mags];
+        INFO("Equipped AT weapon magazines > " + str(_mags));
       };
 
       if (count (secondaryWeaponMagazine player) == 0) then {
@@ -483,7 +487,7 @@ fnc_giveAT = {
       if (count _optics > 0) then {
         private _thisOptic = selectRandom(_optics);
         _unit addSecondaryWeaponItem _thisOptic;
-        diag_log text format["[FNF] (loadout) INFO: Equipped AT optic ""%1""", _thisOptic];
+        INFO("Equipped AT optic """ + _thisOptic + """");
       };
     };
     true
@@ -525,12 +529,14 @@ fnc_prepOpticsSelector = {
   };
   // "debug_console" callExtension ("Optics choices: " + str(_cfgOpticChoices));
   if (count _cfgOpticChoices > 0 && !isNil "phx_loadout_weapon") then {
-    private _optic = selectRandom(_cfgOpticChoices select {_x in ([phx_loadout_weapon, "optic"] call CBA_fnc_compatibleItems)});
+    private _availableOptics = _cfgOpticChoices select {_x in ([phx_loadout_weapon, "optic"] call CBA_fnc_compatibleItems)};
+    private _optic = selectRandom(_availableOptics);
     if (!isNil "_optic") then {
       // _unit addPrimaryWeaponItem _optic;
       // player setVariable ["phx_ChosenOptic", _optic];
       player setVariable ["phx_ChosenOptic", ""];
       // diag_log text format["[FNF] (loadout) INFO: Equipped optic ""%1""", _optic];
+      INFO("Optic choices: " + str(_availableOptics));
       missionNamespace setVariable ["phx_selector_optics", _cfgOpticChoices];
     };
   };
@@ -546,12 +552,13 @@ fnc_giveCECharges = {
   ];
 
   if (count _cfgExplosiveChoices > 0) then {
-    phx_selector_currentExplosives = selectRandom(_cfgExplosiveChoices);
-    // "debug_console" callExtension str(phx_loadout_explosives);
+    // phx_selector_currentExplosives = selectRandom(_cfgExplosiveChoices);
+    phx_selector_currentExplosives = _cfgExplosiveChoices # 0;
     {
       [_x, "backpack", _unit] call phx_fnc_addGear;
     } forEach (phx_selector_currentExplosives select [1, 2]);
-    diag_log text format["[FNF] (loadout) INFO: Equipped CE explosive %1", phx_selector_currentExplosives # 0];
+    INFO("Equipped CE explosive """ + (phx_selector_currentExplosives # 0) + """");
+    INFO("Explosives choices: " + str(_cfgExplosiveChoices));
     phx_selector_explosives = _cfgExplosiveChoices;
   } else {phx_selector_explosives = []};
   true
@@ -565,12 +572,13 @@ fnc_giveCEGrenades = {
   ];
 
   if (count _cfgGrenadeChoices > 0) then {
-    phx_selector_currentGrenades = selectRandom(_cfgGrenadeChoices);
-    // "debug_console" callExtension str(phx_loadout_explosives);
+    // phx_selector_currentGrenades = selectRandom(_cfgGrenadeChoices);
+    phx_selector_currentGrenades = _cfgGrenadeChoices # 0;
     {
       [_x, "vest", _unit] call phx_fnc_addGear;
     } forEach (phx_selector_currentGrenades select [1, 2]);
-    diag_log text format["[FNF] (loadout) INFO: Equipped CE grenade %1", phx_selector_currentGrenades # 0];
+    INFO("Equipped CE grenade """ + (phx_selector_currentGrenades # 0) + """");
+    INFO("Grenade choices: " + str(_cfgGrenadeChoices));
     phx_selector_grenades = _cfgGrenadeChoices;
   } else {phx_selector_grenades = []};
   true
@@ -595,6 +603,7 @@ fnc_setAttributes = {
   if (_role == "SGT" && side (group _unit) isEqualTo phx_vnArtillerySide) then {
     _unit setUnitTrait ["vn_artillery", true, true];
   };
+  INFO("Configured unit traits");
   true
 };
 
@@ -608,18 +617,22 @@ fnc_giveSideKey = {
   if (_cfgGiveSideKey == 1) then {
     switch (side (group _unit)) do {
       case west: {
-          _unit addItem "ACE_key_west";
+        _unit addItem "ACE_key_west";
+        INFO("Gave WEST vehicle key");
       };
       case east: {
-          _unit addItem "ACE_key_east";
+        _unit addItem "ACE_key_east";
+        INFO("Gave EAST vehicle key");
       };
       case independent: {
-          _unit addItem "ACE_key_indp";
+        _unit addItem "ACE_key_indp";
+        INFO("Gave IND vehicle key");
       };
     };
   };
   if (_cfgGiveSideKey == 2) then {
     _unit addItem "ACE_key_master";
+    INFO("Gave MASTER vehicle key");
   };
   true
 };
@@ -662,7 +675,7 @@ fnc_giveBinoculars = {
 
   if (!isNil "_thisBinoc") then {
     _unit addWeapon _thisBinoc;
-    diag_log text format["[FNF] (loadout) INFO: Equipped binoculars ""%1""", _thisBinoc];
+    INFO("Equipped binoculars """ + _thisBinoc + """");
   };
 
   true
@@ -802,10 +815,10 @@ if (isNil {
     phx_loadout_backpack,
     phx_loadout_headgear
   ] call fnc_addUniform
-}) then {
+}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process uniform settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process uniform settings."];
+    ERROR("Failed to process uniform settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
@@ -817,10 +830,10 @@ if (isNil {
     _cfgGiveSRRadio,
     _cfgGiveLRRadio
   ] call fnc_giveRadios
-}) then {
+}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process radio assignment settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process radio assignment settings."];
+    ERROR("Failed to process radio assignment settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
@@ -833,101 +846,101 @@ if (isNil {
     _cfgBackpackItems,
     _cfgLinkedItems
   ] call fnc_giveGear
-}) then {
+}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process gear settings."];
+    ERROR("Failed to process gear settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
 
-if (isNil {[player, _cfgWeaponChoices] call fnc_givePrimaryWeapon}) then {
+if (isNil {[player, _cfgWeaponChoices] call fnc_givePrimaryWeapon}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process primary weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process primary weapon settings."];
+    ERROR("Failed to process primary weapon settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, _cfgWeaponChoices] call fnc_prepWeaponsSelector}) then {
+if (isNil {[player, _cfgWeaponChoices] call fnc_prepWeaponsSelector}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process weapon selector settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process weapon selector settings."];
+    ERROR("Failed to process weapon selector settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
 
 
-if (isNil {[player, _cfgSidearms] call fnc_giveSidearmWeapon}) then {
+if (isNil {[player, _cfgSidearms] call fnc_giveSidearmWeapon}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process sidearm weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process sidearm weapon settings."];
+    ERROR("Failed to process sidearm weapon settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, getNumber(CFGGEAR >> "giveSilencer")] call fnc_giveSilencer}) then {
+if (isNil {[player, getNumber(CFGGEAR >> "giveSilencer")] call fnc_giveSilencer}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process silencer settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process silencer settings."];
+    ERROR("Failed to process silencer settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, phx_addNVG, getText(CFGCOMMON >> "NVG")] call fnc_giveNVG}) then {
+if (isNil {[player, phx_addNVG, getText(CFGCOMMON >> "NVG")] call fnc_giveNVG}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process NVG settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process NVG settings."];
+    ERROR("Failed to process NVG settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
 
-if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveAT}) then {
+if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveAT}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process AT settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process AT settings."];
+    ERROR("Failed to process AT settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
 
-if (isNil {[player, PLAYERLOADOUTVAR, CFGOPTICS] call fnc_prepOpticsSelector}) then {
+if (isNil {[player, PLAYERLOADOUTVAR, CFGOPTICS] call fnc_prepOpticsSelector}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process optics settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process optics settings."];
+    ERROR("Failed to process optics settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
 
-if (isNil {[player, _cfgExplosiveChoices] call fnc_giveCECharges}) then {
+if (isNil {[player, _cfgExplosiveChoices] call fnc_giveCECharges}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process CE explosives settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process CE explosives settings."];
+    ERROR("Failed to process CE explosives settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, _cfgGrenadeChoices] call fnc_giveCEGrenades}) then {
+if (isNil {[player, _cfgGrenadeChoices] call fnc_giveCEGrenades}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process CE grenade settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process CE grenade settings."];
+    ERROR("Failed to process CE grenade settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, PLAYERLOADOUTVAR] call fnc_setAttributes}) then {
+if (isNil {[player, PLAYERLOADOUTVAR] call fnc_setAttributes}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process ACE attribute settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process ACE attribute settings."];
+    ERROR("Failed to process ACE attribute settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
 
-if (isNil {[player, _cfgGiveSideKey] call fnc_giveSideKey}) then {
+if (isNil {[player, _cfgGiveSideKey] call fnc_giveSideKey}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process ACE vehicle key settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process ACE vehicle key settings."];
+    ERROR("Failed to process ACE vehicle key settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveBinoculars}) then {
+if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveBinoculars}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process binocular settings."];
+    ERROR("Failed to process binocular settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
@@ -938,7 +951,7 @@ _playerMagazines = magazines player;
 if (isNil {[player, PLAYERLOADOUTVAR] call fnc_loadWeapons}) then {
   [{time > 2}, {
     // ["<t align='center'>Error:<br/>Failed to auto-load weapons.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to auto-load weapons."];
+    ERROR("Failed to auto-load weapons.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
@@ -1238,7 +1251,7 @@ if (uniform player != "") then {
 } else {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process uniform settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process uniform settings."];
+    ERROR("Failed to process uniform settings.");
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
