@@ -98,12 +98,13 @@ phx_serverTerminalAction = {
 };
 
 phx_connectionWin = {
-  phx_gameEnd = true;
-  publicVariable "phx_gameEnd";
+  params ["_sideWon"];
 
-  _side = _this;
+  // phx_gameEnd = true;
+  // publicVariable "phx_gameEnd";
 
-  [_sideWon, "has reached 100 points and won!"] spawn phx_fnc_gameEnd;
+  // [_sideWon, "has reached 100 points and won!"] spawn phx_fnc_gameEnd;
+  ["FNF_GAMEEND", [_sideWon, "has reached 100 points and won!"]] call CBA_fnc_globalEvent;
 
   {
     if (!isNull _x) then {
@@ -140,7 +141,7 @@ while {!(missionNamespace getVariable ["phx_gameEnd",false])} do {
     };
   };
   if (_winCall) then {
-    _sideWon call phx_connectionWin;
+    [_sideWon] call phx_connectionWin;
   };
   sleep _pointAddTime;
 };

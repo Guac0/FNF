@@ -15,10 +15,11 @@ switch (_numberOfSectors) do {
 [] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
 phx_server_sectorWin = {
-  phx_gameEnd = true;
-  publicVariable "phx_gameEnd";
+  // phx_gameEnd = true;
+  // publicVariable "phx_gameEnd";
 
-  [phx_attackingSide, "has captured all sectors and wins!"] spawn phx_fnc_gameEnd;
+  // [phx_attackingSide, "has captured all sectors and wins!"] spawn phx_fnc_gameEnd;
+  ["FNF_GAMEEND", [phx_attackingSide, "has captured all sectors and wins!"]] call CBA_fnc_globalEvent;
 };
 
 _sectorNum = 0;

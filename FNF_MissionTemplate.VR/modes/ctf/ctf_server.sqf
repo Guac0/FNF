@@ -146,8 +146,8 @@ phx_server_dropFlag = {
 
   while {!phx_gameEnd} do {
     if (phx_flagCaptureTime <= 0) then {
-      phx_gameEnd = true;
-      publicVariable "phx_gameEnd";
+      // phx_gameEnd = true;
+      // publicVariable "phx_gameEnd";
 
       deleteVehicle ctf_flag;
       deleteMarker "flagMark";
@@ -155,7 +155,8 @@ phx_server_dropFlag = {
       ["ctfDefendID", "FAILED", true] call BIS_fnc_taskSetState;
       ["ctfAttackID", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-      [phx_attackingSide, "has successfully captured and held the flag!"] spawn phx_fnc_gameEnd;
+      // [phx_attackingSide, "has successfully captured and held the flag!"] spawn phx_fnc_gameEnd;
+      ["FNF_GAMEEND", [phx_attackingSide, "has successfully captured and held the flag!"]] call CBA_fnc_globalEvent;
     };
 
     if (phx_flagCaptureTime > 0 && (ctf_flag inArea ctf_attackTrig) && (isNull attachedTo ctf_flag)) then {

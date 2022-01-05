@@ -125,7 +125,6 @@ class CfgFunctions {
       class checkTime{};
       class overTimeEnd{};
       class gameEnd{};
-      class endElimination{};
     };
     class damage {
       file = "server\damage";

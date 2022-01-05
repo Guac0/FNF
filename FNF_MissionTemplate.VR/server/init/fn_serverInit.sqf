@@ -210,5 +210,10 @@ phxAdminMessageReceiver = ["phxAdminMessageServer", {
   ["AdminMsg", _arr] call DiscordEmbedBuilder_fnc_buildCfg;
 }] call CBA_fnc_addEventHandler;
 
+
+["FNF_GAMEEND", {
+  _this call phx_fnc_gameEnd;
+}] call CBA_fnc_addEventHandler;
+
 //Let clients know that server is done setting up
 missionNamespace setVariable ["phx_serverGameSetup",true,true];

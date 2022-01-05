@@ -24,12 +24,13 @@ switch (_numberOfSectors) do {
 };
 
 _win = {
-  phx_gameEnd = true;
-  publicVariable "phx_gameEnd";
+  // phx_gameEnd = true;
+  // publicVariable "phx_gameEnd";
 
-  _side = _this;
+  params ["_sideWon"];
 
-  [_sideWon, "has reached 100 points and won!"] spawn phx_fnc_gameEnd;
+  // [_sideWon, "has reached 100 points and won!"] spawn phx_fnc_gameEnd;
+  ["FNF_GAMEEND", [_sideWon, "has reached 100 points and won!"]] call CBA_fnc_globalEvent;
 };
 
 waitUntil {
@@ -68,7 +69,7 @@ while {!phx_gameEnd} do {
     };
   };
   if (_winCall) then {
-    _sideWon call _win;
+    [_sideWon] call _win;
   };
 
   sleep phx_neutralSector_pointAddTime;

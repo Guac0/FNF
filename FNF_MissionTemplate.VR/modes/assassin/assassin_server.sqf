@@ -207,8 +207,9 @@ call _fnc_updateTaskAssociations;
 
 // Admin should run this function if all HVTs are dead and mission should end in favor of attackers.
 phx_fnc_HVTEnd = {
-  phx_gameEnd = true;
-  publicVariable "phx_gameEnd";
+  // phx_gameEnd = true;
+  // publicVariable "phx_gameEnd";
 
-  [phx_attackingSide, "has successfully killed all HVTs and won!"] spawn phx_fnc_gameEnd;
+  // [phx_attackingSide, "has successfully killed all HVTs and won!"] spawn phx_fnc_gameEnd;
+  ["FNF_GAMEEND", [phx_attackingSide, "has successfully killed all HVTs and won!"]] call CBA_fnc_globalEvent;
 };

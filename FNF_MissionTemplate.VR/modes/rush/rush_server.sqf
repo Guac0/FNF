@@ -194,10 +194,11 @@ phx_serverTerminalAction = {
 
 _win = {
   //Send var to other scripts and clients to signal that the game has ended
-  phx_gameEnd = true;
-  publicVariable "phx_gameEnd";
+  // phx_gameEnd = true;
+  // publicVariable "phx_gameEnd";
 
-  [phx_attackingSide, "has successfully hacked all terminals and won!"] spawn phx_fnc_gameEnd;
+  // [phx_attackingSide, "has successfully hacked all terminals and won!"] spawn phx_fnc_gameEnd;
+  ["FNF_GAMEEND", [_sideWon, "has successfully hacked all terminals and won!"]] call CBA_fnc_globalEvent;
 };
 
 [phx_defendingSide,"defendTask1",[format ["%1 second hack time",phx_term1Time],"Defend the data terminal","term1Mark"],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;

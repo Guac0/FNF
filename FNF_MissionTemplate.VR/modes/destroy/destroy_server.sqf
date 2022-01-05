@@ -122,7 +122,8 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
 waitUntil {uiSleep 1; phx_aliveObjectives < 1 && !phx_gameEnd};
 
 //Send var to other scripts and clients to signal that the game has ended
-phx_gameEnd = true;
-publicVariable "phx_gameEnd";
+// phx_gameEnd = true;
+// publicVariable "phx_gameEnd";
 
-[phx_attackingSide, "has successfully destroyed all objectives and won!"] spawn phx_fnc_gameEnd;
+// [phx_attackingSide, "has successfully destroyed all objectives and won!"] spawn phx_fnc_gameEnd;
+["FNF_GAMEEND", [phx_attackingSide, "has successfully destroyed all objectives and won!"]] call CBA_fnc_globalEvent;

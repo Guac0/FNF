@@ -257,9 +257,10 @@ while {!phx_gameEnd} do {
   if (_hackedObjectives >= _numberOfTerminals) then {
     uiSleep 13;
 
-    phx_gameEnd = true;
-    publicVariable "phx_gameEnd";
+    // phx_gameEnd = true;
+    // publicVariable "phx_gameEnd";
 
-    [phx_attackingSide, "has successfully hacked all objectives and won!"] spawn phx_fnc_gameEnd;
+    // [phx_attackingSide, "has successfully hacked all objectives and won!"] spawn phx_fnc_gameEnd;
+    ["FNF_GAMEEND", [phx_attackingSide, "has successfully hacked all objectives and won!"]] call CBA_fnc_globalEvent;
   };
 };
