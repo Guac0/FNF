@@ -28,6 +28,11 @@ call phx_fnc_keyVehicles;
 call phx_fnc_vehicleRadios;
 
 
+[{time > 0}, {
+  ["BEGIN", "ANY", phx_attackingSide] call phx_fnc_sendRadioMsg;
+}] call CBA_fnc_waitUntilAndExecute;
+
+
 [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
 [{!isNil "phx_safetyEndTime"}, {call phx_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 

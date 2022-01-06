@@ -81,6 +81,10 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
   call phx_fnc_checkLoadout;
   [false] call phx_fnc_briefingGear;
 
+  ["FNF_PLAYRADIOMSG", {
+    _this call phx_fnc_playRadioMsg;
+  }] call CBA_fnc_addEventHandler;
+
   // Compile Date text
 	date params ["_year", "_month", "_day", "_hour", "_minute"];
 

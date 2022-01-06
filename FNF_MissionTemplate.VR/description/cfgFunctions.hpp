@@ -94,6 +94,7 @@ class CfgFunctions {
       class fixUniformBug{};
       class SCUDFired{};
       class lobbyTextGenerator{};
+      class playRadioMsg{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";
@@ -118,6 +119,7 @@ class CfgFunctions {
       class keyVehicles{};
       class lockVehicles{};
       class vehicleRadios{};
+      class sendRadioMsg{};
     };
     class end {
       file = "server\end";

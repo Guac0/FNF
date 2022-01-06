@@ -14,3 +14,23 @@ onLoadMission = "SHORT_DESCRIPTION";
 #include "client\ui\RscTitlesDisplay.hpp"
 #include "client\ui\PauseMenuDisplays.hpp"
 #include "client\ui\InfoPanel.hpp"
+
+class CfgRadio {
+	sounds[] = {};
+	class T1Down {
+		// display name
+		name = "Terminal 1 Down";
+		// filename, volume, pitch
+		sound[] = {"\sound\T1Down.ogg", db+20, 1.0};
+		// radio caption
+		title = "Fuck, we just lost Terminal 1!";
+	};
+	class T2Down {
+		// display name
+		name = "Terminal 2 Down";
+		// filename, volume, pitch
+		sound[] = {"\sound\T2Down.ogg", db+20, 1.0};
+		// radio caption
+		title = "Damn dude, Terminal 2 just went down!";
+	};
+};
