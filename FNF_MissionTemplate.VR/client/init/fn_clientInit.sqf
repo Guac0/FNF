@@ -82,6 +82,7 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
   [false] call phx_fnc_briefingGear;
 
   ["FNF_PLAYRADIOMSG", {
+    // "debug_console" callExtension ("Client received event FNF_PLAYRADIOMSG with args: " + str(_this));
     _this call phx_fnc_playRadioMsg;
   }] call CBA_fnc_addEventHandler;
 

@@ -1,4 +1,4 @@
-params ["_category", "_event", "_atkSide"];
+params ["_category", "_event", ["_atkSide", [sideEmpty], [[]]]];
 
 #define LANGUAGES ["LEN","LRU"]
 #define ACCENTS ["AUS","AUK","ADE","ARU"]
@@ -10,17 +10,20 @@ params ["_category", "_event", "_atkSide"];
   private ["_sideRole", "_sideStr", "_lang", "_accent"];
 
   private _thisSide = _x;
-  if (_atkSide == sideEmpty) then {
-    _sideRole = "ATT";
-  } else {
-    if (_thisSide == _atkSide) then {_sideRole = "ATT"};
-    if (_thisSide != _atkSide) then {_sideRole = "DEF"};
+
+  // let _event be determined by player's side, since it isn't a universal thing
+  // _atkSide should be used to indicate the WINNING side
+  if (_category == "END") then {
+    if (_thisSide in _atkSide) then {_event = "WIN"} else {_event = "LOSS"};
   };
 
+  if (_atkSide select 0 == sideEmpty) then {
+    _sideRole = "ATT";
+  } else {
+    if (_thisSide in _atkSide) then {_sideRole = "ATT"};
+    if !(_thisSide in _atkSide) then {_sideRole = "DEF"};
+  };
   _sideStr = toUpper ((_thisSide call BIS_fnc_sideName) select [0,3]);
-  if (_thisSide == sideLogic) then {_sideStr = "BLU"};
-
-
 
   // check playerSide uniform set for nationality
   private "_configSQFSideLabel";
@@ -52,28 +55,28 @@ params ["_category", "_event", "_atkSide"];
     SUBSTRING("_ANY_", _thisSideUniformSelection)
   ) then {
     _lang = selectRandom ["LEN", "LRU"];
+    _lang = "LEN";
     _accent = "ARU";
   };
 
-  _searchCode = [_category, _event, _sideRole, _sideStr, _lang, _accent] joinString "_";
-  "debug_console" callExtension _searchCode;
+  _searchCode = ([_category, _event, _sideRole, _sideStr, _lang, _accent] joinString "_") + "_";
+  // "debug_console" callExtension ("searchCode: " + _searchCode);
 
-  private _num = random(12);
-  private _timesTried = 0;
-  while {
-    !isClass (missionConfigFile >> "CfgRadio" >> (_searchCode + str(_num)))
-  } do {
-    _num = random(12);
-    _timesTried = _timesTried + 1;
-    if (_timesTried >= 12) exitWith {_timesTried = false};
-  };
-  if !(_timesTried isEqualTo false) then {
+  private _matchingRadioMsgs = format["[""%1"", configName _x] call BIS_fnc_inString", _searchCode] configClasses (configFile >> "CfgRadio");
+  // "debug_console" callExtension ("found messages: " + str(_matchingRadioMsgs));
+
+  if (count _matchingRadioMsgs > 0) then {
+    _thisRadioMsg = configName (selectRandom _matchingRadioMsgs);
+
+    // "debug_console" callExtension ("server picked " + _thisRadioMsg);
+
     if (_category in ["BEGIN", "END"]) then {
-      phx_globalRadio_Start = ["FNF_PLAYRADIOMSG", [_thisSide, _searchCode + str(_num)]] call CBA_fnc_globalEventJIP;
+      phx_globalRadio_Start = ["FNF_PLAYRADIOMSG", [_thisSide, _thisRadioMsg]] call CBA_fnc_globalEventJIP;
+      // "debug_console" callExtension ("Server sent global JIP event with args: " + str([_thisSide, _thisRadioMsg]));
     } else {
-      ["FNF_PLAYRADIOMSG", [_thisSide, _searchCode + str(_num)]] call CBA_fnc_globalEvent;
+      ["FNF_PLAYRADIOMSG", [_thisSide, _thisRadioMsg]] call CBA_fnc_globalEvent;
+      // "debug_console" callExtension ("Server sent global event with args: " + str([_thisSide, _thisRadioMsg]));
     };
-  } else {
-    diag_log formatText["Failed to load radio message ""%1""", _searchCode];
   };
-} forEach ([west, east, independent] select {playersNumber _x > 0});
+} forEach [west, east, independent];
+// } forEach ([west, east, independent] select {playersNumber _x > 0});

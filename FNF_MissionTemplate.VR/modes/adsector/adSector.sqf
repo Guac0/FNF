@@ -18,6 +18,7 @@ phx_server_sectorWin = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
+  ["END", nil, [phx_attackingSide, civilian]] call phx_fnc_sendRadioMsg;
   [phx_attackingSide, "has captured all sectors and wins!"] spawn phx_fnc_gameEnd;
 };
 
@@ -106,6 +107,12 @@ _sectorNum = 0;
 
         [_dTask,"FAILED"] call BIS_fnc_taskSetState;
         [_aTask,"SUCCEEDED"] call BIS_fnc_taskSetState;
+
+        if (phx_sectorInOrder) then {
+          ["ADS", format["SQ%1",_sectorNum], phx_attackingSide] call phx_fnc_sendRadioMsg;
+        } else {
+          ["ADS", format["SEC%1",_sectorNum], phx_attackingSide] call phx_fnc_sendRadioMsg;
+        };
 
         if (phx_capNum >= phx_sectorNum) then {call phx_server_sectorWin} else {
           [format[

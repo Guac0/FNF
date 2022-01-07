@@ -28,8 +28,8 @@ call phx_fnc_keyVehicles;
 call phx_fnc_vehicleRadios;
 
 
-[{time > 0}, {
-  ["BEGIN", "ANY", phx_attackingSide] call phx_fnc_sendRadioMsg;
+[{time > 5}, {
+  ["BEGIN", "ANY", [phx_attackingSide]] call phx_fnc_sendRadioMsg;
 }] call CBA_fnc_waitUntilAndExecute;
 
 
