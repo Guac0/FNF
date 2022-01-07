@@ -1,0 +1,40 @@
+<#
+  References spreadsheet record of data & filename of an intact audio file to populate CfgSounds entries automatically.
+  Outputs to clipboard.
+#>
+
+$data = Import-Csv '.\FNF Voiceovers - Main.csv'
+[array] $out = @();
+foreach ($file in (Get-ChildItem)) {
+  $check = $data | Where-Object { $_.FILENAME -eq ($file.baseName) };
+  if ($null -ne $check) {
+    if ($check.getType().Name -eq "PSCustomObject") {
+      $out += [PSCustomObject]@{
+        "name"    = $file.baseName;
+        "sound[]" = $([String]::join(',', @("`"fnf_media\radio\$($file.name)`"", 20, 1.0)));
+        "title"   = $check.SCRIPT
+      }
+    } else {
+      forEach ($record in $check) {
+        $out += [PSCustomObject]@{
+          "name"    = $file.baseName;
+          "sound[]" = [String]::join(',', @("`"fnf_media\radio\$($file.name)`"", 20, 1.0));
+          "title"   = $check.SCRIPT
+        }
+      }
+    }
+  }
+}
+$out | Out-GridView -Title "Count: $($out.count)"
+
+[Array] $outCfg = @()
+forEach ($row in $out) {
+  $outCfg += "class $($row.name) {"
+  $outCfg += "  name = `"$($row.name)`";"
+  $outCfg += "  sound[] = {$($row."sound[]")};"
+  $outCfg += "  title = `"$($row.title)`";"
+  $outCfg += "};"
+}
+$outCfg | clip
+
+Write-Host "Config data copied to clipboard" -ForegroundColor Green
