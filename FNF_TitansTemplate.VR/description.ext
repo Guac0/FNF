@@ -13,3 +13,4 @@ class Header
 #include "description\cfgEventHandlers.hpp"
 #include "description\cfgNotifications.hpp"
 #include "description\cfgFunctions.hpp"
+#include "description\Params.hpp"

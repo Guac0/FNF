@@ -1,6 +1,44 @@
 //Uniforms
-phx_bluforUniform = "UNIFORM_MARPAT_WD";
-phx_opforUniform = "UNIFORM_EMR_SUMMER";
+//phx_bluforUniform = "UNIFORM_MARPAT_WD";
+//phx_opforUniform = "UNIFORM_EMR_SUMMER";
+//phx_bluforUniform = "bluforUniform" call BIS_fnc_getParamValue;
+//phx_opforUniform = "opforUniform" call BIS_fnc_getParamValue;
+
+//BIS_fnc_getParam can only return a number, not a string, so we have to convert it into a string here via a switch statement that manually checks and assigns it
+//I wonder if there's a better way to do this...
+private _bluforUniformValue = "bluforUniform" call BIS_fnc_getParamValue;
+systemchat str _bluforUniiformValue;
+switch (_bluforUniformValue) do {
+	default {
+		phx_bluforUniform = "UNIFORM_MARPAT_WD";
+	};
+	case 0: { //default for the param in role select
+		phx_bluforUniform = "UNIFORM_MARPAT_WD";
+	};
+	case 1: {
+		phx_bluforUniform = "UNIFORM_MARPAT_D";
+	};
+	case 2: {
+		phx_bluforUniform = "UNIFORM_OEF_CP";
+	};
+};
+
+private _opforUniformValue = "opforUniform" call BIS_fnc_getParamValue;
+switch (_opforUniformValue) do {
+	default {
+		phx_bluforUniform = "UNIFORM_EMR_SUMMER";
+	};
+	case 0: { //default for the param in role select
+		phx_bluforUniform = "UNIFORM_EMR_SUMMER";
+	};
+	case 1: {
+		phx_bluforUniform = "UNIFORM_EMR_DESERT";
+	};
+	case 2: {
+		phx_bluforUniform = "UNIFORM_FLORA";
+	};
+};
+
 
 //Weapons
 phx_bluforWeapons = "WEAPONS_US";
