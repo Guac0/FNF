@@ -12,8 +12,8 @@ if (pRole == ROLE_AT || pRole == ROLE_AAT || pRole == ROLE_CE) then {
 
 if (pRole == ROLE_P) then {
   phx_loadout_headgear = "H_PilotHelmetHeli_B";
-  phx_loadout_vest = "rhsusf_plateframe_light";
+  phx_loadout_vest = "V_TacVest_oli";
 };
 if (pRole == ROLE_CR) then {
-  phx_loadout_headgear = "rhsusf_cvc_green_alt_helmet";
+  phx_loadout_headgear = "H_HelmetCrew_B";
 };

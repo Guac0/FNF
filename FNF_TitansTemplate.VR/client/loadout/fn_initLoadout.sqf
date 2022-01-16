@@ -23,12 +23,13 @@ if (pRole in [ROLE_TL,ROLE_MGTL]) then {phx_loadout_unitLevel = 1};
 //Shared
 phx_loadout_aid = "FirstAidKit:4";
 phx_loadout_smoke = "SmokeShell:2";
-phx_loadout_grenade = "rhs_mag_m67:2";
+phx_loadout_grenade = "HandGrenade:2";
 phx_loadout_thermite = "ACE_M14:2";
 phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_cableTie = "ACE_CableTie:2";
 phx_loadout_nvg = "NVGoggles_OPFOR";
-phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
+//phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
+phx_loadout_uglAmmoEast = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
 phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
 //CE
 phx_loadout_explosives = ["1x Satchel","SatchelCharge_Remote_Mag:1"];
@@ -47,8 +48,11 @@ phx_loadout_blood_2 = "ACE_bloodIV_250:4";
 phx_loadout_binocular = "Binocular";
 phx_loadout_vector = "ACE_VectorDay";
 phx_loadout_rifle_optic = "optic_DMS";
-phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
-phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
+//phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
+//phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
+phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco"];
+phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco"];
+
 phx_selector_explosives = [
 phx_loadout_explosives,
 ["2x Demo charge", "DemoCharge_Remote_Mag:2"]
