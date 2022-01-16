@@ -3,18 +3,31 @@ class Params
 	class bluforUniform
 	{
 		title = "BLUFOR Uniform";
-		texts[] = {"RHS MARPAT WOODLAND","RHS MARPAT DESERT","RHS OEF CP"};
+		texts[] = {"RHS MARPAT WOODLAND","RHS MARPAT DESERT","RHS OEF CP","TAS DOMINOS","VANILLA AAF","VANILLA GUERILLAS"};
 		//values[] = {Uniform_MARPAT_WD,UNIFORM_MARPAT_D,UNIFORM_OEF_CP};
-		values[] = {0,1,2};
-		default = Uniform_MARPAT_WD;
+		values[] = {0,1,2,3,4,5};
+		default = 3;
 	};
 	class opforUniform
 	{
 		title = "OPFOR Uniform";
-		texts[] = {"RHS EMR SUMMER","RHS EMR DESERT","RHS FLORA"};
+		texts[] = {"RHS EMR SUMMER","RHS EMR DESERT","RHS FLORA","TAS PAPA JHONS","VANILLA AAF","VANILLA GUERILLAS"};
 		//values[] = {UNIFORM_EMR_SUMMER,UNIFORM_EMR_DESERT,UNIFORM_FLORA};
+		values[] = {0,1,2,3,4,5};
+		default = 3;
+	};
+	class bluforWeapons
+	{
+		title = "BLUFOR Weapons";
+		texts[] = {"CUP SMAW SPOTTING RIFLE","",""};
 		values[] = {0,1,2};
-		default = UNIFORM_EMR_SUMMER;
+	};
+	class opforWeapons
+	{
+		title = "OPFOR Weapons";
+		texts[] = {"CUP SMAW SPOTTING RIFLE","",""};
+		values[] = {0,1,2};
+		default = 0;
 	};
 	class Daytime
 	{

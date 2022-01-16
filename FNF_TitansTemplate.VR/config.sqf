@@ -1,8 +1,6 @@
 //Uniforms
 //phx_bluforUniform = "UNIFORM_MARPAT_WD";
 //phx_opforUniform = "UNIFORM_EMR_SUMMER";
-//phx_bluforUniform = "bluforUniform" call BIS_fnc_getParamValue;
-//phx_opforUniform = "opforUniform" call BIS_fnc_getParamValue;
 
 //BIS_fnc_getParam can only return a number, not a string, so we have to convert it into a string here via a switch statement that manually checks and assigns it
 //I wonder if there's a better way to do this...
@@ -21,28 +19,77 @@ switch (_bluforUniformValue) do {
 	case 2: {
 		phx_bluforUniform = "UNIFORM_OEF_CP";
 	};
+	case 3: {
+		phx_bluforUniform = "UNIFORM_DOMINOS";
+	};
+	case 4: {
+		phx_bluforUniform = "UNIFORM_AAF";
+	};
+	case 5: {
+		phx_bluforUniform = "UNIFORM_GUERILLA_VANILLA";
+	};
 };
 
 private _opforUniformValue = "opforUniform" call BIS_fnc_getParamValue;
 switch (_opforUniformValue) do {
 	default {
-		phx_bluforUniform = "UNIFORM_EMR_SUMMER";
+		phx_opforUniform = "UNIFORM_EMR_SUMMER";
 	};
 	case 0: { //default for the param in role select
-		phx_bluforUniform = "UNIFORM_EMR_SUMMER";
+		phx_opforUniform = "UNIFORM_EMR_SUMMER";
 	};
 	case 1: {
-		phx_bluforUniform = "UNIFORM_EMR_DESERT";
+		phx_opforUniform = "UNIFORM_EMR_DESERT";
 	};
 	case 2: {
-		phx_bluforUniform = "UNIFORM_FLORA";
+		phx_opforUniform = "UNIFORM_FLORA";
+	};
+	case 3: {
+		phx_opforUniform = "UNIFORM_FLORA";
+	};
+	case 4: {
+		phx_opforUniform = "UNIFORM_AAF";
+	};
+	case 5: {
+		phx_opforUniform = "UNIFORM_GUERILLA_VANILLA";
 	};
 };
 
 
 //Weapons
-phx_bluforWeapons = "WEAPONS_US";
-phx_opforWeapons = "WEAPONS_RU";
+//phx_bluforWeapons = "WEAPONS_US";
+//phx_opforWeapons = "WEAPONS_RU";
+private _bluforWeaponsValue = "bluforWeapons" call BIS_fnc_getParamValue;
+switch (_bluforWeaponsValue) do {
+	default {
+		phx_bluforWeapons = "WEAPONS_CUP_SMAW_SPOTTING";
+	};
+	case 0: { //default for the param in role select
+		phx_bluforWeapons = "WEAPONS_CUP_SMAW_SPOTTING";
+	};
+	case 1: {
+		phx_bluforWeapons = "WEAPONS_";
+	};
+	case 2: {
+		phx_bluforWeapons = "WEAPONS";
+	};
+};
+
+private _opforWeaponsValue = "opforWeapons" call BIS_fnc_getParamValue;
+switch (_opforWeaponsValue) do {
+	default {
+		phx_opforWeapons = "WEAPONS_CUP_SMAW_SPOTTING";
+	};
+	case 0: { //default for the param in role select
+		phx_opforWeapons = "WEAPONS_CUP_SMAW_SPOTTING";
+	};
+	case 1: {
+		phx_opforWeapons = "WEAPONS_";
+	};
+	case 2: {
+		phx_opforWeapons = "WEAPONS_";
+	};
+};
 
 phx_magnifiedOptics = false; //Allow players to grab magnified optics from the gear selector
 phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
@@ -60,11 +107,12 @@ UNIFORM_M93_DESERT                 --   WEAPONS_GUERRILLA
 UNIFORM_M93_WOODLAND               --   WEAPONS_M21
 UNIFORM_ARMY_OCP                   --   WEAPONS_SCAR
 UNIFORM_UCP                        --   WEAPONS_VHS
-UNIFORM_CTRG_WD                    --
+UNIFORM_CTRG_WD                    --	WEAPONS_CUP_SMAW_SPOTTING
 UNIFORM_ION_BK
 UNIFORM_ION_WD
 UNIFORM_ISRAEL_TAN
 UNIFORM_RANGER
+UNIFORM_DOMINOS
 
 =====OPFOR=====
 UNIFORM_EMR_SUMMER
@@ -74,6 +122,7 @@ UNIFORM_MOUNTAIN_FLORA
 UNIFORM_GORKA_GREEN
 UNIFORM_GORKA_BEREZKA
 UNIFORM_SOVIET_CSAT
+UNIFORM_PAPAJHONS
 
 =====INDFOR=====
 UNIFORM_M93_OAKLEAF
