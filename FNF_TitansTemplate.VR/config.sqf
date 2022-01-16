@@ -26,7 +26,7 @@ switch (_bluforUniformValue) do {
 		phx_bluforUniform = "UNIFORM_AAF";
 	};
 	case 5: {
-		phx_bluforUniform = "UNIFORM_GUERILLA_VANILLA";
+		phx_bluforUniform = "UNIFORM_GUERRILLA_VANILLA";
 	};
 };
 
@@ -51,7 +51,7 @@ switch (_opforUniformValue) do {
 		phx_opforUniform = "UNIFORM_AAF";
 	};
 	case 5: {
-		phx_opforUniform = "UNIFORM_GUERILLA_VANILLA";
+		phx_opforUniform = "UNIFORM_GUERRILLA_VANILLA";
 	};
 };
 
@@ -68,10 +68,10 @@ switch (_bluforWeaponsValue) do {
 		phx_bluforWeapons = "WEAPONS_CUP_SMAW_SPOTTING";
 	};
 	case 1: {
-		phx_bluforWeapons = "WEAPONS_";
+		phx_bluforWeapons = "WEAPONS_CUP_XM8";
 	};
 	case 2: {
-		phx_bluforWeapons = "WEAPONS";
+		phx_bluforWeapons = "WEAPONS_CUP_USA_RANDOM";
 	};
 };
 
@@ -84,10 +84,10 @@ switch (_opforWeaponsValue) do {
 		phx_opforWeapons = "WEAPONS_CUP_SMAW_SPOTTING";
 	};
 	case 1: {
-		phx_opforWeapons = "WEAPONS_";
+		phx_opforWeapons = "WEAPONS_CUP_XM8";
 	};
 	case 2: {
-		phx_opforWeapons = "WEAPONS_";
+		phx_opforWeapons = "WEAPONS_CUP_USA_RANDOM";
 	};
 };
 

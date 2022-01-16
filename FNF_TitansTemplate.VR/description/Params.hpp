@@ -19,13 +19,13 @@ class Params
 	class bluforWeapons
 	{
 		title = "BLUFOR Weapons";
-		texts[] = {"CUP SMAW SPOTTING RIFLE","",""};
+		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM"};
 		values[] = {0,1,2};
 	};
 	class opforWeapons
 	{
 		title = "OPFOR Weapons";
-		texts[] = {"CUP SMAW SPOTTING RIFLE","",""};
+		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM"};
 		values[] = {0,1,2};
 		default = 0;
 	};
@@ -36,6 +36,13 @@ class Params
 		values[] = {6,12,18,0};
 		default = 12;
 		function = "BIS_fnc_paramDaytime";
+	};
+	class safeStartTimer
+	{
+		title = "Safe Start Duration";
+		texts[] = {"None","15 Seconds","30 Seconds","45 Seconds","60 Seconds","75 Seconds","90 Seconds"};
+		values[] = {1,15,30,45,60,75,90}; //havent checked what value of 0 will do so minimum time is 1
+		default = 45;
 	};
 
 	//#define DAYTIMEPERIOD_DEFAULT 12
