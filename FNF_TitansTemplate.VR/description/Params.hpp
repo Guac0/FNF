@@ -1,5 +1,13 @@
 class Params
 {
+	class debug
+	{
+		title = "DEBUG STUFF, DO NOT TOUCH";
+		texts[] = {"Failure State","Success State"};
+		//values[] = {Uniform_MARPAT_WD,UNIFORM_MARPAT_D,UNIFORM_OEF_CP};
+		values[] = {0,1};
+		default = 1;
+	};
 	class bluforUniform
 	{
 		title = "BLUFOR Uniform";
@@ -21,13 +29,14 @@ class Params
 		title = "BLUFOR Weapons";
 		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM"};
 		values[] = {0,1,2};
+		default = 1;
 	};
 	class opforWeapons
 	{
 		title = "OPFOR Weapons";
 		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM"};
 		values[] = {0,1,2};
-		default = 0;
+		default = 1;
 	};
 	class Daytime
 	{
