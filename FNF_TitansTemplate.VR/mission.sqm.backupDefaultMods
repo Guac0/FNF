@@ -5,14 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=514;
-	mods[]=
-	{
-		"3denEnhanced"
-	};
+	toggles=1537;
 	class ItemIDProvider
 	{
-		nextID=4172;
+		nextID=3325;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=121;
+		nextID=70;
 	};
 	class Camera
 	{
-		pos[]={59.186466,11.134104,116.8997};
-		dir[]={-0.19330055,-0.84974784,0.49056202};
-		up[]={-0.31152186,0.52717412,0.79058647};
-		aside[]={0.93041557,1.2014061e-007,0.36661795};
+		pos[]={72.022217,19.038548,32.675236};
+		dir[]={-0.84249109,-0.53630239,-0.050877713};
+		up[]={-0.53532714,0.84402591,-0.0323282};
+		aside[]={-0.060279798,0,0.99818152};
 	};
 };
 binarizationWanted=0;
@@ -219,7 +215,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=34;
+		items=32;
 		class Item0
 		{
 			dataType="Logic";
@@ -313,7 +309,7 @@ class Mission
 		class Item1
 		{
 			dataType="Trigger";
-			position[]={59.589691,5.1677499,121.17734};
+			position[]={60,5,121};
 			class Attributes
 			{
 				name="zoneTrigger";
@@ -323,15 +319,14 @@ class Mission
 			};
 			id=221;
 			type="EmptyDetector";
-			atlOffset=0.16774988;
 		};
 		class Item2
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={59.590511,5.0108399,120.99165};
-				angles[]={0,4.712389,0};
+				position[]={60,5.0108399,121};
+				angles[]={-0,4.712389,0};
 			};
 			side="Empty";
 			flags=4;
@@ -371,7 +366,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={135.48633,5,124.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -384,7 +379,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={135.48633,5,134.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -397,7 +392,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={135.48633,5,144.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -410,7 +405,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={140,5,124};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -423,7 +418,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={140,5,134};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -436,7 +431,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={140,5,144};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7364,7 +7359,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={145.48633,5,124.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7377,7 +7372,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={145.48633,5,134.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7390,7 +7385,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={145.48633,5,144.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7403,7 +7398,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={150,5,124};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7416,7 +7411,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={150,5,134};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7429,7 +7424,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={150,5,144};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7442,7 +7437,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={135.48633,5,94.064514};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7455,7 +7450,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={135.48633,5,104.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7468,7 +7463,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={135.48633,5,114.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7481,7 +7476,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={140,5,94};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7494,7 +7489,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={140,5,104};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7507,7 +7502,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={140,5,114};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7520,7 +7515,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={145.48633,5,94.064514};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7533,7 +7528,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={145.48633,5,104.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7546,7 +7541,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={145.48633,5,114.06451};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7559,7 +7554,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={150,5,94};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7572,7 +7567,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={150,5,104};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7585,7 +7580,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={150,5,114};
-				angles[]={0,4.712389,0};
+				angles[]={-0,4.712389,0};
 			};
 			isPlayable=1;
 			description="Spectator";
@@ -7785,7 +7780,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
 					class Value
 					{
 						class data
@@ -7989,7 +7984,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
 					class Value
 					{
 						class data
@@ -8007,46 +8002,6 @@ class Mission
 				};
 				nAttributes=1;
 			};
-		};
-		class Item32
-		{
-			dataType="Layer";
-			name="Shanty Town - Civ populated";
-			class Entities
-			{
-				items=2;
-				class Item0
-				{
-					dataType="Layer";
-					name="Shanty Town";
-					id=3331;
-				};
-				class Item1
-				{
-					dataType="Layer";
-					name="Shanty Town_1";
-					id=3728;
-					atlOffset=-0.067275047;
-				};
-			};
-			id=3330;
-			atlOffset=-0.063694954;
-		};
-		class Item33
-		{
-			dataType="Layer";
-			name="Industrial Zone 01";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Layer";
-					name="IndustrialZone_01";
-					id=4126;
-				};
-			};
-			id=4125;
 		};
 	};
 };
