@@ -48,10 +48,15 @@ phx_loadout_blood_2 = "ACE_bloodIV_250:4";
 phx_loadout_binocular = "Binocular";
 phx_loadout_vector = "ACE_VectorDay";
 phx_loadout_rifle_optic = "optic_DMS";
+//rhs
 //phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
 //phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
-phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco"];
-phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco"];
+//vanilla
+//phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco"];
+//phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco"];
+//now has some CUP western optics
+phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco", "cup_optic_aimpoint_5000", "cup_optic_ac11704_black", "cup_optic_mars"];
+phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco", "optic_erco_blk_f", "cup_optic_acog_ta01b_rmr_black", "cup_optic_g33_hws_blk", "cup_optic_elcan_specterdr_rmr_black"];
 
 phx_selector_explosives = [
 phx_loadout_explosives,

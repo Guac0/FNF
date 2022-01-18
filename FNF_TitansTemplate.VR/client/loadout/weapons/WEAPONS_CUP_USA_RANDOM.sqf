@@ -6,7 +6,7 @@ if (phx_loadout_hasUGL) then {
   //phx_selector_weapons = [[""]];
 } else {
   phx_loadout_rifle_weapon = selectRandom ["CUP_arifle_M16A1E1","CUP_arifle_M4A3_black","CUP_arifle_Mk17_STD_AFG"];
-  //phx_selector_weapons = [[""]];
+  //phx_selector_weapons = [["CUP_arifle_M16A1E1"]];
 };
 if (pRole == ROLE_AR || pRole == ROLE_MG) then {
   phx_loadout_rifle_weapon = selectRandom ["CUP_lmg_M240_B","CUP_lmg_m249_pip2","CUP_lmg_M60E4_norail"];

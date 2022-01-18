@@ -1,82 +1,18 @@
-if (!isServer) exitWith { diag_log format ["FNF Titans Framework: Exiting config.sqf due to being on client!"]; }; //this throws an error on client
+//this is executed on all machines because defined as preinit 
+//only needs to run on server though so exit if client is the one executing it 
+//TODO preinit only on server?
+if (!isServer) exitWith { diag_log format ["FNF Titans Framework: Exiting config.sqf due to being on client!"]; }; //this throws an error on client but works, TODO fix
 
 //Uniforms
 //phx_bluforUniform = "UNIFORM_MARPAT_WD";
 //phx_opforUniform = "UNIFORM_EMR_SUMMER";
-if (isServer) then {
-	diag_log text "FNF Titans Framework: Breakpoint 1 — Executed config.sqf on Server.";
-	systemChat "FNF Titans Framework: Breakpoint 1 — Executed config.sqf on Server.";
-} else {
-	diag_log text "FNF Titans Framework: Breakpoint 1 — Executed config.sqf on Client.";
-	systemChat "FNF Titans Framework: Breakpoint 1 — Executed config.sqf on Client.";
-};
 
-if (isNil serverTitansConfigRan) then {
-	serverTitansConfigRan = false;
-	systemchat format ["FNF Titans Framework: Set serverTitansConfigRan to false!"];
-	hint format ["FNF Titans Framework: Set serverTitansConfigRan to false!"];
-	diag_log format ["FNF Titans Framework: Set serverTitansConfigRan to false!"];
-};
-
-if (isServer) then {
-	
-	systemchat format ["FNF Titans Framework: Server reached Breakpoint 2"];
-	hint format ["FNF Titans Framework: Server reached Breakpoint 2"];
-	diag_log format ["FNF Titans Framework: Server reached Breakpoint 2"];
-	
-	waitUntil { ("debug" call BIS_fnc_getParamValue) == 1 }; //maybe unneccessary since moved to server
-
-	systemchat format ["FNF Titans Framework: Breakpoint 3 — Debug value on Server: %1", ("debug" call BIS_fnc_getParamValue)];
-	hint format ["FNF Titans Framework: Breakpoint 3 — Debug value on Server: %1", ("debug" call BIS_fnc_getParamValue)];
-	diag_log format ["FNF Titans Framework: Breakpoint 3 — Debug value on Server: %1", ("debug" call BIS_fnc_getParamValue)];
-
-	bluforUniformValue = "bluforUniform" call BIS_fnc_getParamValue;
-	opforUniformValue = "opforUniform" call BIS_fnc_getParamValue;
-	bluforWeaponsValue = "bluforWeapons" call BIS_fnc_getParamValue;
-	opforWeaponsValue = "opforWeapons" call BIS_fnc_getParamValue;
-
-	systemchat format ["FNF Titans Framework: Breakpoint 4 — Blufor uniform value on Server: %1", bluforUniformValue];
-	hint format ["FNF Titans Framework: Breakpoint 4 — Blufor uniform value on Server: %1", bluforUniformValue];
-	diag_log format ["FNF Titans Framework: Breakpoint 4 — Blufor uniform value on Server: %1", bluforUniformValue];
-	systemchat format ["FNF Titans Framework: Breakpoint 4 — Blufor uniform check 2: %1",("bluforUniform" call BIS_fnc_getParamValue)];
-
-	//publicVariable "bluforUniformValue";
-	//publicVariable "opforUniformValue";
-	//publicVariable "bluforWeaponsValue";
-	//publicVariable "opforWeaponsValue";
-	//serverTitansConfigRan = true;
-	//publicVariable "serverTitansConfigRan";
-
-	systemchat format ["FNF Titans Framework: Breakpoint 5 — serverTitansConfigRan value on Server: %1", serverTitansConfigRan];
-	hint format ["FNF Titans Framework: Breakpoint 5 — serverTitansConfigRan value on Server: %1", serverTitansConfigRan];
-	diag_log format ["FNF Titans Framework: Breakpoint 5 — serverTitansConfigRan value on Server: %1", serverTitansConfigRan];
-
-} else { //client
-	
-	systemchat format ["FNF Titans Framework: Breakpoint 6 — serverTitansConfigRan value on Client: %1", serverTitansConfigRan];
-	hint format ["FNF Titans Framework: Breakpoint 6 — serverTitansConfigRan value on Client: %1", serverTitansConfigRan];
-	diag_log format ["FNF Titans Framework: Breakpoint 6 — serverTitansConfigRan value on Client: %1", serverTitansConfigRan];
-
-	waitUntil { serverTitansConfigRan == true };
-
-	systemchat format ["FNF Titans Framework: Breakpoint 7 — serverTitansConfigRan value on Client: %1", serverTitansConfigRan];
-	hint format ["FNF Titans Framework: Breakpoint 7 — serverTitansConfigRan value on Client: %1", serverTitansConfigRan];
-	diag_log format ["FNF Titans Framework: Breakpoint 7 — serverTitansConfigRan value on Client: %1", serverTitansConfigRan];
-
-};
-
-diag_log text "FNF Titans Framework: Breakpoint 8 — Config.sqf passed waitUntil check.";
-systemChat "FNF Titans Framework: Breakpoint 8 — Config.sqf passed waitUntil check.";
+private _bluforUniformValue = "bluforUniform" call BIS_fnc_getParamValue;
+private _opforUniformValue = "opforUniform" call BIS_fnc_getParamValue;
 
 //BIS_fnc_getParam can only return a number, not a string, so we have to convert it into a string here via a switch statement that manually checks and assigns it
 //I wonder if there's a better way to do this...
-
-//debug
-systemchat format ["FNF Titans Framework: Breakpoint 9 — Blufor uniform value: %1", bluforUniformValue];
-hint format ["FNF Titans Framework: Breakpoint 9 — Blufor uniform value: %1", bluforUniformValue];
-diag_log format ["FNF Titans Framework: Breakpoint 9 — Blufor uniform value: %1", bluforUniformValue];
-
-switch (bluforUniformValue) do {
+switch (_bluforUniformValue) do {
 	default {
 		phx_bluforUniform = "UNIFORM_MARPAT_WD";
 		diag_log text "FNF Titans Framework: Blufor Uniform Fallback Initiated!";
@@ -101,7 +37,7 @@ switch (bluforUniformValue) do {
 	};
 };
 
-switch (opforUniformValue) do {
+switch (_opforUniformValue) do {
 	default {
 		phx_opforUniform = "UNIFORM_EMR_SUMMER";
 		diag_log text "FNF Titans Framework: Opfor Uniform Fallback Initiated!";
@@ -131,12 +67,10 @@ switch (opforUniformValue) do {
 //phx_bluforWeapons = "WEAPONS_US";
 //phx_opforWeapons = "WEAPONS_RU";
 
-//debug
-systemchat format ["FNF Titans Framework: Blufor weapons value: %1", bluforWeaponsValue];
-hint format ["FNF Titans Framework: Blufor weapons value: %1", bluforWeaponsValue];
-diag_log format ["FNF Titans Framework: Blufor weapons value: %1", bluforWeaponsValue];
+private _bluforWeaponsValue = "bluforWeapons" call BIS_fnc_getParamValue;
+private _opforWeaponsValue = "opforWeapons" call BIS_fnc_getParamValue;
 
-switch (bluforWeaponsValue) do {
+switch (_bluforWeaponsValue) do {
 	default {
 		phx_bluforWeapons = "WEAPONS_CUP_SMAW_SPOTTING";
 		diag_log text "FNF Titans Framework: Blufor Weapons Fallback Initiated!";
@@ -152,7 +86,7 @@ switch (bluforWeaponsValue) do {
 	};
 };
 
-switch (opforWeaponsValue) do {
+switch (_opforWeaponsValue) do {
 	default {
 		phx_opforWeapons = "WEAPONS_CUP_SMAW_SPOTTING";
 		diag_log text "FNF Titans Framework: Opfor Weapons Fallback Initiated!";
@@ -168,10 +102,11 @@ switch (opforWeaponsValue) do {
 	};
 };
 
-phx_magnifiedOptics = false; //Allow players to grab magnified optics from the gear selector
+phx_magnifiedOptics = true; //Allow players to grab magnified optics from the gear selector
 phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
 //Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
 
+//publicize the variables for client loadout assignment. Not much network traffic because they're small strings and not the entire loadouts
 publicVariable "phx_bluforUniform";
 publicVariable "phx_opforUniform";
 publicVariable "phx_bluforWeapons";
