@@ -74,7 +74,17 @@ call phx_fnc_safety;
 call PHX_fnc_adminDiary;
 call PHX_fnc_terminalClientSetup;
 
-setViewDistance 300;
+//disable vanilla stamina since ace stamina > vanilla (if ace is active it'll override vanilla, but may as well disable vanilla stamina anyways in case we remove ace stamina later for a more relaxed experience)
+player enableStamina false;
+
+//limit view distance for FPS. The standard Titans arena is 225 meters long, but there's buffer for different sizes/if spectators want to zoom out some
+setViewDistance 400;
+//CH View Distance is popular and I think it overrides vanilla view distance, so force it to render cross and cap view distance at 300 like vanilla if client has it loaded
+if (isClass(configFile >> "CfgPatches" >> "CHVD")) then {
+	CHVD_allowNoGrass = false; //false for disabling client's ability to set 'low' terrain detail (which doesn't render grass)
+	CHVD_maxView = 400; //max terrain view distance client can set
+	CHVD_maxObj = 400; //max object view distance client can set
+};
 
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
