@@ -20,18 +20,18 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=135;
+		nextID=147;
 	};
 	class Camera
 	{
-		pos[]={70.629608,50.734097,293.88803};
-		dir[]={-0.049546398,-0.33638796,-0.9404192};
-		up[]={-0.017698202,0.94172353,-0.33592206};
-		aside[]={-0.99861503,0,0.052612469};
+		pos[]={78.676651,74.585075,-83.523628};
+		dir[]={-0.024679707,-0.35193303,0.93569976};
+		up[]={-0.0092792427,0.9360252,0.35181069};
+		aside[]={0.99965239,0,0.0263665};
 	};
 };
 binarizationWanted=0;
-sourceName="fnf_titanstemplate";
+sourceName="FNF_TitansTemplate";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",

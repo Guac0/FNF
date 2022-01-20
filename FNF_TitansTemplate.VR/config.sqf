@@ -103,7 +103,7 @@ switch (_opforWeaponsValue) do {
 	case 3: {
 		phx_opforWeapons = "WEAPONS_CUP_RUSSIA_RANDOM";
 	};
-	case 3: {
+	case 4: {
 		phx_opforWeapons = "WEAPONS_RANDOM";
 	};
 };

@@ -35,7 +35,7 @@ class Params
 		title = "Allow Magnified Optics (for non-marksman)";
 		texts[] = {"No","Yes"};
 		values[] = {0,1};
-		default = 1;
+		default = 0;
 	};
 	class addNVG
 	{

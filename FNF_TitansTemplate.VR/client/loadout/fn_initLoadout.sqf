@@ -53,7 +53,7 @@ phx_loadout_rifle_optic = "optic_DMS";
 //phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
 //vanilla
 //phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco"];
-//phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco"];
+//phx_selector_magOptics = ["optic_mrco", "optic_hamr", "optic_arco"];
 //CUP
 phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco", "cup_optic_aimpoint_5000", "cup_optic_ac11704_black", "cup_optic_mars", "cup_optic_1p63", "cup_optic_kobra", "cup_optic_okp_7"];
 phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco", "optic_erco_blk_f", "cup_optic_acog_ta01b_rmr_black", "cup_optic_g33_hws_blk", "cup_optic_elcan_specterdr_rmr_black", "cup_optic_pechenegscope", "cup_optic_pso_1_ak", "cup_optic_pso_3_open"];
