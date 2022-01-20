@@ -28,7 +28,6 @@ if (pRole == ROLE_MK) then {
   phx_loadout_rifle_weapon = "CUP_arifle_xm8_sharpshooter";
   phx_loadout_rifle_mag = "CUP_30Rnd_556x45_XM8:7";
 };
-/*if (pRole == ROLE_CLS) then {
-  phx_loadout_rifle_weapon = "";
-  phx_loadout_rifle_mag = ":4";
-};*/
+if (pRole == ROLE_CLS) then {
+  phx_loadout_rifle_weapon = "CUP_arifle_XM8_Compact";
+};
