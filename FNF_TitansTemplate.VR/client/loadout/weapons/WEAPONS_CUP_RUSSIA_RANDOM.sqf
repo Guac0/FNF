@@ -16,7 +16,7 @@ if (pRole == ROLE_RAT) then {
   phx_loadout_antitank_weapon = selectRandom ["CUP_launch_RPG26","CUP_launch_RPG18","CUP_launch_RShG2"];
 };
 if (pRole == ROLE_MK) then {
-  phx_loadout_rifle_weapon = selectRandom ["CUP_srifle_SVD_top_rail","CUP_SKS_rail"];
+  phx_loadout_rifle_weapon = selectRandom ["CUP_srifle_SVD_top_rail","CUP_SKS_rail","srifle_GM6_F"];
 };
 if (pRole == ROLE_CLS) then {
   phx_loadout_rifle_weapon = selectRandom ["CUP_arifle_AKS74U","CUP_arifle_OTS14_GROZA_762","CUP_smg_vityaz_vfg","CUP_sgun_Saiga12K","CUP_arifle_SR3M_Vikhr_VFG"];
