@@ -108,9 +108,35 @@ switch (_opforWeaponsValue) do {
 	};
 };
 
-phx_magnifiedOptics = true; //Allow players to grab magnified optics from the gear selector
-phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
+//Allow players to grab magnified optics from the gear selector
+_useMagnifiedOpticsValue = "magnifiedOptics" call BIS_fnc_getParamValue;
+if (_useMagnifiedOpticsValue == 1) then { //1 for true
+	phx_magnifiedOptics = true;
+} else {
+	phx_magnifiedOptics = false;
+};
+
+//Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
 //Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
+_addNvgValue = "addNVG" call BIS_fnc_getParamValue; 
+switch (_addNvgValue) do { //1 for true
+	default {
+		phx_addNVG = false; 
+		diag_log text "FNF Titans Framework: Add NVGs Fallback Initiated!";
+	};
+	case 0: { //false
+		phx_addNVG = false; 
+	};
+	case 1: { //true for all sides
+		phx_addNVG = true; 
+	};
+	case 2: { //blufor
+		phx_addNVG = west; 
+	};
+	case 3: { //east
+		phx_addNVG = east; 
+	};
+};
 
 //publicize the variables for client loadout assignment. Not much network traffic because they're small strings and not the entire loadouts
 publicVariable "phx_bluforUniform";

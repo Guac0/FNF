@@ -30,13 +30,19 @@ class Params
 		values[] = {0,1,2,3,4};
 		default = 3;
 	};
-	class Daytime
+	class magnifiedOptics
 	{
-		title = "Time";
-		texts[] = {"Morning","Day","Evening","Night"};
-		values[] = {6,12,18,0};
-		default = 12;
-		function = "BIS_fnc_paramDaytime";
+		title = "Allow Magnified Optics (for non-marksman)";
+		texts[] = {"No","Yes"};
+		values[] = {0,1};
+		default = 1;
+	};
+	class addNVG
+	{
+		title = "Give NVGs";
+		texts[] = {"No","Yes","BLUFOR Only","OPFOR Only"};
+		values[] = {0,1,2,3};
+		default = 0;
 	};
 	class safeStartTimer
 	{
@@ -44,6 +50,14 @@ class Params
 		texts[] = {"None","15 Seconds","30 Seconds","45 Seconds","60 Seconds","75 Seconds","90 Seconds"};
 		values[] = {1,15,30,45,60,75,90}; //havent checked what value of 0 will do so minimum time is 1
 		default = 45;
+	};
+	class Daytime
+	{
+		title = "Time";
+		texts[] = {"Morning","Day","Evening","Night"};
+		values[] = {6,12,18,0};
+		default = 12;
+		function = "BIS_fnc_paramDaytime";
 	};
 
 	//#define DAYTIMEPERIOD_DEFAULT 12
