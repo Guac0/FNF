@@ -1,12 +1,9 @@
 //this is executed on all machines because defined as preinit 
 //only needs to run on server though so exit if client is the one executing it 
 //TODO preinit only on server?
-if (!isServer) exitWith { diag_log format ["FNF Titans Framework: Exiting config.sqf due to being on client!"]; }; //this throws an error on client but works, TODO fix
+if (!isServer) exitWith { diag_log format ["FNF Titans Framework: Exiting config.sqf due to being on client!"]; };
 
 //Uniforms
-//phx_bluforUniform = "UNIFORM_MARPAT_WD";
-//phx_opforUniform = "UNIFORM_EMR_SUMMER";
-
 private _bluforUniformValue = "bluforUniform" call BIS_fnc_getParamValue;
 private _opforUniformValue = "opforUniform" call BIS_fnc_getParamValue;
 
@@ -64,9 +61,6 @@ switch (_opforUniformValue) do {
 
 
 //Weapons
-//phx_bluforWeapons = "WEAPONS_US";
-//phx_opforWeapons = "WEAPONS_RU";
-
 private _bluforWeaponsValue = "bluforWeapons" call BIS_fnc_getParamValue;
 private _opforWeaponsValue = "opforWeapons" call BIS_fnc_getParamValue;
 

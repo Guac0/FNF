@@ -1,13 +1,5 @@
 class Params
 {
-	class debug
-	{
-		title = "DEBUG STUFF, DO NOT TOUCH";
-		texts[] = {"Failure State","Success State"};
-		//values[] = {Uniform_MARPAT_WD,UNIFORM_MARPAT_D,UNIFORM_OEF_CP};
-		values[] = {0,1};
-		default = 1;
-	};
 	class bluforUniform
 	{
 		title = "BLUFOR Uniform";
