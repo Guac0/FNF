@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=4172;
+		nextID=4176;
 	};
 	class MarkerIDProvider
 	{
@@ -20,18 +20,18 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=121;
+		nextID=135;
 	};
 	class Camera
 	{
-		pos[]={59.186466,11.134104,116.8997};
-		dir[]={-0.19330055,-0.84974784,0.49056202};
-		up[]={-0.31152186,0.52717412,0.79058647};
-		aside[]={0.93041557,1.2014061e-007,0.36661795};
+		pos[]={70.629608,50.734097,293.88803};
+		dir[]={-0.049546398,-0.33638796,-0.9404192};
+		up[]={-0.017698202,0.94172353,-0.33592206};
+		aside[]={-0.99861503,0,0.052612469};
 	};
 };
 binarizationWanted=0;
-sourceName="FNF_TitansTemplate";
+sourceName="fnf_titanstemplate";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -219,7 +219,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=34;
+		items=32;
 		class Item0
 		{
 			dataType="Logic";
@@ -7613,7 +7613,7 @@ class Mission
 			side="West";
 			class Entities
 			{
-				items=7;
+				items=8;
 				class Item0
 				{
 					dataType="Object";
@@ -7775,6 +7775,23 @@ class Mission
 					id=3297;
 					type="B_Soldier_unarmed_F";
 				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={68.028915,5.0014391,13.05};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						description="Player@Blue Team";
+						isPlayable=1;
+					};
+					id=4173;
+					type="B_Soldier_unarmed_F";
+				};
 			};
 			class Attributes
 			{
@@ -7810,7 +7827,7 @@ class Mission
 			side="East";
 			class Entities
 			{
-				items=7;
+				items=8;
 				class Item0
 				{
 					dataType="Object";
@@ -7979,6 +7996,24 @@ class Mission
 					id=3319;
 					type="O_Soldier_unarmed_F";
 				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={51.963707,5.0014391,229.05};
+						angles[]={0,3.1415927,0};
+					};
+					side="East";
+					flags=5;
+					class Attributes
+					{
+						description="Player@Red Team";
+						isPlayable=1;
+					};
+					id=4175;
+					type="O_Soldier_unarmed_F";
+				};
 			};
 			class Attributes
 			{
@@ -8007,46 +8042,6 @@ class Mission
 				};
 				nAttributes=1;
 			};
-		};
-		class Item32
-		{
-			dataType="Layer";
-			name="Shanty Town - Civ populated";
-			class Entities
-			{
-				items=2;
-				class Item0
-				{
-					dataType="Layer";
-					name="Shanty Town";
-					id=3331;
-				};
-				class Item1
-				{
-					dataType="Layer";
-					name="Shanty Town_1";
-					id=3728;
-					atlOffset=-0.067275047;
-				};
-			};
-			id=3330;
-			atlOffset=-0.063694954;
-		};
-		class Item33
-		{
-			dataType="Layer";
-			name="Industrial Zone 01";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Layer";
-					name="IndustrialZone_01";
-					id=4126;
-				};
-			};
-			id=4125;
 		};
 	};
 };
