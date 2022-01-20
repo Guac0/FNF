@@ -6,7 +6,7 @@ phx_adminGUI = [_phx_adminGUI];
 
 //Add pre defined buttons for each admin diary entry to be clicked on
 _background = (phx_adminGUI select 0) ctrlCreate ["IGUIBack", -1];
-_background ctrlSetPosition [0.25,0,0.5,0.83];
+_background ctrlSetPosition [0.25,0,0.5,1.15]; //add 0.08 to last number for each new button
 _background ctrlSetBackgroundColor [0,0,0,0.5];
 _background ctrlCommit 0;
 
@@ -70,3 +70,27 @@ _emnButton ctrlSetPosition [0.275,0.03 + 0.08 * 9,0.45,0.05];
 _emnButton ctrlSetText ("End Mission");
 _emnButton buttonSetAction '"end1" remoteExec ["bis_fnc_endmissionserver", 2];';
 _emnButton ctrlCommit 0;
+
+_weaponsButton = (phx_adminGUI select 0) ctrlCreate ["RscButton", -1]; 
+_weaponsButton ctrlSetPosition [0.275,0.03 + 0.08 * 10,0.45,0.05];
+_weaponsButton ctrlSetText ("Open Weapons GUI for BLUFOR");
+_weaponsButton buttonSetAction 'west call PHX_fnc_weaponListGUI;';
+_weaponsButton ctrlCommit 0;
+
+_weaponsButton = (phx_adminGUI select 0) ctrlCreate ["RscButton", -1]; 
+_weaponsButton ctrlSetPosition [0.275,0.03 + 0.08 * 11,0.45,0.05];
+_weaponsButton ctrlSetText ("Open Weapons GUI for OPFOR");
+_weaponsButton buttonSetAction 'east call PHX_fnc_weaponListGUI;';
+_weaponsButton ctrlCommit 0;
+
+_weaponsButton = (phx_adminGUI select 0) ctrlCreate ["RscButton", -1]; 
+_weaponsButton ctrlSetPosition [0.275,0.03 + 0.08 * 12,0.45,0.05];
+_weaponsButton ctrlSetText ("Open Uniforms GUI for BLUFOR");
+_weaponsButton buttonSetAction 'west call PHX_fnc_uniformListGUI;';
+_weaponsButton ctrlCommit 0;
+
+_weaponsButton = (phx_adminGUI select 0) ctrlCreate ["RscButton", -1]; 
+_weaponsButton ctrlSetPosition [0.275,0.03 + 0.08 * 13,0.45,0.05];
+_weaponsButton ctrlSetText ("Open Uniforms GUI for OPFOR");
+_weaponsButton buttonSetAction 'east call PHX_fnc_uniformListGUI;';
+_weaponsButton ctrlCommit 0;

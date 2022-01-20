@@ -25,6 +25,8 @@ class CfgFunctions {
       class loadoutGUI{};
       class adminDiary{};
       class adminGUI{};
+      class weaponListGUI{};
+      class uniformListGUI{};
     };
     class roleselect {
       file = "client\roleselect";

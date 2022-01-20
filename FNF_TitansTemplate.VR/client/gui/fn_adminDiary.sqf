@@ -17,4 +17,10 @@ if (serverCommandAvailable "#kick") then {
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='6 remoteExec [""PHX_fnc_adminCommandHandeler"", 2];'>Red Team -1</execute>"]];
   
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='""end1"" remoteExec [""bis_fnc_endmissionserver"", 2];'>End Mission</execute>"]];
+
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='west call PHX_fnc_weaponListGUI;'>Open Weapons GUI for BLUFOR</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='east call PHX_fnc_weaponListGUI;'>Open Weapons GUI for OPFOR</execute>"]];
+
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='west call PHX_fnc_uniformListGUI;'>Open Uniform GUI for BLUFOR</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='east call PHX_fnc_uniformListGUI;'>Open Uniform GUI for OPFOR</execute>"]];
 };

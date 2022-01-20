@@ -1,6 +1,6 @@
 author = "YOUR_NAME";
 onLoadName = "MISSION_NAME";
-onLoadMission = "Many thanks to the staff and developers of Friday Night Fights, which made and allowed us to use the FNF Titans template this mission is based on! Go check them out!";
+onLoadMission = "Many thanks to the developers and staff of Friday Night Fights who made and allowed us to use the FNF Titans template that this mission is based on! Go check them out if you're interested in more PVP stuff like this!";
 
 class Header
 {
