@@ -54,9 +54,9 @@ phx_loadout_rifle_optic = "optic_DMS";
 //vanilla
 //phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco"];
 //phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco"];
-//now has some CUP western optics
-phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco", "cup_optic_aimpoint_5000", "cup_optic_ac11704_black", "cup_optic_mars"];
-phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco", "optic_erco_blk_f", "cup_optic_acog_ta01b_rmr_black", "cup_optic_g33_hws_blk", "cup_optic_elcan_specterdr_rmr_black"];
+//CUP
+phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco", "cup_optic_aimpoint_5000", "cup_optic_ac11704_black", "cup_optic_mars", "cup_optic_1p63", "cup_optic_kobra", "cup_optic_okp_7"];
+phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco", "optic_erco_blk_f", "cup_optic_acog_ta01b_rmr_black", "cup_optic_g33_hws_blk", "cup_optic_elcan_specterdr_rmr_black", "cup_optic_pechenegscope", "cup_optic_pso_1_ak", "cup_optic_pso_3_open"];
 
 phx_selector_explosives = [
 phx_loadout_explosives,

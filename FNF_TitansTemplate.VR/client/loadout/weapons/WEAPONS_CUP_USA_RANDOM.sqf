@@ -5,9 +5,9 @@ if (phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = selectRandom ["CUP_arifle_M16A1E1GL","CUP_arifle_M4A1_BUIS_GL","CUP_arifle_Mk17_STD_EGLM"];
   //phx_selector_weapons = [["CUP_arifle_M16A1E1GL","CUP_arifle_M4A1_BUIS_GL","CUP_arifle_Mk17_STD_EGLM"]];
 } else {
-  //phx_loadout_rifle_weapon = selectRandom ["CUP_arifle_M16A1E1","CUP_arifle_M4A3_black","CUP_arifle_Mk17_STD_AFG"];
+  phx_loadout_rifle_weapon = selectRandom ["CUP_arifle_M16A1E1","CUP_arifle_M4A3_black","CUP_arifle_Mk17_STD_AFG"];
   //phx_selector_weapons = [["CUP_arifle_M16A1E1","CUP_arifle_M4A3_black","CUP_arifle_Mk17_STD_AFG"]];
-  phx_loadout_rifle_weapon = selectRandom ["CUP_arifle_M16A1E1","CUP_arifle_M4A3_black"];
+  //phx_loadout_rifle_weapon = selectRandom ["CUP_arifle_M16A1E1","CUP_arifle_M4A3_black"];
   //phx_selector_weapons = [["CUP_arifle_M16A1E1","CUP_arifle_M4A3_black"]];
 };
 if (pRole == ROLE_AR || pRole == ROLE_MG) then {
