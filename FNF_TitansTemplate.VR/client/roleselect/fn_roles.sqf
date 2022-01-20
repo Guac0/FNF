@@ -26,6 +26,11 @@ phx_roleList = [
 	7
 	],
 
+	["Rifleman (LAT)",
+	1,
+	6
+	],
+
 	["Medic 1",
 	1,
 	1
