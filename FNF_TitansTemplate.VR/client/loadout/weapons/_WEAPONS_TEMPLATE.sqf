@@ -7,10 +7,11 @@ phx_loadout_rifle_mag = ":7";
 
 if (phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = "";
-  //phx_selector_weapons = [[""]];
+  //Optional:
+  //phx_loadout_rifle_weapon = selectRandom ["weapon1","weapon2"];
+  //phx_selector_weapons = [["weapon1","weapon2"]]; //Make sure 
 } else {
   phx_loadout_rifle_weapon = "";
-  //phx_selector_weapons = [[""]];
 };
 if (pRole == ROLE_AR) then {
   phx_loadout_rifle_weapon = "";
@@ -31,3 +32,8 @@ if (pRole == ROLE_MK) then {
   phx_loadout_rifle_weapon = "";
   phx_loadout_rifle_mag = ":4";
 };*/
+
+//include this if you use randomized weapons so that it'll detect the mags for you
+//phx_loadout_sidearm_mag = ([phx_loadout_sidearm_weapon] call CBA_fnc_compatibleMagazines select 0) + ":2";
+//phx_loadout_rifle_mag_tracer = ([phx_loadout_rifle_weapon] call CBA_fnc_compatibleMagazines select 1) + ":4";
+//phx_loadout_rifle_mag = ([phx_loadout_rifle_weapon] call CBA_fnc_compatibleMagazines select 0) + ":7";

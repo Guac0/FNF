@@ -21,14 +21,14 @@ class Params
 		title = "BLUFOR Weapons";
 		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM"};
 		values[] = {0,1,2};
-		default = 1;
+		default = 2;
 	};
 	class opforWeapons
 	{
 		title = "OPFOR Weapons";
 		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM"};
 		values[] = {0,1,2};
-		default = 1;
+		default = 2;
 	};
 	class Daytime
 	{
