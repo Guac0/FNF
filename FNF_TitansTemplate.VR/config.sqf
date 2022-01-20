@@ -81,6 +81,9 @@ switch (_bluforWeaponsValue) do {
 	case 3: {
 		phx_bluforWeapons = "WEAPONS_CUP_RUSSIA_RANDOM";
 	};
+	case 4: {
+		phx_bluforWeapons = "WEAPONS_RANDOM";
+	};
 };
 
 switch (_opforWeaponsValue) do {
@@ -99,6 +102,9 @@ switch (_opforWeaponsValue) do {
 	};
 	case 3: {
 		phx_opforWeapons = "WEAPONS_CUP_RUSSIA_RANDOM";
+	};
+	case 3: {
+		phx_opforWeapons = "WEAPONS_RANDOM";
 	};
 };
 

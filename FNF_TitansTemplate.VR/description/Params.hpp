@@ -19,15 +19,15 @@ class Params
 	class bluforWeapons
 	{
 		title = "BLUFOR Weapons";
-		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM"};
-		values[] = {0,1,2,3};
+		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM","RANDOM WEAPONS"};
+		values[] = {0,1,2,3,4};
 		default = 2;
 	};
 	class opforWeapons
 	{
 		title = "OPFOR Weapons";
-		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM"};
-		values[] = {0,1,2,3};
+		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM","RANDOM WEAPONS"};
+		values[] = {0,1,2,3,4};
 		default = 3;
 	};
 	class Daytime
