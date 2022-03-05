@@ -26,6 +26,7 @@ class CfgFunctions {
       class adminDiary{};
       class adminGUI{};
       class weaponListGUI{};
+      class weaponListGUIRHS{};
       class uniformListGUI{};
     };
     class roleselect {

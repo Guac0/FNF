@@ -19,16 +19,16 @@ class Params
 	class bluforWeapons
 	{
 		title = "BLUFOR Weapons";
-		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM","RANDOM WEAPONS"};
-		values[] = {0,1,2,3,4};
-		default = 2;
+		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM","RANDOM WEAPONS","RHS USA","RHS RUSSIA","RHS INDFOR","RHS G36","RHS GUERILLA","RHS M21","RHS SCAR","RHS VHS"};
+		values[] = {0,1,2,3,4,11,12,13,14,15,16,17,18};
+		default = 11;
 	};
 	class opforWeapons
 	{
 		title = "OPFOR Weapons";
-		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM","RANDOM WEAPONS"};
-		values[] = {0,1,2,3,4};
-		default = 3;
+		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM","RANDOM WEAPONS","RHS USA","RHS RUSSIA","RHS INDFOR","RHS G36","RHS GUERILLA","RHS M21","RHS SCAR","RHS VHS"};
+		values[] = {0,1,2,3,4,11,12,13,14,15,16,17,18};
+		default = 11;
 	};
 	class magnifiedOptics
 	{

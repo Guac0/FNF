@@ -84,6 +84,18 @@ _weaponsButton buttonSetAction 'east call PHX_fnc_weaponListGUI;';
 _weaponsButton ctrlCommit 0;
 
 _weaponsButton = (phx_adminGUI select 0) ctrlCreate ["RscButton", -1]; 
+_weaponsButton ctrlSetPosition [0.275,0.03 + 0.08 * 10,0.45,0.05];
+_weaponsButton ctrlSetText ("Open Weapons GUI [RHS] for BLUFOR");
+_weaponsButton buttonSetAction 'west call PHX_fnc_weaponListGUIRHS;';
+_weaponsButton ctrlCommit 0;
+
+_weaponsButton = (phx_adminGUI select 0) ctrlCreate ["RscButton", -1]; 
+_weaponsButton ctrlSetPosition [0.275,0.03 + 0.08 * 11,0.45,0.05];
+_weaponsButton ctrlSetText ("Open Weapons GUI [RHS] for OPFOR");
+_weaponsButton buttonSetAction 'east call PHX_fnc_weaponListGUIRHS;';
+_weaponsButton ctrlCommit 0;
+
+_weaponsButton = (phx_adminGUI select 0) ctrlCreate ["RscButton", -1]; 
 _weaponsButton ctrlSetPosition [0.275,0.03 + 0.08 * 12,0.45,0.05];
 _weaponsButton ctrlSetText ("Open Uniforms GUI for BLUFOR");
 _weaponsButton buttonSetAction 'west call PHX_fnc_uniformListGUI;';

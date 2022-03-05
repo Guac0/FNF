@@ -1,5 +1,5 @@
 //this is executed on all machines because defined as preinit 
-//only needs to run on server though so exit if client is the one executing it 
+//~~only needs to run on server though so exit if client is the one executing it~~
 //TODO preinit only on server?
 if (!isServer) exitWith { diag_log format ["FNF Titans Framework: Exiting config.sqf due to being on client!"]; };
 
@@ -33,7 +33,6 @@ switch (_bluforUniformValue) do {
 		phx_bluforUniform = "UNIFORM_GUERRILLA_VANILLA";
 	};
 };
-
 switch (_opforUniformValue) do {
 	default {
 		phx_opforUniform = "UNIFORM_EMR_SUMMER";
@@ -84,6 +83,30 @@ switch (_bluforWeaponsValue) do {
 	case 4: {
 		phx_bluforWeapons = "WEAPONS_RANDOM";
 	};
+	case 11: {
+		phx_bluforWeapons = "WEAPONS_US";
+	};
+	case 12: {
+		phx_bluforWeapons = "WEAPONS_RU";
+	};
+	case 13: {
+		phx_bluforWeapons = "WEAPONS_IND";
+	};
+	case 14: {
+		phx_bluforWeapons = "WEAPONS_G36";
+	};
+	case 15: {
+		phx_bluforWeapons = "WEAPONS_GUERRILLA";
+	};
+	case 16: {
+		phx_bluforWeapons = "WEAPONS_M21";
+	};
+	case 17: {
+		phx_bluforWeapons = "WEAPONS_SCAR";
+	};
+	case 18: {
+		phx_bluforWeapons = "WEAPONS_VHS";
+	};
 };
 
 switch (_opforWeaponsValue) do {
@@ -105,6 +128,30 @@ switch (_opforWeaponsValue) do {
 	};
 	case 4: {
 		phx_opforWeapons = "WEAPONS_RANDOM";
+	};
+		case 11: {
+		phx_opforWeapons = "WEAPONS_US";
+	};
+	case 12: {
+		phx_opforWeapons = "WEAPONS_RU";
+	};
+	case 13: {
+		phx_opforWeapons = "WEAPONS_IND";
+	};
+	case 14: {
+		phx_opforWeapons = "WEAPONS_G36";
+	};
+	case 15: {
+		phx_opforWeapons = "WEAPONS_GUERRILLA";
+	};
+	case 16: {
+		phx_opforWeapons = "WEAPONS_M21";
+	};
+	case 17: {
+		phx_opforWeapons = "WEAPONS_SCAR";
+	};
+	case 18: {
+		phx_opforWeapons = "WEAPONS_VHS";
 	};
 };
 
