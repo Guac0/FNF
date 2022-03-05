@@ -39,6 +39,11 @@ phx_roleList = [
 	["Medic 2",
 	1,
 	1
+	],
+
+	["Rifleman [Unlimited]",
+	92,
+	8
 	]
 
 ];
