@@ -21,14 +21,14 @@ class Params
 		title = "BLUFOR Weapons";
 		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM","RANDOM WEAPONS","RHS USA","RHS RUSSIA","RHS INDFOR","RHS G36","RHS GUERILLA","RHS M21","RHS SCAR","RHS VHS"};
 		values[] = {0,1,2,3,4,11,12,13,14,15,16,17,18};
-		default = 11;
+		default = 4;
 	};
 	class opforWeapons
 	{
 		title = "OPFOR Weapons";
 		texts[] = {"CUP SMAW SPOTTING RIFLE","CUP XM8","CUP USA RANDOM","CUP RUSSIA RANDOM","RANDOM WEAPONS","RHS USA","RHS RUSSIA","RHS INDFOR","RHS G36","RHS GUERILLA","RHS M21","RHS SCAR","RHS VHS"};
 		values[] = {0,1,2,3,4,11,12,13,14,15,16,17,18};
-		default = 11;
+		default = 4;
 	};
 	class magnifiedOptics
 	{
@@ -53,11 +53,18 @@ class Params
 	};
 	class Daytime
 	{
-		title = "Time";
+		title = "Time of Day";
 		texts[] = {"Morning","Day","Evening","Night"};
 		values[] = {6,12,18,0};
 		default = 12;
 		function = "BIS_fnc_paramDaytime";
+	};
+	class timeLimit
+	{
+		title = "Round Timer";
+		texts[] = {"3 Minutes","4 Minutes","5 Minutes [Goliaths Default]","6 Minutes","7 Minutes [Titans Default]","8 Minutes","9 Minutes","10 Minutes","15 Minutes"};
+		values[] = {180,240,300,360,420,480,540,600,900};
+		default = 300;
 	};
 
 	//#define DAYTIMEPERIOD_DEFAULT 12

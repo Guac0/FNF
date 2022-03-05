@@ -2,8 +2,8 @@
 Checks remaining game time. Warns at 15 minutes and will trigger a client-side timer.
 Activates overtime function when time limit is reached.
 */
-
-private _missionRuntimeSecs = 420 + phx_safetyEndTime;
+private _roundTime = "timeLimit" call BIS_fnc_getParamValue;
+private _missionRuntimeSecs = _roundTime + phx_safetyEndTime;
 phx_alert15 = false;
 phx_alertEnd = false;
 _handle = [{
