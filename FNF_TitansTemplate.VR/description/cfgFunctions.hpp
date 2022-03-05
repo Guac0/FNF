@@ -28,6 +28,9 @@ class CfgFunctions {
       class weaponListGUI{};
       class weaponListGUIRHS{};
       class uniformListGUI{};
+      class uniformListRHS{};
+      class nvgGUI{};
+      class adminOpticsGUI{};
     };
     class roleselect {
       file = "client\roleselect";
