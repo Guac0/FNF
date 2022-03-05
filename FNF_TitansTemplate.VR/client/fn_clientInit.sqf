@@ -1,5 +1,10 @@
 //god this function got messy
 
+//add diary entry for crediting FNF
+//setup diary subject
+player createDiarySubject ["fnfCredit","Mission Template","fnfLogo.paa"];
+player createDiaryRecord ["fnfCredit", ["Titans Framework by FNF Tech Team", "Many thanks to the developers and staff of Friday Night Fights who made and allowed us to use the FNF Titans template that this mission is based on! Go check them out if you're interested in more PVP stuff like this!<br></br><br></br>https://www.fridaynightfight.org/<br></br><br></br><img image='fnfLogo.paa' />"]];
+
 //add PFH to show objective marker when in spectator
 phx_iconHandle = [{
   if (ace_spectator_isset) then {
