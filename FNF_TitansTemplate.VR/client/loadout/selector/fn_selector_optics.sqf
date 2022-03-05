@@ -13,10 +13,29 @@ if (phx_magnifiedOptics) then {
   _action = ["Optic_Selector",getText (configFile >> "cfgWeapons" >> _x >> "displayName"),"",{
     _optic = _this select 2;
     player addPrimaryWeaponItem _optic;
+  },{(_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)}, {}, _x] call ace_interact_menu_fnc_createAction;
+  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
+} forEach phx_selector_optics; //(_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)
+
+//Original
+/*//optics actions
+{
+  _action = ["Optic_Selector",getText (configFile >> "cfgWeapons" >> _x >> "displayName"),"",{
+    _optic = _this select 2;
+    player addPrimaryWeaponItem _optic;
+  },{(_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)}, {}, _x] call ace_interact_menu_fnc_createAction;
+  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
+} forEach phx_selector_optics;*/
+
+//Guac
+/*{
+  _action = ["Optic_Selector",getText (configFile >> "cfgWeapons" >> _x >> "displayName"),"",{
+    _optic = _this select 2;
+    player addPrimaryWeaponItem _optic;
     systemChat "If your optic didn't change, then it is incompatible with your current weapon!";
   },{true}, {}, _x] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
-} forEach phx_selector_optics; //(_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)
+} forEach phx_selector_optics; //(_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)*/
 
 //first two were in forEach, removed now
 //diag_log format ["added %1 to optic select",_x];
