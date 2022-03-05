@@ -1,5 +1,6 @@
 if (serverCommandAvailable "#kick") then {
   PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_Safestart", "Admin", "\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa"];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='""end1"" remoteExec [""bis_fnc_endmissionserver"", 2];'>End Mission</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = -1; publicVariableServer ""f_var_mission_timer""; systemChat ""Ending Safe Start"";'>End Safe Start</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
   if !(f_var_mission_timer <= 15) then {
@@ -20,8 +21,6 @@ if (serverCommandAvailable "#kick") then {
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='5 remoteExec [""PHX_fnc_adminCommandHandeler"", 2];'>Red Team +1</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='6 remoteExec [""PHX_fnc_adminCommandHandeler"", 2];'>Red Team -1</execute>"]];
   
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='""end1"" remoteExec [""bis_fnc_endmissionserver"", 2];'>End Mission</execute>"]];
-
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='west call PHX_fnc_weaponListGUI;'>Open Weapons GUI for BLUFOR</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='east call PHX_fnc_weaponListGUI;'>Open Weapons GUI for OPFOR</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='west call PHX_fnc_weaponListGUIRHS;'>Open Weapons GUI [RHS] for BLUFOR</execute>"]];
