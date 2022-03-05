@@ -29,6 +29,8 @@ if (serverCommandAvailable "#kick") then {
 
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='west call PHX_fnc_uniformListGUI;'>Open Uniform GUI for BLUFOR</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='east call PHX_fnc_uniformListGUI;'>Open Uniform GUI for OPFOR</execute>"]];
+   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='west call PHX_fnc_uniformListGUIRHS;'>Open Uniform GUI [RHS] for BLUFOR</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='east call PHX_fnc_uniformListGUIRHS;'>Open Uniform GUI [RHS] for OPFOR</execute>"]];
 
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='call PHX_fnc_nvgGUI;'>Open NVG GUI</execute>"]];
 

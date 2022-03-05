@@ -28,7 +28,7 @@ class CfgFunctions {
       class weaponListGUI{};
       class weaponListGUIRHS{};
       class uniformListGUI{};
-      class uniformListRHS{};
+      class uniformListGUIRHS{};
       class nvgGUI{};
       class adminOpticsGUI{};
     };

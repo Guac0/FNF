@@ -11,50 +11,92 @@ private _opforUniformValue = "opforUniform" call BIS_fnc_getParamValue;
 //I wonder if there's a better way to do this...
 switch (_bluforUniformValue) do {
 	default {
-		phx_bluforUniform = "UNIFORM_MARPAT_WD";
+		phx_bluforUniform = "UNIFORM_DOMINOS";
 		diag_log text "FNF Titans Framework: Blufor Uniform Fallback Initiated!";
 	};
 	case 0: { //default for the param in role select
-		phx_bluforUniform = "UNIFORM_MARPAT_WD";
-	};
-	case 1: {
-		phx_bluforUniform = "UNIFORM_MARPAT_D";
-	};
-	case 2: {
-		phx_bluforUniform = "UNIFORM_OEF_CP";
-	};
-	case 3: {
 		phx_bluforUniform = "UNIFORM_DOMINOS";
 	};
-	case 4: {
+	case 1: {
 		phx_bluforUniform = "UNIFORM_AAF";
 	};
-	case 5: {
+	case 2: {
 		phx_bluforUniform = "UNIFORM_GUERRILLA_VANILLA";
+	};
+	case 11: {
+		phx_bluforUniform = "UNIFORM_MARPAT_WD";
+	};
+	case 12: {
+		phx_bluforUniform = "UNIFORM_MARPAT_D";
+	};
+	case 13: {
+		phx_bluforUniform = "UNIFORM_OEF_CP";
+	};
+	case 14: {
+		phx_bluforUniform = "UNIFORM_PMC";
+	};
+	case 15: {
+		phx_bluforUniform = "UNIFORM_ION_BK";
+	};
+	case 16: {
+		phx_bluforUniform = "UNIFORM_M93_DESERT";
+	};
+	case 17: {
+		phx_bluforUniform = "UNIFORM_M93_WOODLAND";
+	};
+	case 18: {
+		phx_bluforUniform = "UNIFORM_UCP";
+	};
+	case 19: {
+		phx_bluforUniform = "UNIFORM_ISRAEL_TAN";
+	};
+	case 20: {
+		phx_bluforUniform = "UNIFORM_RANGER";
 	};
 };
 switch (_opforUniformValue) do {
 	default {
-		phx_opforUniform = "UNIFORM_EMR_SUMMER";
+		phx_opforUniform = "UNIFORM_PAPAJHONS";
 		diag_log text "FNF Titans Framework: Opfor Uniform Fallback Initiated!";
 	};
 	case 0: { //default for the param in role select
-		phx_opforUniform = "UNIFORM_EMR_SUMMER";
-	};
-	case 1: {
-		phx_opforUniform = "UNIFORM_EMR_DESERT";
-	};
-	case 2: {
-		phx_opforUniform = "UNIFORM_FLORA";
-	};
-	case 3: {
 		phx_opforUniform = "UNIFORM_PAPAJHONS";
 	};
-	case 4: {
+	case 1: {
 		phx_opforUniform = "UNIFORM_AAF";
 	};
-	case 5: {
+	case 2: {
 		phx_opforUniform = "UNIFORM_GUERRILLA_VANILLA";
+	};
+	case 11: {
+		phx_opforUniform = "UNIFORM_EMR_SUMMER";
+	};
+	case 12: {
+		phx_opforUniform = "UNIFORM_EMR_DESERT";
+	};
+	case 13: {
+		phx_opforUniform = "UNIFORM_FLORA";
+	};
+	case 14: {
+		phx_opforUniform = "UNIFORM_PMC";
+	};
+	case 15: {
+		phx_opforUniform = "UNIFORM_ION_BK";
+	};
+	case 16: {
+		phx_opforUniform = "UNIFORM_MOUNTAIN_FLORA";
+	};
+	case 17: {
+		phx_opforUniform = "UNIFORM_GORKA_GREEN";
+	};
+	case 18: {
+		phx_opforUniform = "UNIFORM_GORKA_BEREZKA";
+	};
+	case 19: {
+		phx_opforUniform = "UNIFORM_SOVIET_CSAT";
+	};
+	case 20: {
+		phx_opforUniform = "UNIFORM_ALTIS_LIZARD";
 	};
 };
 

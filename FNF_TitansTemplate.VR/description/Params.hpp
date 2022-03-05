@@ -3,18 +3,18 @@ class Params
 	class bluforUniform
 	{
 		title = "BLUFOR Uniform";
-		texts[] = {"RHS MARPAT WOODLAND","RHS MARPAT DESERT","RHS OEF CP","TAS DOMINOS","VANILLA AAF","VANILLA GUERILLAS"};
+		texts[] = {"TAS DOMINOS","VANILLA AAF","VANILLA GUERILLAS","RHS MARPAT WOODLAND","RHS MARPAT DESERT","RHS OEF CP","RHS PMC","RHS ION BLACK","RHS M93 DESERT","RHS M93 WOODLAND","RHS UCP","RHS ISRAEL","RHS RANGERS"};
 		//values[] = {Uniform_MARPAT_WD,UNIFORM_MARPAT_D,UNIFORM_OEF_CP};
-		values[] = {0,1,2,3,4,5};
-		default = 3;
+		values[] = {0,1,2,11,12,13,14,15,16,17,18,19,20};
+		default = 0;
 	};
 	class opforUniform
 	{
 		title = "OPFOR Uniform";
-		texts[] = {"RHS EMR SUMMER","RHS EMR DESERT","RHS FLORA","TAS PAPA JHONS","VANILLA AAF","VANILLA GUERILLAS"};
+		texts[] = {"TAS PAPA JHONS","VANILLA AAF","VANILLA GUERILLAS","RHS EMR SUMMER","RHS EMR DESERT","RHS FLORA","RHS PMC","RHS ION BLACK","RHS MOUNTAIN FLORA","RHS GORKA GREEN","RHS GORKA BEREZKA","RHS SOVIET CSAT","RHS ALTIS LIZARD"};
 		//values[] = {UNIFORM_EMR_SUMMER,UNIFORM_EMR_DESERT,UNIFORM_FLORA};
-		values[] = {0,1,2,3,4,5};
-		default = 3;
+		values[] = {0,1,2,11,12,13,14,15,16,17,18,19,20};
+		default = 0;
 	};
 	class bluforWeapons
 	{
