@@ -17,6 +17,17 @@ _opScore = _opScore - (_opScore * 2);
 [west, _bluScore] call BIS_fnc_respawnTickets;
 [east, _opScore] call BIS_fnc_respawnTickets;
 
+//tells players if their sides should be swapped (done server side to avoid desync)
+TAS_currentRoundCount = TAS_currentRoundCount + 1;
+publicVariable "TAS_currentRoundCount";
+/*TAS_incrementedRoundCount = true;
+publicVariable "TAS_incrementedRoundCount";
+[] spawn {
+	sleep 30;
+	TAS_incrementedRoundCount = false;
+	publicVariable "TAS_incrementedRoundCount";
+};*/
+
 //wait for 5 seconds after round end for player comfort
 [{
 	//increase score of winning side
@@ -44,13 +55,15 @@ _opScore = _opScore - (_opScore * 2);
 		deleteVehicle _x; 
 	} forEach ((getpos term1) nearObjects ["GrenadeHand", 500]);
 
-	//switch safe start colours
-	if (markerColor "bluforSafeMarker" == "colorBLUFOR") then {
-		"bluforSafeMarker" setMarkerColor "colorOPFOR";
-		"opforSafeMarker" setMarkerColor "colorBLUFOR";
-	} else {
-		"bluforSafeMarker" setMarkerColor "colorBLUFOR";
-		"opforSafeMarker" setMarkerColor "colorOPFOR";
+	//switch safe start colours if sides have been swapped
+	if (TAS_currentRoundCount == TAS_roundsBeforeSwitchingSides) then {
+		if (markerColor "bluforSafeMarker" == "colorBLUFOR") then {
+			"bluforSafeMarker" setMarkerColor "colorOPFOR";
+			"opforSafeMarker" setMarkerColor "colorBLUFOR";
+		} else {
+			"bluforSafeMarker" setMarkerColor "colorBLUFOR";
+			"opforSafeMarker" setMarkerColor "colorOPFOR";
+		};
 	};
 
 	//call further inits

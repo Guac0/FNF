@@ -66,6 +66,13 @@ class Params
 		values[] = {180,240,300,360,420,480,540,600,900};
 		default = 300;
 	};
+	class roundSwapCount
+	{
+		title = "Rounds Before Switching Sides";
+		texts[] = {"1","2","3","4","5"};
+		values[] = {1,2,3,4,5};
+		default = 3;
+	};
 
 	//#define DAYTIMEPERIOD_DEFAULT 12
 	//#include "\a3\functions_f\Params\paramDaytimePeriod.hpp"

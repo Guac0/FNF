@@ -1,13 +1,28 @@
-//switch "sides" of player
+//sleep 0.5; //TODO check that this executes AFTER server changes the count. temp fix: sleep
+//swap sides of player if it's time (server increments the round count itself)
+if (TAS_currentRoundCount == TAS_roundsBeforeSwitchingSides) then {
+	//switch "sides" of player
+	if (phx_playerSide == west) then
+	{
+		phx_playerSide = east;
+	} else {
+		if (phx_playerSide == east) then
+		{
+			phx_playerSide = west;
+		};
+	};
+	systemChat "Teams have swapped sides!"; //the round score count is a hint and overrrides this, so use systemChat instead
+};
+
+//teleport player back to appropriate start
 if (phx_playerSide == west) then
 {
-	phx_playerSide = east;
-	player setpos ("opforSafeMarker" call BIS_fnc_randomPosTrigger);
+
+	player setpos ("bluforSafeMarker" call BIS_fnc_randomPosTrigger);
 } else {
-	if (phx_playerSide == east) then
+	if (phx_playerSide == east) then //check for this so that spectators and etc don't get teleported
 	{
-		phx_playerSide = west;
-		player setpos ("bluforSafeMarker" call BIS_fnc_randomPosTrigger);
+		player setpos ("opforSafeMarker" call BIS_fnc_randomPosTrigger);
 	};
 };
 
