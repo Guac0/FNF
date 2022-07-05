@@ -136,6 +136,6 @@ phx_ticketPFH = [{
       _sideWon call phx_connectionWin;
     };
   };
-}, 2] call Cba_fnc_addPerFrameHandler;
+}, _pointAddTime] call Cba_fnc_addPerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;
 };
