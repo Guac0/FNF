@@ -1,4 +1,4 @@
-_pointAddTime = 2;
+_pointAddTime = 1;
 
 ["off"] call acex_fortify_fnc_handleChatCommand;
 
