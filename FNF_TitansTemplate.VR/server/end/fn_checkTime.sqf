@@ -15,7 +15,7 @@ _handle = [{
   _missionRuntimeSecs = _this select 0;
 
   if (_missionRuntimeSecs - 60 <= CBA_missionTime && !phx_alert15) then {
-      "5 minutes remaining" remoteExec ["phx_fnc_hintThenClear", 0, false];
+      "1 minute remaining" remoteExec ["phx_fnc_hintThenClear", 0, false];
       phx_alert15 = true;
       missionNamespace setVariable ["phx_timeLeftShown",true,true];
       remoteExec ["phx_fnc_clientTime", 0, true];
