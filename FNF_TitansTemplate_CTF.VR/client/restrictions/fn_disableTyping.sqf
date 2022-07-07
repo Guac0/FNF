@@ -1,7 +1,7 @@
 /*
 Disables typing in chat if player is not staff
 */
-
+/*
 _display = _this;
 
 _ids = [
@@ -37,3 +37,4 @@ if ((getPlayerUID player) in _ids) then {
 } else {
   0 enableChannel false;
 };
+*/
