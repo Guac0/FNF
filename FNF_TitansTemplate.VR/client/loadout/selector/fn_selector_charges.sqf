@@ -39,11 +39,11 @@ phx_selector_fnc_explosives = {
       };
     } forEach _expArr;
 
-    format ["Charge loadout changed to:\n %1", _expArr select 0] call phx_fnc_hintThenClear;
+    hint format ["Charge loadout changed to:\n %1", _expArr select 0];
 
     phx_selector_currentExplosives = _expArr;
   } else {
-    "Missing items" call phx_fnc_hintThenClear;
+    hint "Missing items";
   };
 };
 
