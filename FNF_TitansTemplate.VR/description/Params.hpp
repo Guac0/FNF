@@ -73,6 +73,13 @@ class Params
 		values[] = {1,2,3,4,5};
 		default = 3;
 	};
+	class gameMode
+	{
+		title = "Gamemode";
+		texts[] = {"TDM","CTF","Destroy"};
+		values[] = {"TDM","CTF","Destroy"};
+		default = "TDM";
+	};
 
 	//#define DAYTIMEPERIOD_DEFAULT 12
 	//#include "\a3\functions_f\Params\paramDaytimePeriod.hpp"

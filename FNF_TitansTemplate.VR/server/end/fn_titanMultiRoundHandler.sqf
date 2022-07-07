@@ -66,6 +66,16 @@ publicVariable "TAS_incrementedRoundCount";
 		};
 	};
 
+	if (TAS_gamemode == "CTF") then { //various CTF resets
+		TAS_flagPole setFlagOwner objNull;
+		TAS_flagPole setFlagTexture "\A3\Data_F\Flags\flag_white_CO.paa";
+		//TAS_oldFlagOwner = objNull; //probably isnt needed
+
+		TAS_flagMarker setMarkerTypeLocal "hd_flag";
+		TAS_flagMarker setMarkerPos getPos TAS_flagPole;
+  		//TAS_flagMarker setMarkerColor "Flag";
+	};
+
 	//call further inits
 	missionNamespace setVariable ["newRound", true, true];
 	call PHX_fnc_serverMidInit;
