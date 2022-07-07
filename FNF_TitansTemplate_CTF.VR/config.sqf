@@ -3,6 +3,8 @@
 //TODO preinit only on server?
 if (!isServer) exitWith { diag_log format ["FNF Titans Framework: Exiting config.sqf due to being on client!"]; };
 
+TAS_gamemode = "CTF"; //TDM, CTF, DESTROY
+
 //Uniforms
 private _bluforUniformValue = "bluforUniform" call BIS_fnc_getParamValue;
 private _opforUniformValue = "opforUniform" call BIS_fnc_getParamValue;
@@ -240,6 +242,7 @@ publicVariable "phx_magnifiedOptics";
 publicVariable "phx_addNVG";
 publicVariable "TAS_roundsBeforeSwitchingSides";
 publicVariable "TAS_currentRoundCount";
+publicVariable "TAS_gamemode";
 
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
