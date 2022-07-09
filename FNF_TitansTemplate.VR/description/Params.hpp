@@ -77,8 +77,8 @@ class Params
 	{
 		title = "Gamemode";
 		texts[] = {"TDM","CTF","Destroy"};
-		values[] = {"TDM","CTF","Destroy"};
-		default = "TDM";
+		values[] = {0,1,2};
+		default = 0;
 	};
 
 	//#define DAYTIMEPERIOD_DEFAULT 12

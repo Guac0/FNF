@@ -3,7 +3,13 @@
 //TODO preinit only on server?
 if (!isServer) exitWith { diag_log format ["FNF Titans Framework: Exiting config.sqf due to being on client!"]; };
 
-TAS_gamemode = "gameMode" call BIS_fnc_getParamValue; //TDM, CTF, DESTROY
+//TAS_gamemode = "gameMode" call BIS_fnc_getParamValue; //TDM, CTF, DESTROY
+switch ( "gameMode" call BIS_fnc_getParamValue ) do {
+	case 0: { TAS_gamemode = "TDM"; };
+	case 1: { TAS_gamemode = "CTF"; };
+	case 2: { TAS_gamemode = "DESTROY"; };
+	default { TAS_gamemode = "TDM"; };
+};
 
 //Uniforms
 private _bluforUniformValue = "bluforUniform" call BIS_fnc_getParamValue;
