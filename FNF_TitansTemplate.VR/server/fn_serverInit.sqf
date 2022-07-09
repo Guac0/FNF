@@ -87,7 +87,7 @@ if (TAS_gamemode == "CTF") then {
       };
     };
 
-    if (!(alive _flagHolder) || myUnit getVariable ["ACE_isUnconscious", false];) then { //TODO check if you can take from uncon
+    if (!(alive _flagHolder) || myUnit getVariable ["ACE_isUnconscious", false]) then { //TODO check if you can take from uncon
       "The flag has been dropped!" remoteExec ["hint"];
       _flagMarker setMarkerType "hd_flag";
       //_flagMarker setMarkerColor "ColorBlack";
