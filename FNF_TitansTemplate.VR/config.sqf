@@ -4,7 +4,7 @@
 if (!isServer) exitWith { diag_log format ["FNF Titans Framework: Exiting config.sqf due to being on client!"]; };
 
 //TAS_gamemode = "gameMode" call BIS_fnc_getParamValue; //TDM, CTF, DESTROY
-switch ( "gameMode" call BIS_fnc_getParamValue ) do {
+switch ( "gameMode" call BIS_fnc_getParamValue ) do { //note that you cannot swap gamemode without restarting the mission since it runs during init
 	case 0: { TAS_gamemode = "TDM"; };
 	case 1: { TAS_gamemode = "CTF"; };
 	case 2: { TAS_gamemode = "DESTROY"; };

@@ -58,11 +58,11 @@ if (TAS_gamemode == "CTF") then {
   _handle = [{
     params ["_flagMarker", "_handle"];
     private _flagHolder = flagOwner TAS_flagPole;
-    if (phx_gameEnd) exitWith {/*[_handle] call CBA_fnc_removePerFrameHandler*/};
+    if (phx_gameEnd) exitWith {}; //don't check flag owner while game is ending
 
     if ( _flagHolder isEqualTo objNull ) exitWith { TAS_oldFlagOwner = _flagHolder; }; //skip if on flagpole (resets to flagpole are handled elsewhere or not done at all)
 
-    if (TAS_oldFlagOwner != _flagHolder) then {  //flag has been taken
+    if (TAS_oldFlagOwner != _flagHolder) then {  //if current flag owner does not match old flag holder, then flag has been taken
       switch (side _flagHolder) do {
         case west: {
           //private _ownerSide = west;
@@ -87,7 +87,7 @@ if (TAS_gamemode == "CTF") then {
       };
     };
 
-    if (!(alive _flagHolder) || myUnit getVariable ["ACE_isUnconscious", false]) then { //TODO check if you can take from uncon
+    if (!(alive _flagHolder) || myUnit getVariable ["ACE_isUnconscious", false]) then { //TODO check if you can take from uncon. Also, doesn't work.
       "The flag has been dropped!" remoteExec ["hint"];
       _flagMarker setMarkerType "hd_flag";
       //_flagMarker setMarkerColor "ColorBlack";
