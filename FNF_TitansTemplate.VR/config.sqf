@@ -238,6 +238,7 @@ switch (_addNvgValue) do { //1 for true
 //determines number of rounds before sides are swapped
 TAS_roundsBeforeSwitchingSides = "roundSwapCount" call BIS_fnc_getParamValue;
 TAS_currentRoundCount = 0;
+TAS_doSwitchSides = false;
 
 //publicize the variables for client loadout assignment. Not much network traffic because they're small strings and not the entire loadouts
 publicVariable "phx_bluforUniform";
@@ -246,8 +247,9 @@ publicVariable "phx_bluforWeapons";
 publicVariable "phx_opforWeapons";
 publicVariable "phx_magnifiedOptics";
 publicVariable "phx_addNVG";
-publicVariable "TAS_roundsBeforeSwitchingSides";
-publicVariable "TAS_currentRoundCount";
+//publicVariable "TAS_roundsBeforeSwitchingSides"; //stays server side
+//publicVariable "TAS_currentRoundCount"; //stays server side
+publicVariable "TAS_doSwitchSides";
 publicVariable "TAS_gamemode";
 
 /*

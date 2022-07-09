@@ -19,7 +19,12 @@ _opScore = _opScore - (_opScore * 2);
 
 //tells players if their sides should be swapped (done server side to avoid desync)
 TAS_currentRoundCount = TAS_currentRoundCount + 1;
-publicVariable "TAS_currentRoundCount";
+//publicVariable "TAS_currentRoundCount";
+if (TAS_currentRoundCount == TAS_roundsBeforeSwitchingSides) then {
+	TAS_currentRoundCount = 0;
+	TAS_doSwitchSides = true;			//set to false client-side
+	publicVariable "TAS_doSwitchSides";
+};
 /*TAS_incrementedRoundCount = true;
 publicVariable "TAS_incrementedRoundCount";
 [] spawn {

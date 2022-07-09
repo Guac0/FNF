@@ -1,6 +1,6 @@
 //sleep 0.5; //TODO check that this executes AFTER server changes the count. temp fix: sleep
 //swap sides of player if it's time (server increments the round count itself)
-if (TAS_currentRoundCount == TAS_roundsBeforeSwitchingSides) then {
+if (TAS_doSwitchSides) then {
 	//switch "sides" of player
 	if (phx_playerSide == west) then
 	{
@@ -12,6 +12,7 @@ if (TAS_currentRoundCount == TAS_roundsBeforeSwitchingSides) then {
 		};
 	};
 	systemChat "Teams have swapped sides!"; //the round score count is a hint and overrrides this, so use systemChat instead
+	TAS_doSwitchSides = false; //only does it client side
 };
 
 //teleport player back to appropriate start

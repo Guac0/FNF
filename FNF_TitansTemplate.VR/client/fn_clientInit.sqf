@@ -58,6 +58,7 @@ phx_loadoutGUI = [displayNull];
 
 //if player joined in progress and sides are swapped, tp to new side
 if (didJIP) then {
+	TAS_doSwitchSides = false; //to avoid any wacky desync since server only sets this to true and clients set it to false AFTER swapping
 	if (markerColor "bluforSafeMarker" == "colorOPFOR") then	{
 		if (phx_playerSide == west) then
 		{
