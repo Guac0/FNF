@@ -33,7 +33,7 @@ publicVariable "TAS_incrementedRoundCount";
 	publicVariable "TAS_incrementedRoundCount";
 };*/
 
-//wait for 5 seconds after round end for player comfort
+//wait for 3 seconds after round end for player comfort
 [{
 	//increase score of winning side
 	switch (_this select 0) do {
@@ -85,4 +85,4 @@ publicVariable "TAS_incrementedRoundCount";
 	missionNamespace setVariable ["newRound", true, true];
 	call PHX_fnc_serverMidInit;
 
-}, [_sideWon], 5] call CBA_fnc_waitAndExecute;
+}, [_sideWon], 3] call CBA_fnc_waitAndExecute;

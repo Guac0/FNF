@@ -30,7 +30,7 @@ _handle = [{
   if (_missionRuntimeSecs <= CBA_missionTime && !phx_alertEnd) then {
       phx_alertEnd = true;
       missionNamespace setVariable ["phx_overTime",true,true];
-       diag_log "overtime";
+      diag_log "overtime";
 
       [] spawn phx_fnc_overTimeEnd;
       [_handle] call CBA_fnc_removePerFrameHandler
