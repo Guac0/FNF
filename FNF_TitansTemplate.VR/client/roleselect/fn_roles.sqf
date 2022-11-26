@@ -41,8 +41,18 @@ phx_roleList = [
 	1
 	],
 
+	["Breacher 1",
+	1,
+	15
+	],
+
+	["Breacher 2",
+	1,
+	15
+	],
+
 	["Rifleman [Unlimited]",
-	92,
+	90,
 	8
 	]
 

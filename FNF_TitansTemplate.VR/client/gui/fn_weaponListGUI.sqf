@@ -50,6 +50,13 @@ if (_side == west) then {
 	_button5 ctrlSetText ("RANDOM WEAPONS");
 	_button5 buttonSetAction 'phx_bluforWeapons = "WEAPONS_RANDOM"; publicVariable "phx_bluforWeapons";';
 	_button5 ctrlCommit 0;
+
+	//RANDOM WEAPONS
+	_button5 = (phx_weaponListGUI select 0) ctrlCreate ["RscButton", -1]; 
+	_button5 ctrlSetPosition [0.275,0.03 + 0.08 * 4,0.45,0.05];
+	_button5 ctrlSetText ("UNSC WEAPONS");
+	_button5 buttonSetAction 'phx_bluforWeapons = "WEAPONS_UNSC"; publicVariable "phx_bluforWeapons";';
+	_button5 ctrlCommit 0;
 } else {
 	//CUP SMAW SPOTTING
 	_button1 = (phx_weaponListGUI select 0) ctrlCreate ["RscButton", -1]; 
@@ -84,6 +91,13 @@ if (_side == west) then {
 	_button5 ctrlSetPosition [0.275,0.03 + 0.08 * 4,0.45,0.05];
 	_button5 ctrlSetText ("RANDOM WEAPONS");
 	_button5 buttonSetAction 'phx_opforWeapons = "WEAPONS_RANDOM"; publicVariable "phx_opforWeapons";';
+	_button5 ctrlCommit 0;
+
+	//RANDOM WEAPONS
+	_button5 = (phx_weaponListGUI select 0) ctrlCreate ["RscButton", -1]; 
+	_button5 ctrlSetPosition [0.275,0.03 + 0.08 * 4,0.45,0.05];
+	_button5 ctrlSetText ("UNSC WEAPONS");
+	_button5 buttonSetAction 'phx_opforWeapons = "WEAPONS_UNSC"; publicVariable "phx_opforWeapons";';
 	_button5 ctrlCommit 0;
 };
 

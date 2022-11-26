@@ -61,6 +61,15 @@ switch (_bluforUniformValue) do {
 	case 20: {
 		phx_bluforUniform = "UNIFORM_RANGER";
 	};
+	case 31: {
+		phx_bluforUniform = "UNIFORM_UNSC";
+	};
+	case 32: {
+		phx_bluforUniform = "UNIFORM_URF";
+	};
+	case 33: {
+		phx_bluforUniform = "UNIFORM_BATTLEJUMPER";
+	};
 };
 switch (_opforUniformValue) do {
 	default {
@@ -105,6 +114,15 @@ switch (_opforUniformValue) do {
 	};
 	case 20: {
 		phx_opforUniform = "UNIFORM_ALTIS_LIZARD";
+	};
+	case 31: {
+		phx_opforUniform = "UNIFORM_UNSC";
+	};
+	case 32: {
+		phx_opforUniform = "UNIFORM_URF";
+	};
+	case 33: {
+		phx_opforUniform = "UNIFORM_BATTLEJUMPER";
 	};
 };
 
@@ -157,6 +175,9 @@ switch (_bluforWeaponsValue) do {
 	case 18: {
 		phx_bluforWeapons = "WEAPONS_VHS";
 	};
+	case 31: {
+		phx_bluforWeapons = "WEAPONS_UNSC";
+	};
 };
 
 switch (_opforWeaponsValue) do {
@@ -202,6 +223,9 @@ switch (_opforWeaponsValue) do {
 	};
 	case 18: {
 		phx_opforWeapons = "WEAPONS_VHS";
+	};
+	case 31: {
+		phx_opforWeapons = "WEAPONS_UNSC";
 	};
 };
 
