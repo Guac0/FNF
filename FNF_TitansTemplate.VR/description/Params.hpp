@@ -64,7 +64,7 @@ class Params
 		title = "Round Timer";
 		texts[] = {"3 Minutes","4 Minutes","5 Minutes [Goliaths Default]","6 Minutes","7 Minutes [Titans Default]","8 Minutes","9 Minutes","10 Minutes","15 Minutes"};
 		values[] = {180,240,300,360,420,480,540,600,900};
-		default = 300;
+		default = 180;
 	};
 	class roundSwapCount
 	{

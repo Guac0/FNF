@@ -107,7 +107,7 @@ if (TAS_gamemode == "CTF") then {
       east call PHX_fnc_titanMultiRoundHandler;
     };
 
-    _flagMarker setMarkerPos getPos _flagHolder; //remains at starting point if still on pole. TODO reset position.
+    _flagMarker setMarkerPos getPos _flagHolder; //remains at starting point if still on pole.
 
     TAS_oldFlagOwner = _flagHolder;
   }, 0.25, TAS_flagMarker] call CBA_fnc_addPerFrameHandler;
