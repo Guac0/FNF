@@ -69,8 +69,8 @@ class Params
 	class roundSwapCount
 	{
 		title = "Rounds Before Switching Sides";
-		texts[] = {"1","2","3","4","5"};
-		values[] = {1,2,3,4,5};
+		texts[] = {"1","2","3","4","5","Never (999)"};
+		values[] = {1,2,3,4,5,999};
 		default = 3;
 	};
 	class gameMode
