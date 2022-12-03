@@ -58,15 +58,18 @@ phx_serverTerminalAction = {
   switch (_side) do {
     case east: {
       _mark setMarkerText format ["Terminal %1 - Red Team", _termNum];
-      _mark setMarkerType "Faction_OPFOR_EP1";
+      //_mark setMarkerType "Faction_OPFOR_EP1";
+      _mark setMarkerType "o_unknown";
     };
     case west: {
       _mark setMarkerText format ["Terminal %1 - Blue Team", _termNum];
-      _mark setMarkerType "Faction_BLUFOR_EP1";
+      //_mark setMarkerType "Faction_BLUFOR_EP1";
+      _mark setMarkerType "b_unknown";
     };
     case independent: {
       _mark setMarkerText format ["Terminal %1 - INDFOR", _termNum];
-      _mark setMarkerType "Faction_INDFOR_EP1";
+      //_mark setMarkerType "Faction_INDFOR_EP1"; 
+      _mark setMarkerType "n_unknown";
     };
   };
 
