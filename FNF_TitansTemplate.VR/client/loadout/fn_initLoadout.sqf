@@ -47,19 +47,36 @@ phx_loadout_blood_2 = "ACE_bloodIV_250:4";
 //Range
 phx_loadout_binocular = "Binocular";
 phx_loadout_vector = "ACE_VectorDay";
+
+//////////////////////////////////////////
+//////////////////OPTICS//////////////////
+//////////////////////////////////////////
+//NOTE: optics are case sensitive. don't trust ace arsenal as its usually lowercase, check it against a copyToClipboard of CBA_fnc_compatibleItems or an actual config entry
+//marksman, only 1
 phx_loadout_rifle_optic = "optic_DMS";
-//rhs
-//phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
-//phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
+
 //vanilla
-phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco"];
-phx_selector_magOptics = ["optic_mrco", "optic_hamr", "optic_arco"];
+phx_selector_optics = ["optic_Holosight", "optic_Aco_grn", "optic_Aco"];
+phx_selector_magOptics = ["optic_MRCO", "optic_Hamr", "optic_Arco"];
+
 //CUP
-//phx_selector_optics = ["optic_holosight", "optic_aco_grn", "optic_aco", "cup_optic_aimpoint_5000", "cup_optic_ac11704_black", "cup_optic_mars", "cup_optic_1p63", "cup_optic_kobra", "cup_optic_okp_7"];
-//phx_selector_magOptics = ["optic_mrco","optic_hamr","optic_arco", "optic_erco_blk_f", "cup_optic_acog_ta01b_rmr_black", "cup_optic_g33_hws_blk", "cup_optic_elcan_specterdr_rmr_black", "cup_optic_pechenegscope", "cup_optic_pso_1_ak", "cup_optic_pso_3_open"];
+if (isClass(configFile >> "CfgPatches" >> "CUP_BaseConfigs")) then {
+  phx_selector_optics append ["CUP_optic_Aimpoint_5000", "CUP_optic_AC11704_Black", "CCUP_optic_MARS", "CUP_optic_1p63", "CUP_optic_Kobra", "CUP_optic_OKP_7"];
+  phx_selector_magOptics append ["CUP_optic_ACOG_TA01B_RMR_Black", "CUP_optic_G33_HWS_BLK", "CUP_optic_Elcan_SpecterDR_RMR_black", "CUP_optic_PechenegScope", "CUP_optic_PSO_1_AK", "CUP_optic_PSO_3_open"];
+};
+
+//RHS
+if (isClass(configFile >> "CfgPatches" >> "rhsusf_weapons")) then { //note: only checks for usaf because im lazy
+  phx_selector_optics append ["rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
+  phx_selector_magOptics append ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
+};
+
+//OPTRE
 if (isClass(configFile >> "CfgPatches" >> "OPTRE_Core")) then {
   phx_selector_optics append ["optre_br55hb_scope","optre_br45_scope","optre_m392_scope","optre_m393_scope","optre_m393_acog","optre_m7_sight","optre_m393_eotech"];
 };
+
+
 
 phx_selector_explosives = [
 phx_loadout_explosives,
