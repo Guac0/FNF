@@ -1,7 +1,7 @@
 /*
 Kills the player if they are outside of the mission boundary for too long.
 */
-
+/*
 phx_zoneTimer = 15;
 
 phx_zonePFH = [{
@@ -18,3 +18,4 @@ phx_zonePFH = [{
     };
   };
 }, 1, []] call CBA_fnc_addPerFrameHandler;
+*/
