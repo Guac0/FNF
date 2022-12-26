@@ -259,6 +259,9 @@ switch (_addNvgValue) do { //1 for true
 	};
 };
 
+//determines time between point adds for terminal mode
+TAS_pointAddTime = "pointAddTime" call BIS_fnc_getParamValue; //Note: only updates visually every second, so faster values will result in skipping numbers
+
 //determines number of rounds before sides are swapped
 TAS_roundsBeforeSwitchingSides = "roundSwapCount" call BIS_fnc_getParamValue;
 TAS_currentRoundCount = 0;
@@ -275,6 +278,8 @@ publicVariable "phx_addNVG";
 //publicVariable "TAS_currentRoundCount"; //stays server side
 publicVariable "TAS_doSwitchSides";
 publicVariable "TAS_gamemode";
+
+//publicVariable "TAS_pointAddTime"; //stays server side
 
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========

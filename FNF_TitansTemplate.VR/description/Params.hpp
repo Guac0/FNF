@@ -80,6 +80,13 @@ class Params
 		values[] = {0,1,2};
 		default = 0;
 	};
+	class pointAddTime
+	{
+		title = "[Terminal Gamemode] Time Between Point Scores";
+		texts[] = {"0.25","0.33","0.5","0.67","0.75","1","1.25","1.33","1.5","1.67","1.75","2"}; //Note: only updates visually every second, so faster values will result in skipping numbers
+		values[] = {0.25,0.33,0.5,0.67,0.75,1,1.25,1.33,1.5,1.67,1.75,2};
+		default = 1;
+	};
 
 	//#define DAYTIMEPERIOD_DEFAULT 12
 	//#include "\a3\functions_f\Params\paramDaytimePeriod.hpp"

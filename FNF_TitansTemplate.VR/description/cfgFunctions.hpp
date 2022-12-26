@@ -31,6 +31,7 @@ class CfgFunctions {
       class uniformListGUIRHS{};
       class nvgGUI{};
       class adminOpticsGUI{};
+      class pointAddTimeGUI{};
     };
     class roleselect {
       file = "client\roleselect";

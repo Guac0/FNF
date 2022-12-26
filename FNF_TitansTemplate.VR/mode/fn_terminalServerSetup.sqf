@@ -1,4 +1,3 @@
-_pointAddTime = 1;
 
 ["off"] call acex_fortify_fnc_handleChatCommand;
 
@@ -108,37 +107,37 @@ _sideWon = sideEmpty;
 
 //if server has a PFH for tickets waiting do not create new PFH to prevent double points
 if !(phx_terminalScoreWaiting) then {
-phx_terminalScoreWaiting = true;
-[{phx_term1HackingSide != sideEmpty}, {
-  phx_terminalScoreWaiting = false;
-phx_ticketPFH = [{
-  if (!(missionNamespace getVariable ["phx_gameEnd",false])) then {
-    [phx_term1HackingSide, 1] call BIS_fnc_respawnTickets;
-    [phx_term2HackingSide, 1] call BIS_fnc_respawnTickets;
-    [phx_term3HackingSide, 1] call BIS_fnc_respawnTickets;
+  phx_terminalScoreWaiting = true;
+  [{phx_term1HackingSide != sideEmpty}, {
+    phx_terminalScoreWaiting = false;
+    phx_ticketPFH = [{
+      if (!(missionNamespace getVariable ["phx_gameEnd",false])) then {
+        [phx_term1HackingSide, 1] call BIS_fnc_respawnTickets; //adds 1 to the respawn ticket counter. Note: only updates visually every second, so faster values will result in skipping numbers
+        [phx_term2HackingSide, 1] call BIS_fnc_respawnTickets;
+        [phx_term3HackingSide, 1] call BIS_fnc_respawnTickets;
 
-    _sideWon = [[west,[west] call BIS_fnc_respawnTickets], [east,[east] call BIS_fnc_respawnTickets], [independent,[independent] call BIS_fnc_respawnTickets]] select {(_x select 1) >= 100};
-    _sideWonCount = count _sideWon;
-    _winCall = (_sideWonCount >= 1);
-    switch (true) do {
-      case (_sideWonCount == 1): {_sideWon = (_sideWon select 0) select 0};
-      case (_sideWonCount > 1): {
-        _points = 0;
-        _largeSide = sideEmpty;
-        {
-          _sidePoints = _x select 1;
-          if (_sidePoints > _points) then {
-            _points = _sidePoints;
-            _largeSide = _x select 0;
+        _sideWon = [[west,[west] call BIS_fnc_respawnTickets], [east,[east] call BIS_fnc_respawnTickets], [independent,[independent] call BIS_fnc_respawnTickets]] select {(_x select 1) >= 100};
+        _sideWonCount = count _sideWon;
+        _winCall = (_sideWonCount >= 1);
+        switch (true) do {
+          case (_sideWonCount == 1): {_sideWon = (_sideWon select 0) select 0};
+          case (_sideWonCount > 1): {
+            _points = 0;
+            _largeSide = sideEmpty;
+            {
+              _sidePoints = _x select 1;
+              if (_sidePoints > _points) then {
+                _points = _sidePoints;
+                _largeSide = _x select 0;
+              };
+            } forEach _sideWon;
+            _sideWon = _largeSide;
           };
-        } forEach _sideWon;
-        _sideWon = _largeSide;
+        };
+        if (_winCall) then {
+          _sideWon call phx_connectionWin;
+        };
       };
-    };
-    if (_winCall) then {
-      _sideWon call phx_connectionWin;
-    };
-  };
-}, 1] call Cba_fnc_addPerFrameHandler;
-}] call CBA_fnc_waitUntilAndExecute;
+    }, TAS_pointAddTime] call Cba_fnc_addPerFrameHandler; //TAS_pointAddTime in config.sqf/mission parameters
+  }] call CBA_fnc_waitUntilAndExecute;
 };

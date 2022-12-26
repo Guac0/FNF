@@ -36,4 +36,6 @@ if (serverCommandAvailable "#kick") then {
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='east call PHX_fnc_adminOpticsGUI;'>Open Admin Optics GUI</execute>"]];
 
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='call PHX_fnc_swapSides;'>Swap sides on next round start</execute>"]];
+
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='call PHX_fnc_pointAddTimeGUI;'>Open Terminal Point Add Time GUI</execute>"]];
 };
