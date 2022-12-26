@@ -76,7 +76,7 @@ class Params
 	class gameMode
 	{
 		title = "Gamemode";
-		texts[] = {"TDM","CTF","Destroy"};
+		texts[] = {"Terminal","CTF","Destroy"};
 		values[] = {0,1,2};
 		default = 0;
 	};
