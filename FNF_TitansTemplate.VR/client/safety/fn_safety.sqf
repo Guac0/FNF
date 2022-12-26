@@ -16,6 +16,31 @@ phx_loadoutAction = player addAction
 	"",
 	"_originalTarget == _this"
 ];
+TAS_tpSafeAction = player addAction
+[
+	"TP into Safe Start area",
+	{
+		private _debugMsg = format ["fn_safety: teleported player %3 with phx_playerSide of %1 and actual side of %2 to their start zone",phx_playerSide, side player, name player];
+    _debugMsg remoteExec ["diag_log",2];
+    diag_log _debugMsg;
+    if (phx_playerSide == west) then
+    {
+      player setpos ("bluforSafeMarker" call BIS_fnc_randomPosTrigger);
+    } else {
+      if (phx_playerSide == east) then //check for this so that spectators and etc don't get teleported
+      {
+        player setpos ("opforSafeMarker" call BIS_fnc_randomPosTrigger);
+      };
+    };
+	},
+	nil,
+	1,
+	true,
+	false,
+	"",
+	"_originalTarget == _this"
+];
+
 
 phx_safeStartNoFire = nil;
 
@@ -60,6 +85,7 @@ phx_acePlacing = [{
 [{!phx_safetyEnabled}, {
   [phx_acePlacing] call CBA_fnc_removePerFrameHandler;
   player removeAction phx_loadoutAction;
+  player removeAction TAS_tpSafeAction;
   player removeAction phx_safeStartNoFire;
   ace_advanced_throwing_enabled = true;
   player allowDamage true;

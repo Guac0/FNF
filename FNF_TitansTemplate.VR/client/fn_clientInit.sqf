@@ -22,6 +22,8 @@ if !(call phx_fnc_clientCanPlay) exitWith {
 	if (didJIP && typeOf player != "ace_spectator_virtual") then {
 		//if player is actual player and not spectator send player to debug zone
 		player setPos [-1000, -1000, 0];
+		systemChat "Sent to debug land for JIP!";
+		diag_log format ["fn_clientInit: teleported jip player to debug land at [-1000, -1000, 0]"];
 		//wait until safe start is started
 		[{phx_safetyEnabled},{
 			//remove spectator
@@ -31,7 +33,9 @@ if !(call phx_fnc_clientCanPlay) exitWith {
 			player removeEventHandler ["Killed", 0];
 
 			//if sides are not currently swapped teleport player back to gamezone
+			//TODO side swapping logic is probably messing up here
 			if (markerColor "opforSafeMarker" == "colorOPFOR") then	{
+				diag_log format ["fn_clientInit: sorting out side swapping logic for jip player with phx_playerSide of %1 and actual side of %2",phx_playerSide, side player];
 				if (phx_playerSide == west) then
 				{
 					player setpos ("bluforSafeMarker" call BIS_fnc_randomPosTrigger)
@@ -41,7 +45,7 @@ if !(call phx_fnc_clientCanPlay) exitWith {
 						player setpos ("opforSafeMarker" call BIS_fnc_randomPosTrigger)
 					};
 				};
-			};
+			} else { diag_log format ["fn_clientInit: NOT sorting out side swapping logic for jip player with phx_playerSide of %1 and actual side of %2",phx_playerSide, side player];};
 			call PHX_fnc_clientInit;
 		}] call CBA_fnc_waitUntilAndExecute;
 	};
