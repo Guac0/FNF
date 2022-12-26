@@ -3,12 +3,12 @@
 //TODO preinit only on server?
 if (!isServer) exitWith { diag_log format ["FNF Titans Framework: Exiting config.sqf due to being on client!"]; };
 
-//TAS_gamemode = "gameMode" call BIS_fnc_getParamValue; //TDM, CTF, DESTROY
+//TAS_gamemode = "gameMode" call BIS_fnc_getParamValue; //Terminal, CTF, Destroy
 switch ( "gameMode" call BIS_fnc_getParamValue ) do { //note that you cannot swap gamemode without restarting the mission since it runs during init
-	case 0: { TAS_gamemode = "TDM"; };
+	case 0: { TAS_gamemode = "Terminal"; };
 	case 1: { TAS_gamemode = "CTF"; };
-	case 2: { TAS_gamemode = "DESTROY"; };
-	default { TAS_gamemode = "TDM"; };
+	case 2: { TAS_gamemode = "Destroy"; };
+	default { TAS_gamemode = "Terminal"; };
 };
 
 //Uniforms

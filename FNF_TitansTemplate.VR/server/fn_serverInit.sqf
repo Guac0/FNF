@@ -36,7 +36,7 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
 
 [{!isNil "phx_safetyEndTime"}, {call phx_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 
-if (TAS_gamemode == "TDM") then {
+if (TAS_gamemode == "Terminal") then {
   call PHX_fnc_terminalServerSetup;
 };
 
