@@ -96,6 +96,7 @@ class CfgFunctions {
     };
     class mode {
       file = "mode";
+      class swapSides{};
       class terminalClientSetup{};
       class terminalServerSetup{};
       class newRoundClient{};

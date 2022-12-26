@@ -130,3 +130,9 @@ _weaponsButton ctrlSetPosition [0.275,0.03 - 0.33 + 0.08 * 19,0.45,0.05];
 _weaponsButton ctrlSetText ("Open Magnified Optics GUI");
 _weaponsButton buttonSetAction 'east call PHX_fnc_adminOpticsGUI;';
 _weaponsButton ctrlCommit 0;
+
+_weaponsButton = (phx_adminGUI select 0) ctrlCreate ["RscButton", -1]; 
+_weaponsButton ctrlSetPosition [0.275,0.03 - 0.33 + 0.08 * 20,0.45,0.05];
+_weaponsButton ctrlSetText ("Swap sides on next round start");
+_weaponsButton buttonSetAction 'call PHX_fnc_swapSides;';
+_weaponsButton ctrlCommit 0;
