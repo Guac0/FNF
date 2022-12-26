@@ -28,6 +28,7 @@ phx_loadout_thermite = "ACE_M14:2";
 phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_cableTie = "ACE_CableTie:2";
 phx_loadout_nvg = "NVGoggles_OPFOR";
+//default to vanilla UGL ammo, swap to modded ammo in the weapons preset. Automatic ammo detection for UGL is not possible afaik due to different mods configuring muzzle names differently
 //phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
 phx_loadout_uglAmmoEast = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"]; //rhs opfor guns take special GL ammo and dont accept vanilla
 phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
@@ -66,7 +67,7 @@ if (isClass(configFile >> "CfgPatches" >> "CUP_BaseConfigs")) then {
 };
 
 //RHS
-if (isClass(configFile >> "CfgPatches" >> "rhsusf_weapons")) then { //note: only checks for usaf because im lazy
+if (isClass(configFile >> "CfgPatches" >> "rhsusf_weapons")) then { //note: only checks for usaf because im lazy. TODO fix caps
   phx_selector_optics append ["rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
   phx_selector_magOptics append ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
 };

@@ -36,3 +36,10 @@ if (pRole == ROLE_P) then {
   phx_loadout_rifle_weapon = "rhs_weap_aks74un";
   phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:4";
 };
+
+switch (side player) do {
+  case west: {phx_loadout_uglAmmoWest = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];};
+  case independent: {phx_loadout_uglAmmoIndependent = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];};
+  case east: {phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];};
+  default {};
+};

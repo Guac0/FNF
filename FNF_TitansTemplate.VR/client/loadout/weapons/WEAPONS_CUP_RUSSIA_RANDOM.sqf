@@ -25,3 +25,10 @@ if (pRole == ROLE_CLS) then {
 phx_loadout_sidearm_mag = ([phx_loadout_sidearm_weapon] call CBA_fnc_compatibleMagazines select 0) + ":2";
 phx_loadout_rifle_mag_tracer = ([phx_loadout_rifle_weapon] call CBA_fnc_compatibleMagazines select 1) + ":4";
 phx_loadout_rifle_mag = ([phx_loadout_rifle_weapon] call CBA_fnc_compatibleMagazines select 0) + ":7";
+
+switch (side player) do {
+  case west: {phx_loadout_uglAmmoWest = ["CUP_1Rnd_HE_GP25_M:6", "CUP_1Rnd_SMOKE_GP25_M:3", "CUP_IlumFlareWhite_GP25_M:3"];};
+  case independent: {phx_loadout_uglAmmoIndependent = ["CUP_1Rnd_HE_GP25_M:6", "CUP_1Rnd_SMOKE_GP25_M:3", "CUP_IlumFlareWhite_GP25_M:3"];};
+  case east: {phx_loadout_uglAmmoEast = ["CUP_1Rnd_HE_GP25_M:6", "CUP_1Rnd_SMOKE_GP25_M:3", "CUP_IlumFlareWhite_GP25_M:3"];};
+  default {};
+};
