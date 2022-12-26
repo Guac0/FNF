@@ -94,11 +94,12 @@ phx_connectionWin = {
     case independent: {"INDFOR"};
   }]] remoteExec ["hint"];
 
-  {
+  //unsure what this does beyond getting rid of the connect action on the terminal and then not replacing it, so comment it out
+  /*{
     if (!isNull _x) then {
       _x remoteExec ["removeAllActions"];
     };
-  } forEach [term1];
+  } forEach [term1];*/
 
   _sideWon call PHX_fnc_titanMultiRoundHandler;
 };
