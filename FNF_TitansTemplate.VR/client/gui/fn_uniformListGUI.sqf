@@ -46,21 +46,21 @@ if (_side == west) then {
 
 	//UNSC
 	_button4 = (phx_uniformListGUI select 0) ctrlCreate ["RscButton", -1]; 
-	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 3,0.45,0.05];
+	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 4,0.45,0.05];
 	_button4 ctrlSetText ("Halo UNSC");
 	_button4 buttonSetAction 'phx_bluforUniform = "UNIFORM_UNSC"; publicVariable "phx_bluforUniform";';
 	_button4 ctrlCommit 0;
 
 	//URF
 	_button4 = (phx_uniformListGUI select 0) ctrlCreate ["RscButton", -1]; 
-	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 3,0.45,0.05];
+	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 5,0.45,0.05];
 	_button4 ctrlSetText ("Halo URF");
 	_button4 buttonSetAction 'phx_bluforUniform = "UNIFORM_URF"; publicVariable "phx_bluforUniform";';
 	_button4 ctrlCommit 0;
 
 	//halo battlejumpers
 	_button4 = (phx_uniformListGUI select 0) ctrlCreate ["RscButton", -1]; 
-	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 3,0.45,0.05];
+	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 6,0.45,0.05];
 	_button4 ctrlSetText ("Halo Battlejumpers");
 	_button4 buttonSetAction 'phx_bluforUniform = "UNIFORM_BATTLEJUMPER"; publicVariable "phx_bluforUniform";';
 	_button4 ctrlCommit 0;
@@ -95,21 +95,21 @@ if (_side == west) then {
 
 	//UNSC
 	_button4 = (phx_uniformListGUI select 0) ctrlCreate ["RscButton", -1]; 
-	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 3,0.45,0.05];
+	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 4,0.45,0.05];
 	_button4 ctrlSetText ("Halo UNSC");
 	_button4 buttonSetAction 'phx_opforUniform = "UNIFORM_UNSC"; publicVariable "phx_opforUniform";';
 	_button4 ctrlCommit 0;
 
 	//URF
 	_button4 = (phx_uniformListGUI select 0) ctrlCreate ["RscButton", -1]; 
-	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 3,0.45,0.05];
+	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 5,0.45,0.05];
 	_button4 ctrlSetText ("Halo URF");
 	_button4 buttonSetAction 'phx_opforUniform = "UNIFORM_URF"; publicVariable "phx_opforUniform";';
 	_button4 ctrlCommit 0;
 
 	//halo battlejumpers
 	_button4 = (phx_uniformListGUI select 0) ctrlCreate ["RscButton", -1]; 
-	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 3,0.45,0.05];
+	_button4 ctrlSetPosition [0.275,0.03 + 0.08 * 6,0.45,0.05];
 	_button4 ctrlSetText ("Halo Battlejumpers");
 	_button4 buttonSetAction 'phx_opforUniform = "UNIFORM_BATTLEJUMPER"; publicVariable "phx_opforUniform";';
 	_button4 ctrlCommit 0;
