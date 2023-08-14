@@ -63,18 +63,31 @@ if (TAS_gamemode == "CTF") then {
     if ( _flagHolder isEqualTo objNull ) exitWith { TAS_oldFlagOwner = _flagHolder; }; //skip if on flagpole (resets to flagpole are handled elsewhere or not done at all)
 
     if (TAS_oldFlagOwner != _flagHolder) then {  //if current flag owner does not match old flag holder, then flag has been taken
-      switch (side _flagHolder) do {
+      TAS_ctfFlagOwnerSide = civilian;  //placeholder
+      {
+        TAS_ctfFlagOwnerSide = phx_playerSide;
+        publicVariableServer "TAS_ctfFlagOwnerSide"; //only server needs the info
+      } remoteExec ["spawn",_flagHolder];
+      //TODO major scheduling issues in MP 
+      
+      //diag_log format ["fn_serverInit: waiting for side response from %1",name _flagHolder];
+      //waitUntil {TAS_ctfFlagOwnerSide != civilian}; //wait until we receive the data. TODO sleep not available in this context
+      //diag_log format ["fn_serverInit: received side response from %1, answer: %2",name _flagHolder, TAS_ctfFlagOwnerSide];
+
+      switch (TAS_ctfFlagOwnerSide) do {  //unsure if to do TAS_ctfFlagOwnerSide or side _flagholder here
         case west: {
           //private _ownerSide = west;
           "Blue Team has taken the flag!" remoteExec ["hint"];
-          _flagMarker setMarkerType "Faction_BLUFOR_EP1";
+          //_flagMarker setMarkerType "Faction_BLUFOR_EP1";
+          _flagMarker setMarkerType "b_unknown";
           TAS_flagPole setFlagTexture "\A3\Data_F\Flags\flag_blue_CO.paa"; //\A3\Data_F\Flags\flag_NATO_CO.paa
           //_flag setFlagSide west; //do not update side so that any player can take it once current holder dies
         };
         case east: {
           //private _ownerSide = east;
           "Red Team has taken the flag!" remoteExec ["hint"];
-          _flagMarker setMarkerType "Faction_OPFOR_EP1";
+          //_flagMarker setMarkerType "Faction_OPFOR_EP1";
+          _flagMarker setMarkerType "o_unknown";
           TAS_flagPole setFlagTexture "\A3\Data_F\Flags\flag_red_CO.paa"; //\A3\Data_F\Flags\flag_CSAT_CO.paa
           //_flag setFlagSide east; //do not update side so that any player can take it once current holder dies
         };
@@ -87,20 +100,20 @@ if (TAS_gamemode == "CTF") then {
       };
     };
 
-    if (!(alive _flagHolder) || myUnit getVariable ["ACE_isUnconscious", false]) then { //TODO check if you can take from uncon. Also, doesn't work.
+    if (!(alive _flagHolder) || myUnit getVariable ["ACE_isUnconscious", false]) then { //TODO check if you can take from uncon. Also, doesn't work. possible issues with not doing taken message on wake up too
       "The flag has been dropped!" remoteExec ["hint"];
       _flagMarker setMarkerType "hd_flag";
       //_flagMarker setMarkerColor "ColorBlack";
       TAS_flagPole setFlagTexture "\A3\Data_F\Flags\flag_white_CO.paa";
     };
 
-    if (((_flagHolder) inArea "opforSafeMarker") && (side (_flagHolder) != east)) then { 
+    if (((_flagHolder) inArea "opforSafeMarker") && (TAS_ctfFlagOwnerSide != east)) then {
       "Blue Team has delivered the flag!" remoteExec ["hint"];
       phx_gameEnd = true;
       publicVariable "phx_gameEnd";
       west call PHX_fnc_titanMultiRoundHandler;
     };
-    if (((_flagHolder) inArea "bluforSafeMarker") && (side (_flagHolder) != west)) then {
+    if (((_flagHolder) inArea "bluforSafeMarker") && (TAS_ctfFlagOwnerSide != west)) then {
       "Red Team has delivered the flag!" remoteExec ["hint"];
       phx_gameEnd = true;
       publicVariable "phx_gameEnd";

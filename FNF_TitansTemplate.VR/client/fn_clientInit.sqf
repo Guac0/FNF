@@ -117,7 +117,7 @@ _handle = [{
 			_currentInRole = 0;
 			//get players in current role
 			{
-				if (side _x == playerSide) then
+				if (side _x == playerSide) then	//black magic
 				{
 					_friendlyRole = _x getVariable["role", "None"];
 					if (_temp select 0 == _friendlyRole) then
